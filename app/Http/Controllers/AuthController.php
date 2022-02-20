@@ -33,7 +33,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'user' => $user
-        ]);
+        ], 201);
     }
 
     public function login(Request $request)
@@ -52,7 +52,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'user' => $user
-        ]);
+        ], 200);
     }
 
     public function logout(Request $request)
@@ -61,6 +61,6 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Logged out'
-        ]);
+        ], 200);
     }
 }
