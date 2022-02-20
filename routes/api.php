@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/schools', [SchoolController::class, 'store']);
+    Route::put('/schools/{id}', [SchoolController::class, 'update']);
+    Route::delete('/schools/{id}', [SchoolController::class, 'delete']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::get('/schools', [SchoolController::class, 'index']);
+Route::get('/schools/{id}', [SchoolController::class, 'show']);
+
+Route::get('/schools', function () {
+    return 'schools';
 });
