@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->smallInteger('frequency')->default(1);
+            $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
         });
     }

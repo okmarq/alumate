@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
+            $table->bigIncrements('job_id');
+            $table->bigIncrements('resume_id');
             $table->timestamps();
         });
     }

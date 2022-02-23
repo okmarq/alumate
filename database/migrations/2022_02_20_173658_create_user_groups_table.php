@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('group_id');
+            $table->bigInteger('user_id');
+            $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
         });
     }

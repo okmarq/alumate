@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            // $table->string('short_name');
+            $table->string('capital');
+            // $table->string('phone_code');
+            // $table->bigInteger('image_id')->comment('flag');
         });
     }
 

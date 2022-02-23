@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->bigInteger('school_id');
+            $table->bigInteger('department_id');
+            // $table->emum('accreditation', [true, false])->default(false);
+            // $table->year('accreditation_year')->nullable();
         });
     }
 

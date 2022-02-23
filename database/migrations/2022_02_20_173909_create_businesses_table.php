@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
+            $table->bigIncrements('posted_by')->comment('user_id');
+            $table->string('owner');
+            $table->string('industry');
+            $table->text('description');
+            $table->tinyInteger('is_registered')->default(0);
+            $table->tinyInteger('is_active')->default(0);
+            $table->integer('no_of_employees');
             $table->timestamps();
         });
     }

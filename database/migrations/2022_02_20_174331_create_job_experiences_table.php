@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('job_experiences', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigIncrements('resume_id');
+            $table->string('job_title');
+            $table->string('employer');
+            $table->string('address_id');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
         });
     }
 

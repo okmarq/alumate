@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('business_addresses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigInteger('address_id');
+            $table->bigInteger('business_id');
         });
     }
 

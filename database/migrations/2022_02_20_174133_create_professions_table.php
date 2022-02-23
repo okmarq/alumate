@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('professions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('required_skill_level');
+            $table->text('description');
             $table->timestamps();
         });
     }

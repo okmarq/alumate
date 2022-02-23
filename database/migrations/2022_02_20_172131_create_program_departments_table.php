@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('program_departments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigInteger('program_id');
+            $table->bigInteger('department_id');
+            $table->string('degree');
+            // $table->year('year_added')->nullable();
         });
     }
 

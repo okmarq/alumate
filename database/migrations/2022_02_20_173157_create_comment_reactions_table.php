@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('comment_reactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->enum('reaction', ['like', 'love', 'haha', 'sad', 'care', 'curious', 'wow']);
+            $table->bigInteger('user_id');
+            $table->bigInteger('comment_id');
+            // $table->timestamps();
         });
     }
 

@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text('message');
+            $table->bigInteger('chat_id')->comment('parent_chat_id')->nullable();
+            $table->bigInteger('sender')->comment('user_id');
+            $table->timestamp('sent_at');
+            $table->timestamp('delivered_at');
+            $table->timestamp('expiry_date');
+            $table->tinyInteger('is_active')->default(0);
         });
     }
 

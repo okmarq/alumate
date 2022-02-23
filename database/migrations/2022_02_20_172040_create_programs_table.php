@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name')->comment('vocation, diploma, undergraduate, graduate, post-graduate');
+            $table->string('degree')->comment('license, certificate, associates bachelors masters doctorate');
+            $table->string('abbr')->comment('AS BSC BA MSC MBA PHD');
         });
     }
 
