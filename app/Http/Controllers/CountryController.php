@@ -15,17 +15,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return 'country and capital';
     }
 
     /**
@@ -36,7 +26,19 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:64|unique:country',
+            'capital' => 'required|string|max:64|unique:country'
+        ]);
+
+        $country = Country::create([
+            'name' => $validatedData['name'],
+            'capital' => $validatedData['capital']
+        ]);
+
+        return response()->json([
+            'country' => $country
+        ], 201);
     }
 
     /**
@@ -46,17 +48,6 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Country $country)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Country  $country
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Country $country)
     {
         //
     }
