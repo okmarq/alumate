@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('user_id');
+            $table->bigInteger('user_id');
             $table->mediumText('summary');
             $table->timestamps();
         });

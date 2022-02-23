@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_industry_titles', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('job_industry_id');
-            $table->bigIncrements('job_title_id');
+            $table->bigInteger('job_industry_id');
+            $table->bigInteger('job_title_id');
         });
     }
 

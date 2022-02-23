@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('posted_by')->comment('user_id');
-            $table->bigIncrements('business_id');
+            $table->bigInteger('posted_by')->comment('user_id');
+            $table->bigInteger('business_id');
             $table->string('position');
             $table->text('description');
             $table->text('function');
             $table->string('minimum_salary');
             $table->string('maximum_salary');
             $table->text('industry');
-            $table->timestamps();
+            $table->timestamp('apply_after')->nullable();
+            $table->timestamp('deadline')->nullable();
         });
     }
 

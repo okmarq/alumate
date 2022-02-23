@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('resume_id');
-            $table->bigIncrements('profession_id');
+            $table->bigInteger('resume_id');
+            $table->bigInteger('profession_id');
             $table->string('proficiency');
-            $table->bigIncrements('job_industry_title_id');
+            $table->bigInteger('job_industry_title_id');
             $table->timestamps();
         });
     }

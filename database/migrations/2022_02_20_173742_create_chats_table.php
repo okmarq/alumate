@@ -18,9 +18,9 @@ return new class extends Migration
             $table->text('message');
             $table->bigInteger('chat_id')->comment('parent_chat_id')->nullable();
             $table->bigInteger('sender')->comment('user_id');
-            $table->timestamp('sent_at');
-            $table->timestamp('delivered_at');
-            $table->timestamp('expiry_date');
+            $table->timestamp('sent_at')->useCurrent();
+            $table->timestamp('delivered_at')->useCurrent();
+            $table->timestamp('expiry_date')->useCurrent();
             $table->tinyInteger('is_active')->default(0);
         });
     }
