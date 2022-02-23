@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('abbr');
-            $table->string('type')->comment();
-            $table->enum('type', ['creche', 'nursery', 'primary', 'secondary', 'university', 'college', 'diploma', 'bootcamp']);
             $table->bigInteger('address_id');
+            $table->bigInteger('school_type_id');
             $table->year('year_founded');
         });
     }
