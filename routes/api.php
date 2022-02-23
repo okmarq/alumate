@@ -23,16 +23,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/schools', function () {
+        return 'schools';
+    });
+
+    Route::get('/schools', [SchoolController::class, 'index']);
+    Route::get('/schools/{id}', [SchoolController::class, 'show']);
     Route::post('/schools', [SchoolController::class, 'store']);
     Route::put('/schools/{id}', [SchoolController::class, 'update']);
     Route::delete('/schools/{id}', [SchoolController::class, 'delete']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
-});
-
-Route::get('/schools', [SchoolController::class, 'index']);
-Route::get('/schools/{id}', [SchoolController::class, 'show']);
-
-Route::get('/schools', function () {
-    return 'schools';
 });
