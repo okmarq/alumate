@@ -430,14 +430,23 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "address",
+          "city_id",
+          "zip_code"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
+          "address": {
+            "type": "string"
+          },
+          "city_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "zip_code": {
             "type": "string"
           }
         }
@@ -446,15 +455,36 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "school_id",
+          "session",
+          "user_id",
+          "admission_year",
+          "graduation_year"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
-            "type": "string"
+          "school_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "session": {
+            "type": "string",
+            "format": "date"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "admission_year": {
+            "type": "string",
+            "format": "date"
+          },
+          "graduation_year": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -462,15 +492,46 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "posted_by",
+          "owner",
+          "industry",
+          "description",
+          "is_registered",
+          "is_active",
+          "no_of_employees",
+          "year_started"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
+          "posted_by": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "owner": {
             "type": "string"
+          },
+          "industry": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "is_registered": {
+            "type": "boolean"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "no_of_employees": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year_started": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -478,51 +539,25 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "address_id",
+          "business_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
-            "type": "string"
+          "address_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "business_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
       "Category": {
-        "type": "object",
-        "required": [
-          "id",
-          "first_name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "first_name": {
-            "type": "string"
-          }
-        }
-      },
-      "Chat": {
-        "type": "object",
-        "required": [
-          "id",
-          "first_name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "first_name": {
-            "type": "string"
-          }
-        }
-      },
-      "City": {
         "type": "object",
         "required": [
           "id",
@@ -535,9 +570,72 @@
           },
           "name": {
             "type": "string"
+          }
+        }
+      },
+      "Chat": {
+        "type": "object",
+        "required": [
+          "id",
+          "message",
+          "chat_id",
+          "sender",
+          "sent_at",
+          "delivered_at",
+          "expiry_date",
+          "is_active"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
+          "message": {
             "type": "string"
+          },
+          "chat_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sender": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sent_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "delivered_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "expiry_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "is_active": {
+            "type": "boolean"
+          }
+        }
+      },
+      "City": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "state_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "state_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -545,15 +643,44 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "user_id",
+          "post_id",
+          "comment",
+          "is_active",
+          "reactions",
+          "shares",
+          "reaction_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "post_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "comment": {
             "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "reactions": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "shares": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reaction_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -561,35 +688,29 @@
         "type": "object",
         "required": [
           "id",
-          "first_name"
+          "reaction",
+          "user_id",
+          "comment_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "first_name": {
+          "reaction": {
             "type": "string"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "comment_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
       "Country": {
-        "type": "object",
-        "required": [
-          "id",
-          "first_name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "first_name": {
-            "type": "string"
-          }
-        }
-      },
-      "Department": {
         "type": "object",
         "required": [
           "id",
@@ -604,67 +725,12 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "capital": {
             "type": "string"
           }
         }
       },
-      "Faculty": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "abbr",
-          "address_id",
-          "school_type_id",
-          "year_founded"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
-          }
-        }
-      },
-      "Group": {
-        "type": "object",
-        "required": [
-          "id",
-          "first_name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "first_name": {
-            "type": "string"
-          }
-        }
-      },
-      "GroupChat": {
-        "type": "object",
-        "required": [
-          "id",
-          "first_name"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "first_name": {
-            "type": "string"
-          }
-        }
-      },
-      "Image": {
+      "Department": {
         "type": "object",
         "required": [
           "id",
@@ -677,9 +743,100 @@
           },
           "name": {
             "type": "string"
+          }
+        }
+      },
+      "Faculty": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "school_id",
+          "department_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
+          "name": {
             "type": "string"
+          },
+          "school_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "department_id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Group": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "image_id",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "GroupChat": {
+        "type": "object",
+        "required": [
+          "id",
+          "group_id",
+          "chat_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "group_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "chat_id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Image": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "image_type_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image_type_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -696,9 +853,6 @@
           },
           "name": {
             "type": "string"
-          },
-          "tag": {
-            "type": "string"
           }
         }
       },
@@ -706,7 +860,16 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "posted_by",
+          "business_id",
+          "position",
+          "description",
+          "function",
+          "minimum_salary",
+          "maximum_salary",
+          "industry",
+          "apply_after",
+          "deadline"
         ],
         "properties": {
           "id": {
@@ -716,8 +879,41 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "posted_by": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "business_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "position": {
             "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "function": {
+            "type": "string"
+          },
+          "minimum_salary": {
+            "type": "number",
+            "format": "double"
+          },
+          "maximum_salary": {
+            "type": "number",
+            "format": "double"
+          },
+          "industry": {
+            "type": "string"
+          },
+          "apply_after": {
+            "type": "string",
+            "format": "date"
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -725,18 +921,21 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "resume_id",
+          "business_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "resume_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "business_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -744,18 +943,39 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "resume_id",
+          "job_title",
+          "employer",
+          "address_id",
+          "start_date",
+          "end_date"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "resume_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "job_title": {
             "type": "string"
           },
-          "tag": {
+          "employer": {
             "type": "string"
+          },
+          "address_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -772,9 +992,28 @@
           },
           "name": {
             "type": "string"
+          }
+        }
+      },
+      "JobIndustryTitle": {
+        "type": "object",
+        "required": [
+          "id",
+          "job_industry_id",
+          "job_title_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "job_industry_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "job_title_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -782,7 +1021,8 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "name",
+          "level"
         ],
         "properties": {
           "id": {
@@ -792,7 +1032,7 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "level": {
             "type": "string"
           }
         }
@@ -801,18 +1041,24 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "title",
+          "frequency",
+          "is_active"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "title": {
             "type": "string"
           },
-          "tag": {
-            "type": "string"
+          "frequency": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_active": {
+            "type": "boolean"
           }
         }
       },
@@ -820,18 +1066,47 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "user_id",
+          "title",
+          "post",
+          "category",
+          "is_active",
+          "reactions",
+          "shares",
+          "reaction_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
             "type": "string"
           },
-          "tag": {
+          "post": {
             "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "reactions": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "shares": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reaction_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -839,18 +1114,21 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "user_id",
+          "category_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "category_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -858,18 +1136,25 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "reaction",
+          "user_id",
+          "post_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "reaction": {
             "type": "string"
           },
-          "tag": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "post_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -877,18 +1162,31 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "chat_id",
+          "recipient",
+          "is_seen",
+          "sent_at"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "chat_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "recipient": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "is_seen": {
+            "type": "string",
+            "format": "date"
+          },
+          "sent_at": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -896,7 +1194,9 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "name",
+          "required_skill_level",
+          "description"
         ],
         "properties": {
           "id": {
@@ -906,7 +1206,10 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "required_skill_level": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           }
         }
@@ -915,7 +1218,9 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "name",
+          "degree",
+          "abbr"
         ],
         "properties": {
           "id": {
@@ -925,7 +1230,10 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "degree": {
+            "type": "string"
+          },
+          "abbr": {
             "type": "string"
           }
         }
@@ -934,7 +1242,9 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "program_id",
+          "department_id",
+          "degree"
         ],
         "properties": {
           "id": {
@@ -944,7 +1254,15 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "program_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "department_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "degree": {
             "type": "string"
           }
         }
@@ -953,17 +1271,19 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "user_id",
+          "summary"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
+          "summary": {
             "type": "string"
           }
         }
@@ -986,8 +1306,20 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "abbr": {
             "type": "string"
+          },
+          "address_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "school_type_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "year_founded": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
@@ -995,22 +1327,21 @@
         "type": "object",
         "required": [
           "id",
-          "name",
-          "abbr",
           "address_id",
-          "school_type_id",
-          "year_founded"
+          "school_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "address_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "school_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1018,11 +1349,7 @@
         "type": "object",
         "required": [
           "id",
-          "name",
-          "abbr",
-          "address_id",
-          "school_type_id",
-          "year_founded"
+          "name"
         ],
         "properties": {
           "id": {
@@ -1030,9 +1357,6 @@
             "format": "int64"
           },
           "name": {
-            "type": "string"
-          },
-          "tag": {
             "type": "string"
           }
         }
@@ -1041,22 +1365,30 @@
         "type": "object",
         "required": [
           "id",
-          "name",
-          "abbr",
-          "address_id",
-          "school_type_id",
-          "year_founded"
+          "resume_id",
+          "profession_id",
+          "proficiency",
+          "job_industry_title_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
+          "resume_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "profession_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "proficiency": {
             "type": "string"
           },
-          "tag": {
-            "type": "string"
+          "job_industry_title_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1065,10 +1397,7 @@
         "required": [
           "id",
           "name",
-          "abbr",
-          "address_id",
-          "school_type_id",
-          "year_founded"
+          "country_id"
         ],
         "properties": {
           "id": {
@@ -1078,8 +1407,9 @@
           "name": {
             "type": "string"
           },
-          "tag": {
-            "type": "string"
+          "country_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1088,10 +1418,8 @@
         "required": [
           "id",
           "name",
-          "abbr",
-          "address_id",
-          "school_type_id",
-          "year_founded"
+          "description",
+          "cost"
         ],
         "properties": {
           "id": {
@@ -1101,8 +1429,12 @@
           "name": {
             "type": "string"
           },
-          "tag": {
+          "description": {
             "type": "string"
+          },
+          "cost": {
+            "type": "number",
+            "format": "double"
           }
         }
       },
@@ -1142,18 +1474,21 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "address_id",
+          "user_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "address_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1161,18 +1496,25 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "group_id",
+          "user_id",
+          "is_active"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "group_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "is_active": {
+            "type": "boolean"
           }
         }
       },
@@ -1180,18 +1522,21 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "user_id",
+          "image_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "image_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1199,18 +1544,21 @@
         "type": "object",
         "required": [
           "id",
-          "name"
+          "user_id",
+          "subscription_id"
         ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "name": {
-            "type": "string"
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
           },
-          "tag": {
-            "type": "string"
+          "subscription_id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
