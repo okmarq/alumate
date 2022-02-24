@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('group_id');
             $table->bigInteger('chat_id');
-            $table->json('seen_by');
             $table->timestamps();
         });
     }

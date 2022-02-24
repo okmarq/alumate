@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->string('title');
             $table->longText('post');
-            $table->string('post_type');
+            $table->string('category');
             $table->tinyInteger('is_active')->default(0);
             $table->bigInteger('reactions')->default(0);
             $table->bigInteger('shares')->default(0);
