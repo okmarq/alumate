@@ -76,9 +76,21 @@ class SchoolTypeController extends Controller
      * @param  \App\Models\SchoolType  $schoolType
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSchoolTypeRequest $request, SchoolType $schoolType)
+    public function update(UpdateSchoolTypeRequest $request, $id)
     {
-        //
+        if (SchoolType::where('id', $id)->exists()) {
+            $school_type = SchoolType::find($id);
+            $school_type->name = is_null($request->name) ? $school_type->name : $request->name;
+            $school_type->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "School type not found"
+            ], 404);
+        }
     }
 
     /**
@@ -87,8 +99,20 @@ class SchoolTypeController extends Controller
      * @param  \App\Models\SchoolType  $schoolType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SchoolType $schoolType)
+    public function destroy($id)
     {
-        //
+        if(SchoolType::where('id', $id)->exists()) {
+            $schooltype = SchoolType::find($id);
+            $schooltype->delete();
+
+            return response()->json([
+              "message" => "records deleted"
+            ], 202);
+          } else {
+            return response()->json([
+              "message" => "School type not found"
+            ], 404);
+          }
+        }
     }
 }
