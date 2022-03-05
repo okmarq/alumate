@@ -17,9 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('capital');
-        });
-
-        Schema::table('states', function (Blueprint $table) {
             $table->foreignId('country_id')
                 ->constrained()
                 ->onUpdate('restrict')
