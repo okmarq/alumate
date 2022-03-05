@@ -15,7 +15,8 @@ class SchoolTypeController extends Controller
      */
     public function index()
     {
-        //
+        $school_types = SchoolType::get()->toJson(JSON_PRETTY_PRINT);
+        return response($school_types, 200);
     }
 
     /**
@@ -45,9 +46,16 @@ class SchoolTypeController extends Controller
      * @param  \App\Models\SchoolType  $schoolType
      * @return \Illuminate\Http\Response
      */
-    public function show(SchoolType $schoolType)
+    public function show($id)
     {
-        //
+        if (SchoolType::where('id', $id)->exists()) {
+            $school_type = SchoolType::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($school_type, 200);
+        } else {
+            return response()->json([
+                'message' => 'School not found'
+            ], 404);
+        }
     }
 
     /**
