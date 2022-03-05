@@ -16,7 +16,14 @@ return new class extends Migration
         Schema::create('states', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('country_id');
+            $table->string('capital');
+        });
+
+        Schema::table('states', function (Blueprint $table) {
+            $table->foreignId('country_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 
