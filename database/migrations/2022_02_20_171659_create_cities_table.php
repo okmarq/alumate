@@ -20,6 +20,7 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->unique(['name', 'state_id']);
         });
     }
 

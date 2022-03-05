@@ -21,6 +21,7 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->unique(['name', 'country_id']);
         });
     }
 
