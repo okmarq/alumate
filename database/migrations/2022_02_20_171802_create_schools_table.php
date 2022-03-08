@@ -17,9 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('abbr');
-            $table->bigInteger('address_id');
             $table->bigInteger('school_type_id');
             $table->year('year_founded');
+            $table->foreignId('city_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->unique(['name', 'city_id']);
         });
     }
 

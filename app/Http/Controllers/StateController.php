@@ -45,7 +45,7 @@ class StateController extends Controller
      * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function show(State $state)
+    public function show($id)
     {
         //
     }
@@ -68,7 +68,7 @@ class StateController extends Controller
      * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStateRequest $request, State $state)
+    public function update(UpdateStateRequest $request, $id)
     {
         //
     }
@@ -79,7 +79,7 @@ class StateController extends Controller
      * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function destroy(State $state)
+    public function destroy($id)
     {
         //
     }

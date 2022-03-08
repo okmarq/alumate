@@ -21,7 +21,12 @@ class Country extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'capital'
+    ];
+
+    // protected $table = '';
 
     /**
      * The attributes that should be hidden for serialization.

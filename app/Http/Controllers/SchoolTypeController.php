@@ -37,7 +37,13 @@ class SchoolTypeController extends Controller
      */
     public function store(StoreSchoolTypeRequest $request)
     {
-        //
+        $school_type = new SchoolType;
+        $school_type->name = $request->input('name');
+        $school_type->save();
+
+        return response()->json([
+            "message" => "school type record created"
+        ], 201);
     }
 
     /**
@@ -53,7 +59,7 @@ class SchoolTypeController extends Controller
             return response($school_type, 200);
         } else {
             return response()->json([
-                'message' => 'School not found'
+                'message' => 'School type not found'
             ], 404);
         }
     }
@@ -101,18 +107,17 @@ class SchoolTypeController extends Controller
      */
     public function destroy($id)
     {
-        if(SchoolType::where('id', $id)->exists()) {
+        if (SchoolType::where('id', $id)->exists()) {
             $schooltype = SchoolType::find($id);
             $schooltype->delete();
 
             return response()->json([
-              "message" => "records deleted"
+                "message" => "records deleted"
             ], 202);
-          } else {
+        } else {
             return response()->json([
-              "message" => "School type not found"
+                "message" => "School type not found"
             ], 404);
-          }
         }
     }
 }

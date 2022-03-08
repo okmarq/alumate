@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('school_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // ['creche', 'nursery', 'primary', 'secondary', 'university', 'college', 'diploma', 'bootcamp']
         });
     }
 

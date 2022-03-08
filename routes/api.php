@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolTypeController;
+use App\Http\Controllers\StateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,17 +28,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('school_types', [SchoolTypeController::class, 'index']);
-    Route::get('school_types/{id}', [SchoolTypeController::class, 'show']);
-    Route::post('school_types', [SchoolTypeController::class, 'store']);
-    Route::put('school_types/{id}', [SchoolTypeController::class, 'update']);
-    Route::delete('school_types/{id}', [SchoolTypeController::class, 'delete']);
-
-    Route::get('/schools', [SchoolController::class, 'index']);
-    Route::get('/schools/{id}', [SchoolController::class, 'show']);
-    Route::post('/schools', [SchoolController::class, 'store']);
-    Route::put('/schools/{id}', [SchoolController::class, 'update']);
-    Route::delete('/schools/{id}', [SchoolController::class, 'delete']);
+    Route::apiResource('school_types', SchoolTypeController::class);
+    Route::apiResource('schools', SchoolController::class);
+    Route::apiResource('countries', CountryController::class);
+    Route::apiResource('states', StateController::class);
+    Route::apiResource('cities', CityController::class);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
