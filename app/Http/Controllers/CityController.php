@@ -15,17 +15,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $city = City::get()->toJson(JSON_PRETTY_PRINT);
+        return response($city, 200);
     }
 
     /**
@@ -36,7 +27,20 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:128|unique:cities',
+            'state_id' => 'required|integer'
+        ]);
+
+        $city = City::create([
+            'name' => $validatedData['name'],
+            'state_id' => $validatedData['state_id']
+        ]);
+
+        return response()->json([
+            "message" => "city record created",
+            'city' => $city
+        ], 201);
     }
 
     /**
@@ -45,9 +49,16 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show($id)
     {
-        //
+        if (City::where('id', $id)->exists()) {
+            $city = City::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($city, 200);
+        } else {
+            return response()->json([
+                'message' => 'City not found'
+            ], 404);
+        }
     }
 
     /**
@@ -56,7 +67,7 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit($id)
     {
         //
     }
@@ -68,9 +79,21 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCityRequest $request, City $city)
+    public function update(UpdateCityRequest $request, $id)
     {
-        //
+        if (City::where('id', $id)->exists()) {
+            $city = City::find($id);
+            $city->name = is_null($request->name) ? $city->name : $request->name;
+            $city->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "City not found"
+            ], 404);
+        }
     }
 
     /**
@@ -79,8 +102,19 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy($id)
     {
-        //
+        if (City::where('id', $id)->exists()) {
+            $city = City::find($id);
+            $city->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "City not found"
+            ], 404);
+        }
     }
 }

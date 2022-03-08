@@ -15,7 +15,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return 'country and capital';
+        $country = Country::get()->toJson(JSON_PRETTY_PRINT);
+        return response($country, 200);
     }
 
     /**
@@ -27,8 +28,8 @@ class CountryController extends Controller
     public function store(StoreCountryRequest $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:64|unique:country',
-            'capital' => 'required|string|max:64|unique:country'
+            'name' => 'required|string|max:128|unique:country',
+            'capital' => 'required|string|max:128'
         ]);
 
         $country = Country::create([
@@ -47,9 +48,16 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show($id)
     {
-        //
+        if (Country::where('id', $id)->exists()) {
+            $country = Country::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($country, 200);
+        } else {
+            return response()->json([
+                'message' => 'Country not found'
+            ], 404);
+        }
     }
 
     /**
@@ -59,9 +67,25 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountryRequest $request, Country $country)
+    public function update(UpdateCountryRequest $request, $id)
     {
-        //
+        if (Country::where('id', $id)->exists()) {
+            $country = Country::find($id);
+            $country->name = is_null($request->name) ? $country->name : $request->name;
+            // $country->abbr = is_null($request->abbr) ? $country->abbr : $request->abbr;
+            $country->city_id = is_null($request->city_id) ? $country->city_id : $request->city_id;
+            $country->country_type_id = is_null($request->country_type_id) ? $country->country_type_id : $request->country_type_id;
+            // $country->year_founded = is_null($request->year_founded) ? $country->year_founded : $request->year_founded;
+            $country->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Country not found"
+            ], 404);
+        }
     }
 
     /**
@@ -70,8 +94,19 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        //
+        if (Country::where('id', $id)->exists()) {
+            $country = Country::find($id);
+            $country->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Country not found"
+            ], 404);
+        }
     }
 }

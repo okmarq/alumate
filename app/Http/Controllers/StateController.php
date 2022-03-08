@@ -15,17 +15,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $state = State::get()->toJson(JSON_PRETTY_PRINT);
+        return response($state, 200);
     }
 
     /**
@@ -36,7 +27,20 @@ class StateController extends Controller
      */
     public function store(StoreStateRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:64|unique:states',
+            'state_id' => 'required|integer',
+        ]);
+
+        $state = State::create([
+            'name' => $validatedData['name'],
+            'state_id' => $validatedData['state_id'],
+        ]);
+
+        return response()->json([
+            "message" => "state record created",
+            'state' => $state
+        ], 201);
     }
 
     /**
@@ -47,18 +51,14 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\State  $state
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(State $state)
-    {
-        //
+        if (State::where('id', $id)->exists()) {
+            $state = State::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($state, 200);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
     }
 
     /**
@@ -70,7 +70,20 @@ class StateController extends Controller
      */
     public function update(UpdateStateRequest $request, $id)
     {
-        //
+        if (State::where('id', $id)->exists()) {
+            $state = State::find($id);
+            $state->name = is_null($request->name) ? $state->name : $request->name;
+            $state->state_id = is_null($request->state_id) ? $state->state_id : $request->state_id;
+            $state->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "State not found"
+            ], 404);
+        }
     }
 
     /**
@@ -81,6 +94,17 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (State::where('id', $id)->exists()) {
+            $state = State::find($id);
+            $state->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "State not found"
+            ], 404);
+        }
     }
 }
