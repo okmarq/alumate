@@ -23,10 +23,10 @@ class School extends Model
      */
     protected $fillable = [
         'name',
-        'abbr',
+        // 'abbr',
         'city_id',
-        'school_type_id',
-        'year_founded'
+        'school_type_id'
+        // 'year_founded'
     ];
 
     /**
