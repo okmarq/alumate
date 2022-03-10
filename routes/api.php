@@ -29,10 +29,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('school_types', SchoolTypeController::class);
+    Route::apiResource('users', AuthController::class);
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('countries', CountryController::class);
     Route::apiResource('states', StateController::class);
     Route::apiResource('cities', CityController::class);
+
+    Route::get('user/{user}', [AuthController::class, 'showByName']);
+    Route::get('school/{school}', [SchoolController::class, 'showByName']);Route::get('country/{country}', [CountryController::class, 'showByName']);
+    Route::get('state/{state}', [StateController::class, 'showByName']);
+    Route::get('city/{city}', [CityController::class, 'showByName']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
