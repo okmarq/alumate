@@ -35,4 +35,17 @@ class School extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function faculties()
+    {
+        return $this->hasMany(Faculty::class, 'school_id');
+    }
 }

@@ -75,8 +75,44 @@ class SchoolController extends Controller
      */
     public function showByName($name)
     {
-        if (School::where('name', $name)->exists()) {
-            $school = School::where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
+        if (School::where('name', 'like', '%' . $name . '%')->exists()) {
+            $school = School::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+            return response($school, 200);
+        } else {
+            return response()->json([
+                'message' => 'School not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCityId($city_id)
+    {
+        if (School::where('city_id', $city_id)->exists()) {
+            $schools = School::where('city_id', $city_id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($schools, 200);
+        } else {
+            return response()->json([
+                'message' => 'School not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function showByNameAndCity($name, $city_id)
+    {
+        if (School::where('city_id', $city_id)->where('name', $name)->exists()) {
+            $school = School::where('city_id', $city_id)->where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
             return response($school, 200);
         } else {
             return response()->json([

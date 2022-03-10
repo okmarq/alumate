@@ -69,8 +69,8 @@ class CityController extends Controller
      */
     public function showByName($name)
     {
-        if (City::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
-            $city = City::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+        if (City::where('name', 'like', '%' . $name . '%')->exists()) {
+            $city = City::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
             return response($city, 200);
         } else {
             return response()->json([
@@ -80,14 +80,21 @@ class CityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function showByStateId($state_id)
     {
-        //
+        if (City::where('state_id', $state_id)->exists()) {
+            $city = City::where('state_id', $state_id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($city, 200);
+        } else {
+            return response()->json([
+                'message' => 'City not found'
+            ], 404);
+        }
     }
 
     /**

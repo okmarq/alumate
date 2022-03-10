@@ -69,8 +69,62 @@ class StateController extends Controller
      */
     public function showByName($name)
     {
-        if (State::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
-            $state = State::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+        if (State::where('name', 'like', '%' . $name . '%')->exists()) {
+            $state = State::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+            return response($state, 200);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\State  $state
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCountryId($country_id)
+    {
+        if (State::where('country_id', $country_id)->exists()) {
+            $state = State::where('country_id', $country_id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($state, 200);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\State  $state
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCapital($capital)
+    {
+        if (State::where('capital', $capital)->exists()) {
+            $state = State::where('capital', $capital)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($state, 200);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\State  $state
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCapitalUnstrict($capital)
+    {
+        if (State::where('capital', 'like', '%' . $capital . '%')->exists()) {
+            $state = State::where('capital', 'like', '%' . $capital . '%')->get()->toJson(JSON_PRETTY_PRINT);
             return response($state, 200);
         } else {
             return response()->json([
@@ -91,7 +145,6 @@ class StateController extends Controller
         if (State::where('id', $id)->exists()) {
             $state = State::find($id);
             $state->name = is_null($request->name) ? $state->name : $request->name;
-            $state->state_id = is_null($request->state_id) ? $state->state_id : $request->state_id;
             $state->save();
 
             return response()->json([

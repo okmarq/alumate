@@ -23,7 +23,7 @@ class State extends Model
      */
     protected $fillable = [
         'name',
-        'state_id'
+        'capital'
     ];
 
     /**
@@ -36,5 +36,13 @@ class State extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'state_id');
     }
 }

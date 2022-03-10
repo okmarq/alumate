@@ -68,8 +68,8 @@ class CountryController extends Controller
      */
     public function showByName($name)
     {
-        if (Country::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
-            $country = Country::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+        if (Country::where('name', 'like', '%' . $name . '%')->exists()) {
+            $country = Country::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
             return response($country, 200);
         } else {
             return response()->json([
@@ -90,10 +90,7 @@ class CountryController extends Controller
         if (Country::where('id', $id)->exists()) {
             $country = Country::find($id);
             $country->name = is_null($request->name) ? $country->name : $request->name;
-            // $country->abbr = is_null($request->abbr) ? $country->abbr : $request->abbr;
-            $country->city_id = is_null($request->city_id) ? $country->city_id : $request->city_id;
-            $country->country_type_id = is_null($request->country_type_id) ? $country->country_type_id : $request->country_type_id;
-            // $country->year_founded = is_null($request->year_founded) ? $country->year_founded : $request->year_founded;
+            $country->capital = is_null($request->capital) ? $country->capital : $request->capital;
             $country->save();
 
             return response()->json([
