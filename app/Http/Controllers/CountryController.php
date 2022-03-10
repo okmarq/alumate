@@ -61,6 +61,24 @@ class CountryController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Country  $country
+     * @return \Illuminate\Http\Response
+     */
+    public function showByName($name)
+    {
+        if (Country::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
+            $country = Country::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+            return response($country, 200);
+        } else {
+            return response()->json([
+                'message' => 'Country not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCountryRequest  $request

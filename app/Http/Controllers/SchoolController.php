@@ -68,6 +68,24 @@ class SchoolController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function showByName($name)
+    {
+        if (School::where('name', $name)->exists()) {
+            $school = School::where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($school, 200);
+        } else {
+            return response()->json([
+                'message' => 'School not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateSchoolRequest  $request

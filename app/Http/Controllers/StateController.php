@@ -62,6 +62,24 @@ class StateController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\State  $state
+     * @return \Illuminate\Http\Response
+     */
+    public function showByName($name)
+    {
+        if (State::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
+            $state = State::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+            return response($state, 200);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateStateRequest  $request
