@@ -26,16 +26,11 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('school_types', SchoolTypeController::class);
-    Route::apiResource('users', AuthController::class);
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('countries', CountryController::class);
     Route::apiResource('states', StateController::class);
     Route::apiResource('cities', CityController::class);
-
-    Route::get('user/{name}', [AuthController::class, 'showByName']);
 
     Route::get('country/{name}', [CountryController::class, 'showByName']);
 
@@ -50,6 +45,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('school/{name}', [SchoolController::class, 'showByName']);
     Route::get('school/city/{city_id}', [SchoolController::class, 'showByCityId']);
     Route::get('school/{name}/{city_id}', [SchoolController::class, 'showByNameAndCity']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResource('users', AuthController::class);
+
+    Route::get('user/{name}', [AuthController::class, 'showByName']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
