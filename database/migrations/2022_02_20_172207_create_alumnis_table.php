@@ -15,12 +15,19 @@ return new class extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('school_id');
-            $table->year('session');
-            $table->bigInteger('user_id');
-            $table->year('admission_year');
+            // $table->string('session');
+            // $table->text('description');
+            // $table->year('admission_year');
             $table->year('graduation_year');
             $table->timestamps();
+            $table->foreignId('school_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 
