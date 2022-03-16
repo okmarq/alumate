@@ -88,8 +88,8 @@ class StateController extends Controller
     public function showByCountryId($country_id)
     {
         if (State::where('country_id', $country_id)->exists()) {
-            $state = State::where('country_id', $country_id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($state, 200);
+            $states = State::where('country_id', $country_id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($states, 200);
         } else {
             return response()->json([
                 'message' => 'State not found'

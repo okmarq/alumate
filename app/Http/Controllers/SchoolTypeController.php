@@ -20,16 +20,6 @@ class SchoolTypeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreSchoolTypeRequest  $request
@@ -37,12 +27,17 @@ class SchoolTypeController extends Controller
      */
     public function store(StoreSchoolTypeRequest $request)
     {
-        $school_type = new SchoolType;
-        $school_type->name = $request->input('name');
-        $school_type->save();
+        $validatedData = $request->validate([
+            'name' => 'required|integer|max:64|unique:school_types'
+        ]);
+
+        $school_type = SchoolType::create([
+            'name' => $validatedData['name']
+        ]);
 
         return response()->json([
-            "message" => "school type record created"
+            "message" => "school type created",
+            'school_type' => $school_type
         ], 201);
     }
 
@@ -62,17 +57,6 @@ class SchoolTypeController extends Controller
                 'message' => 'School type not found'
             ], 404);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SchoolType  $schoolType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SchoolType $schoolType)
-    {
-        //
     }
 
     /**
@@ -112,7 +96,7 @@ class SchoolTypeController extends Controller
             $schooltype->delete();
 
             return response()->json([
-                "message" => "records deleted"
+                "message" => "record deleted"
             ], 202);
         } else {
             return response()->json([

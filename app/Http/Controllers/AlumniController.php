@@ -28,33 +28,22 @@ class AlumniController extends Controller
      */
     public function store(StoreAlumniRequest $request)
     {
-        $validatedData = $request->validate(
-            [
-                'name' => 'required|string|max:128|unique:alumnis',
-                // 'abbr' => 'required|string|max:32',
-                'city_id' => 'required|integer',
-                'alumni_type_id' => 'required|integer',
-                // 'year_founded' => 'required|date|min:4',
-            ]
-        );
+        $validatedData = $request->validate([
+            'graduation_year' => 'required|integer|max:4',
+            'school_id' => 'required|integer',
+            'user_id' => 'required|integer'
+        ]);
 
-        $alumni = Alumni::create(
-            [
-                'name' => $validatedData['name'],
-                // 'abbr' => $validatedData['abbr'],
-                'city_id' => $validatedData['city_id'],
-                'alumni_type_id' => $validatedData['alumni_type_id'],
-                // 'year_founded' => $validatedData['year_founded']
-            ]
-        );
+        $alumni = Alumni::create([
+            'graduation_year' => $validatedData['graduation_year'],
+            'school_id' => $validatedData['school_id'],
+            'user_id' => $validatedData['user_id']
+        ]);
 
-        return response()->json(
-            [
-                "message" => "alumni record created",
-                'alumni' => $alumni
-            ],
-            201
-        );
+        return response()->json([
+            "message" => "alumni record created",
+            'alumni' => $alumni
+        ], 201);
     }
 
     /**
@@ -87,11 +76,10 @@ class AlumniController extends Controller
     {
         if (Alumni::where('id', $id)->exists()) {
             $alumni = Alumni::find($id);
-            $alumni->name = is_null($request->name) ? $alumni->name : $request->name;
-            // $alumni->abbr = is_null($request->abbr) ? $alumni->abbr : $request->abbr;
-            $alumni->city_id = is_null($request->city_id) ? $alumni->city_id : $request->city_id;
-            $alumni->alumni_type_id = is_null($request->alumni_type_id) ? $alumni->alumni_type_id : $request->alumni_type_id;
-            // $alumni->year_founded = is_null($request->year_founded) ? $alumni->year_founded : $request->year_founded;
+            $alumni->graduation_year = is_null($request->graduation_year) ? $alumni->graduation_year : $request->graduation_year;
+            $alumni->school_id = is_null($request->school_id) ? $alumni->school_id : $request->school_id;
+            $alumni->user_id = is_null($request->user_id) ? $alumni->user_id : $request->user_id;
+
             $alumni->save();
 
             return response()->json([

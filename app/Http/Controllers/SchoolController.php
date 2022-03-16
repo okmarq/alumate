@@ -28,19 +28,15 @@ class SchoolController extends Controller
     public function store(StoreSchoolRequest $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:128|unique:schools',
-            // 'abbr' => 'required|string|max:32',
+            'name' => 'required|string|max:128',
             'city_id' => 'required|integer',
-            'school_type_id' => 'required|integer',
-            // 'year_founded' => 'required|date|min:4',
+            'school_type_id' => 'required|integer'
         ]);
 
         $school = School::create([
             'name' => $validatedData['name'],
-            // 'abbr' => $validatedData['abbr'],
             'city_id' => $validatedData['city_id'],
-            'school_type_id' => $validatedData['school_type_id'],
-            // 'year_founded' => $validatedData['year_founded']
+            'school_type_id' => $validatedData['school_type_id']
         ]);
 
         return response()->json([
@@ -76,8 +72,8 @@ class SchoolController extends Controller
     public function showByName($name)
     {
         if (School::where('name', 'like', '%' . $name . '%')->exists()) {
-            $school = School::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
-            return response($school, 200);
+            $schools = School::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
+            return response($schools, 200);
         } else {
             return response()->json([
                 'message' => 'School not found'
@@ -133,10 +129,8 @@ class SchoolController extends Controller
         if (School::where('id', $id)->exists()) {
             $school = School::find($id);
             $school->name = is_null($request->name) ? $school->name : $request->name;
-            // $school->abbr = is_null($request->abbr) ? $school->abbr : $request->abbr;
             $school->city_id = is_null($request->city_id) ? $school->city_id : $request->city_id;
             $school->school_type_id = is_null($request->school_type_id) ? $school->school_type_id : $request->school_type_id;
-            // $school->year_founded = is_null($request->year_founded) ? $school->year_founded : $request->year_founded;
             $school->save();
 
             return response()->json([
