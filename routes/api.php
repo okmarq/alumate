@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
@@ -26,11 +27,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
     Route::apiResource('school_types', SchoolTypeController::class);
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('countries', CountryController::class);
     Route::apiResource('states', StateController::class);
     Route::apiResource('cities', CityController::class);
+    Route::apiResource('alumnis', AlumniController::class);
 
     Route::get('country/{name}', [CountryController::class, 'showByName']);
 
@@ -41,6 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::get('city/{name}', [CityController::class, 'showByName']);
     Route::get('city/state_id/{state_id}', [CityController::class, 'showByStateId']);
+    Route::get('city/{name}/{state_id}', [CityController::class, 'showByNameAndState']);
 
     Route::get('school/{name}', [SchoolController::class, 'showByName']);
     Route::get('school/city/{city_id}', [SchoolController::class, 'showByCityId']);
