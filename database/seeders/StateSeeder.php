@@ -26,7 +26,7 @@ class StateSeeder extends Seeder
             'country_id' => 129
         ]);
         DB::table('states')->insert([
-            'name' => "Akwa State",
+            'name' => "Akwa Ibom",
             'capital' => 'Uyo',
             'country_id' => 129
         ]);
