@@ -23,7 +23,8 @@ class State extends Model
      */
     protected $fillable = [
         'name',
-        'capital'
+        'capital',
+        'country_id'
     ];
 
     /**
@@ -33,6 +34,9 @@ class State extends Model
      */
     public $timestamps = false;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function country()
     {
         return $this->belongsTo(Country::class);
