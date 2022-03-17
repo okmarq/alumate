@@ -15,8 +15,8 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $school = School::get()->toJson(JSON_PRETTY_PRINT);
-        return response($school, 200);
+        $schools = School::get()->toJson(JSON_PRETTY_PRINT);
+        return response($schools, 200);
     }
 
     /**

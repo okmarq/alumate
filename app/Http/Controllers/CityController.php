@@ -98,6 +98,24 @@ class CityController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\City  $city
+     * @return \Illuminate\Http\Response
+     */
+    public function showByNameAndState($name, $state_id)
+    {
+        if (City::where('state_id', $state_id)->where('name', $name)->exists()) {
+            $city = City::where('state_id', $state_id)->where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($city, 200);
+        } else {
+            return response()->json([
+                'message' => 'City not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCityRequest  $request

@@ -17,6 +17,13 @@ class AlumniController extends Controller
     {
         $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
         return response($alumni, 200);
+        // if ($alumni->is_array->is_null()) {
+        //     return response($alumni, 200);
+        // } else {
+        //     return response()->json([
+        //         'message' => 'Alumni not found'
+        //     ], 404);
+        // }
     }
 
     /**
