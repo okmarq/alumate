@@ -71,8 +71,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-        $user = User::get()->toJson(JSON_PRETTY_PRINT);
-        return response($user, 200);
+        $users = User::get()->toJson(JSON_PRETTY_PRINT);
+        return response($users, 200);
     }
 
     /**
