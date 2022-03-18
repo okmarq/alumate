@@ -7,6 +7,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolTypeController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\UserProgramDepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::apiResource('states', StateController::class);
     Route::apiResource('cities', CityController::class);
     Route::apiResource('alumnis', AlumniController::class);
+    Route::apiResource('academics', UserProgramDepartmentController::class);
+
+    Route::get('album/{school}/{graduation_year}', [AlumniController::class, 'alumni']);
 
     Route::get('country/{name}', [CountryController::class, 'showByName']);
 
