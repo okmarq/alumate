@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->string('session');
             // $table->text('description');
-            // $table->year('admission_year');
+            $table->year('admission_year');
             $table->year('graduation_year');
             $table->timestamps();
             $table->foreignId('school_id')
