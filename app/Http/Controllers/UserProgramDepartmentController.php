@@ -15,17 +15,8 @@ class UserProgramDepartmentController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $user_program_departments = UserProgramDepartment::get()->toJson(JSON_PRETTY_PRINT);
+        return response($user_program_departments, 200);
     }
 
     /**
@@ -36,7 +27,24 @@ class UserProgramDepartmentController extends Controller
      */
     public function store(StoreUserProgramDepartmentRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required|integer',
+            'school_id' => 'required|integer',
+            'department_id'=> 'required|integer',
+            'program_id'=> 'required|integer',
+        ]);
+
+        $user_program_department = UserProgramDepartment::create([
+            'user_id' => $validatedData['user_id'],
+            'school_id' => $validatedData['school_id'],
+            'department_id' => $validatedData['department_id'],
+            'program_id' => $validatedData['program_id']
+        ]);
+
+        return response()->json([
+            "message" => "userprogramdepartment record created",
+            'userprogramdepartment' => $user_program_department
+        ], 201);
     }
 
     /**
@@ -45,20 +53,16 @@ class UserProgramDepartmentController extends Controller
      * @param  \App\Models\UserProgramDepartment  $userProgramDepartment
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProgramDepartment $userProgramDepartment)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UserProgramDepartment  $userProgramDepartment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UserProgramDepartment $userProgramDepartment)
-    {
-        //
+        if (UserProgramDepartment::where('id', $id)->exists()) {
+            $user_program_department = UserProgramDepartment::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($user_program_department, 200);
+        } else {
+            return response()->json([
+                'message' => 'User Program Department not found'
+            ], 404);
+        }
     }
 
     /**
@@ -68,9 +72,24 @@ class UserProgramDepartmentController extends Controller
      * @param  \App\Models\UserProgramDepartment  $userProgramDepartment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserProgramDepartmentRequest $request, UserProgramDepartment $userProgramDepartment)
+    public function update(UpdateUserProgramDepartmentRequest $request, $id)
     {
-        //
+        if (UserProgramDepartment::where('id', $id)->exists()) {
+            $user_program_department = UserProgramDepartment::find($id);
+            $user_program_department->graduation_year = is_null($request->graduation_year) ? $user_program_department->graduation_year : $request->graduation_year;
+            $user_program_department->school_id = is_null($request->school_id) ? $user_program_department->school_id : $request->school_id;
+            $user_program_department->user_id = is_null($request->user_id) ? $user_program_department->user_id : $request->user_id;
+
+            $user_program_department->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "UserProgramDepartment not found"
+            ], 404);
+        }
     }
 
     /**
@@ -81,6 +100,17 @@ class UserProgramDepartmentController extends Controller
      */
     public function destroy(UserProgramDepartment $userProgramDepartment)
     {
-        //
+        if (UserProgramDepartment::where('id', $id)->exists()) {
+            $user_program_department = UserProgramDepartment::find($id);
+            $user_program_department->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "User Program Department not found"
+            ], 404);
+        }
     }
 }
