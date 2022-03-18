@@ -26,6 +26,10 @@ return new class extends Migration
             ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
+            $table->foreignId('image_id')
+            ->constrained()
+            ->onUpdate('restrict')
+            ->onDelete('restrict');
             $table->text('description');
             $table->tinyInteger('is_registered')->default(0);
             $table->tinyInteger('is_active')->default(0);
