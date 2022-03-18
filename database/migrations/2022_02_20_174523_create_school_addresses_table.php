@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('school_addresses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('address_id');
-            $table->bigInteger('school_id');
+            $table->foreignId('school_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('address_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 

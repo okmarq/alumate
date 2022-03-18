@@ -15,8 +15,15 @@ return new class extends Migration
     {
         Schema::create('private_chats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('chat_id');
-            $table->bigInteger('recipient')->comment('user_id');
+            $table->foreignId('chat_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('user_id')
+                ->comment('recipient')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->tinyInteger('is_seen')->default(0);
             $table->timestamp('sent_at');
         });

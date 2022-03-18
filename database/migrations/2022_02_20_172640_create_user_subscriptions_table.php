@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('user_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('subscription_id');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('subscription_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

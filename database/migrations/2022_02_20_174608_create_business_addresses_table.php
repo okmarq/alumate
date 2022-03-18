@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('business_addresses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('address_id');
-            $table->bigInteger('business_id');
+            $table->foreignId('business_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('address_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 

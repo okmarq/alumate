@@ -15,6 +15,22 @@ return new class extends Migration
     {
         Schema::create('user_program_departments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('program_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('school_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('group_id');
-            $table->bigInteger('user_id');
+            $table->foreignId('group_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
         });

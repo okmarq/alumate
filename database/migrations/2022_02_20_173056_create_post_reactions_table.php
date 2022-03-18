@@ -16,8 +16,14 @@ return new class extends Migration
         Schema::create('post_reactions', function (Blueprint $table) {
             $table->id();
             $table->enum('reaction', ['like', 'love', 'haha', 'sad', 'care', 'curious', 'wow']);
-            $table->bigInteger('user_id');
-            $table->bigInteger('post_id');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('post_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             // $table->timestamps();
         });
     }

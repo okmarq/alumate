@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('job_industry_titles', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('job_industry_id');
-            $table->bigInteger('job_title_id');
+            $table->foreignId('job_industry_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('job_title_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 

@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('school_types', function (Blueprint $table) {
+        Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->mediumText('summary');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_types');
+        Schema::dropIfExists('resumes');
     }
 };

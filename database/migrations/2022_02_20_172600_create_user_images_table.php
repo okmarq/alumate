@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('user_images', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('image_id');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('image_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
         });
     }
 

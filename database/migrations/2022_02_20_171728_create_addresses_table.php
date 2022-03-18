@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->bigInteger('city_id');
             $table->string('zip_code');
+            $table->unique(['zip_code', 'city_id']);
         });
     }
 

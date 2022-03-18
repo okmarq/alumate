@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('group_chats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('group_id');
-            $table->bigInteger('chat_id');
+            $table->foreignId('group_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('chat_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

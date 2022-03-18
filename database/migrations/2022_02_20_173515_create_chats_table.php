@@ -16,8 +16,17 @@ return new class extends Migration
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->text('message');
-            $table->bigInteger('chat_id')->comment('parent_chat_id')->nullable();
-            $table->bigInteger('sender')->comment('user_id');
+            $table->foreignId('chat_id')
+                ->nullable()
+                ->comment('parent_chat_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('user_id')
+                ->comment('sender')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamp('sent_at')->useCurrent();
             $table->timestamp('delivered_at')->useCurrent();
             $table->timestamp('expiry_date')->useCurrent();

@@ -15,10 +15,16 @@ return new class extends Migration
     {
         Schema::create('job_experiences', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('resume_id');
+            $table->foreignId('resume_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('address_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->string('job_title');
             $table->string('employer');
-            $table->string('address_id');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
         });

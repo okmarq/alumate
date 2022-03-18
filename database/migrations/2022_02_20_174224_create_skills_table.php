@@ -15,10 +15,19 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('resume_id');
-            $table->bigInteger('profession_id');
             $table->string('proficiency');
-            $table->bigInteger('job_industry_title_id');
+            $table->foreignId('resume_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('profession_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('job_industry_title_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('posted_by')->comment('user_id');
+            $table->foreignId('user_id')
+                ->comment('posted_by')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->string('owner');
             $table->string('industry');
             $table->text('description');

@@ -13,18 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comment_reactions', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->enum('reaction', ['like', 'love', 'haha', 'sad', 'care', 'curious', 'wow']);
+            $table->longText('comment');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('comment_id')
+            $table->foreignId('post_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            // $table->timestamps();
+            $table->tinyInteger('is_active')->default(0);
+            $table->bigInteger('reactions')->default(0);
+            $table->bigInteger('shares')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_reactions');
+        Schema::dropIfExists('comments');
     }
 };

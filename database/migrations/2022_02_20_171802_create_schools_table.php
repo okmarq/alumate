@@ -16,15 +16,18 @@ return new class extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->string('abbr');
-            $table->bigInteger('school_type_id');
-            // $table->year('year_founded');
+            // $table->string('abbr')->nullable();
+            // $table->year('year_founded')->nullable();
+            $table->foreignId('school_type_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->foreignId('city_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->unique(['name', 'city_id']);
             $table->boolean('status')->default(false);
+            $table->unique(['name', 'city_id']);
         });
     }
 
