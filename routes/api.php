@@ -36,13 +36,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
      * @put a resource
      * @delete a resource
      */
+    Route::apiResource('academics', UserProgramDepartmentController::class);
+    Route::apiResource('alumnis', AlumniController::class);
+    Route::apiResource('cities', CityController::class);
+    Route::apiResource('countries', CountryController::class);
     Route::apiResource('school_types', SchoolTypeController::class);
     Route::apiResource('schools', SchoolController::class);
-    Route::apiResource('countries', CountryController::class);
     Route::apiResource('states', StateController::class);
-    Route::apiResource('cities', CityController::class);
-    Route::apiResource('alumnis', AlumniController::class);
-    Route::apiResource('academics', UserProgramDepartmentController::class);
 
     /**
      * @get all resource
@@ -65,7 +65,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('state/{name}', [StateController::class, 'showByName']);
     Route::get('state/capital/{name}', [StateController::class, 'showByCapital']);
     Route::get('state/search_capital/{name}', [StateController::class, 'showByCapitalUnstrict']);
-    Route::get('{country_id}/state', [StateController::class, 'showByCountryId']);
+    Route::get('{country_id}/states', [StateController::class, 'showByCountryId']);
 
     Route::get('city/{name}', [CityController::class, 'showByName']);
     Route::get('{state_id}/city', [CityController::class, 'showByStateId']);
