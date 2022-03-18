@@ -22,14 +22,15 @@ return new class extends Migration
                 ->onDelete('restrict');
             $table->string('name');
             $table->string('user_title');
-            $table->string('growth_level');$table->foreignId('industry_id')
-            ->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->string('growth_level');
+            $table->foreignId('job_industry_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->foreignId('image_id')
-            ->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->text('description');
             $table->tinyInteger('is_registered')->default(0);
             $table->tinyInteger('is_active')->default(0);
