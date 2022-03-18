@@ -103,6 +103,7 @@ class AlumniController extends Controller
     {
         if (Alumni::where('id', $id)->exists()) {
             $alumni = Alumni::find($id);
+            $alumni->admission_year = is_null($request->admission_year) ? $alumni->admission_year : $request->admission_year;
             $alumni->graduation_year = is_null($request->graduation_year) ? $alumni->graduation_year : $request->graduation_year;
             $alumni->school_id = is_null($request->school_id) ? $alumni->school_id : $request->school_id;
             $alumni->user_id = is_null($request->user_id) ? $alumni->user_id : $request->user_id;

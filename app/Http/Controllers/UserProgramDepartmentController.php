@@ -76,9 +76,10 @@ class UserProgramDepartmentController extends Controller
     {
         if (UserProgramDepartment::where('id', $id)->exists()) {
             $user_program_department = UserProgramDepartment::find($id);
-            $user_program_department->graduation_year = is_null($request->graduation_year) ? $user_program_department->graduation_year : $request->graduation_year;
-            $user_program_department->school_id = is_null($request->school_id) ? $user_program_department->school_id : $request->school_id;
             $user_program_department->user_id = is_null($request->user_id) ? $user_program_department->user_id : $request->user_id;
+            $user_program_department->school_id = is_null($request->school_id) ? $user_program_department->school_id : $request->school_id;
+            $user_program_department->department_id = is_null($request->department_id) ? $user_program_department->department_id : $request->department_id;
+            $user_program_department->program_id = is_null($request->program_id) ? $user_program_department->program_id : $request->program_id;
 
             $user_program_department->save();
 
@@ -98,7 +99,7 @@ class UserProgramDepartmentController extends Controller
      * @param  \App\Models\UserProgramDepartment  $userProgramDepartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserProgramDepartment $userProgramDepartment)
+    public function destroy($id)
     {
         if (UserProgramDepartment::where('id', $id)->exists()) {
             $user_program_department = UserProgramDepartment::find($id);
