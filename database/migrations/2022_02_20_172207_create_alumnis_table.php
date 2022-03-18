@@ -28,6 +28,8 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->unique(['user_id', 'school_id', 'admission_year']);
+            $table->unique(['user_id', 'school_id', 'graduation_year']);
         });
     }
 
