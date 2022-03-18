@@ -27,5 +27,8 @@ class ImageTypeSeeder extends Seeder
         DB::table('image_types')->insert([
             'name'=>'category'
         ]);
+        DB::table('image_types')->insert([
+            'name'=>'event'
+        ]);
     }
 }
