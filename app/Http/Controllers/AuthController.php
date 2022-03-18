@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function setUsername()
+    {
+        $i = 0;
+        $username = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+        while (User::whereUsername($username)->exists()) {
+            $i++;
+            $username = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+        }
+        return $username;
+    }
+
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -16,7 +27,7 @@ class AuthController extends Controller
             'last_name' => 'required|string|max:32',
             'email' => 'required|string|email|max:64|unique:users',
             'phone_number' => 'required|string|max:15|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8'
         ]);
 
         $user = User::create([
@@ -25,6 +36,7 @@ class AuthController extends Controller
             'email' => $validatedData['email'],
             'phone_number' => $validatedData['phone_number'],
             'password' => Hash::make($validatedData['password']),
+            'username' => $this->setUsername()
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -81,22 +93,22 @@ class AuthController extends Controller
      * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
-    {
-        // $validatedData = $request->validate([
-        //     'name' => 'required|string|max:128|unique:user',
-        //     'capital' => 'required|string|max:128'
-        // ]);
+    // public function store(StoreUserRequest $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:128|unique:user',
+    //         'capital' => 'required|string|max:128'
+    //     ]);
 
-        // $user = User::create([
-        //     'name' => $validatedData['name'],
-        //     'capital' => $validatedData['capital']
-        // ]);
+    //     $user = User::create([
+    //         'name' => $validatedData['name'],
+    //         'capital' => $validatedData['capital']
+    //     ]);
 
-        // return response()->json([
-        //     'user' => $user
-        // ], 201);
-    }
+    //     return response()->json([
+    //         'user' => $user
+    //     ], 201);
+    // }
 
     /**
      * Display the specified resource.
@@ -141,26 +153,26 @@ class AuthController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
-    {
-        // if (User::where('id', $id)->exists()) {
-        //     $user = User::find($id);
-        //     $user->name = is_null($request->name) ? $user->name : $request->name;
-        //     // $user->abbr = is_null($request->abbr) ? $user->abbr : $request->abbr;
-        //     $user->city_id = is_null($request->city_id) ? $user->city_id : $request->city_id;
-        //     $user->user_type_id = is_null($request->user_type_id) ? $user->user_type_id : $request->user_type_id;
-        //     // $user->year_founded = is_null($request->year_founded) ? $user->year_founded : $request->year_founded;
-        //     $user->save();
+    // public function update(UpdateUserRequest $request, $id)
+    // {
+    //     if (User::where('id', $id)->exists()) {
+    //         $user = User::find($id);
+    //         $user->name = is_null($request->name) ? $user->name : $request->name;
+    //         // $user->abbr = is_null($request->abbr) ? $user->abbr : $request->abbr;
+    //         $user->city_id = is_null($request->city_id) ? $user->city_id : $request->city_id;
+    //         $user->user_type_id = is_null($request->user_type_id) ? $user->user_type_id : $request->user_type_id;
+    //         // $user->year_founded = is_null($request->year_founded) ? $user->year_founded : $request->year_founded;
+    //         $user->save();
 
-        //     return response()->json([
-        //         "message" => "records updated successfully"
-        //     ], 200);
-        // } else {
-        //     return response()->json([
-        //         "message" => "User not found"
-        //     ], 404);
-        // }
-    }
+    //         return response()->json([
+    //             "message" => "records updated successfully"
+    //         ], 200);
+    //     } else {
+    //         return response()->json([
+    //             "message" => "User not found"
+    //         ], 404);
+    //     }
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -168,19 +180,19 @@ class AuthController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        // if (User::where('id', $id)->exists()) {
-        //     $user = User::find($id);
-        //     $user->delete();
+    // public function destroy($id)
+    // {
+    //     if (User::where('id', $id)->exists()) {
+    //         $user = User::find($id);
+    //         $user->delete();
 
-        //     return response()->json([
-        //         "message" => "records deleted"
-        //     ], 202);
-        // } else {
-        //     return response()->json([
-        //         "message" => "User not found"
-        //     ], 404);
-        // }
-    }
+    //         return response()->json([
+    //             "message" => "records deleted"
+    //         ], 202);
+    //     } else {
+    //         return response()->json([
+    //             "message" => "User not found"
+    //         ], 404);
+    //     }
+    // }
 }

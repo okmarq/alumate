@@ -27,6 +27,24 @@ class AlumniController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function alumni()
+    {
+        $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
+        return response($alumni, 200);
+        // if ($alumni->is_array->is_null()) {
+        //     return response($alumni, 200);
+        // } else {
+        //     return response()->json([
+        //         'message' => 'Alumni not found'
+        //     ], 404);
+        // }
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\StoreAlumniRequest $request
@@ -36,12 +54,14 @@ class AlumniController extends Controller
     public function store(StoreAlumniRequest $request)
     {
         $validatedData = $request->validate([
-            'graduation_year' => 'required|integer|max:4',
+            'admission_year' => '|integer|max:4',
+            'graduation_year' => '|integer|max:4',
             'school_id' => 'required|integer',
             'user_id' => 'required|integer'
         ]);
 
         $alumni = Alumni::create([
+            'admission_year' => $validatedData['admission_year'],
             'graduation_year' => $validatedData['graduation_year'],
             'school_id' => $validatedData['school_id'],
             'user_id' => $validatedData['user_id']
