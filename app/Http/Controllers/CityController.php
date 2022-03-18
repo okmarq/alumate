@@ -103,7 +103,7 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function showByNameAndState($name, $state_id)
+    public function showByNameAndState($state_id, $name)
     {
         if (City::where('state_id', $state_id)->where('name', $name)->exists()) {
             $city = City::where('state_id', $state_id)->where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);

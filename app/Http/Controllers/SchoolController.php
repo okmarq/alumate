@@ -105,7 +105,7 @@ class SchoolController extends Controller
      * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function showByNameAndCity($name, $city_id)
+    public function showByNameAndCity($city_id, $name)
     {
         if (School::where('city_id', $city_id)->where('name', $name)->exists()) {
             $school = School::where('city_id', $city_id)->where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
