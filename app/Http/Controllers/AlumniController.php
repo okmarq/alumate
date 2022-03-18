@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumni;
 use App\Http\Requests\StoreAlumniRequest;
 use App\Http\Requests\UpdateAlumniRequest;
+use Illuminate\Support\Facades\DB;
 
 class AlumniController extends Controller
 {
@@ -31,17 +32,64 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function alumni()
+    public function schoolmate($school_id)
     {
-        $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
-        return response($alumni, 200);
-        // if ($alumni->is_array->is_null()) {
-        //     return response($alumni, 200);
-        // } else {
-        //     return response()->json([
-        //         'message' => 'Alumni not found'
-        //     ], 404);
-        // }
+        if (Alumni::where('school_id', $school_id)->exists()) {
+            $schoolmates = Alumni::where('school_id', $school_id)
+                ->join('users', 'alumni.user_id', '=', 'user.id')
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            // DB::table('alumni')->where('school_id', $school_id)
+            return response($schoolmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'School mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function classmate($school_id, $graduation_year)
+    {
+        if (Alumni::where('graduation_year', $graduation_year)->exists()) {
+            $classmates = Alumni::where('school_id', $school_id)
+                ->where('graduation_year', $graduation_year)
+                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner', true)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            // DB::table('alumni')->where('school_id', $school_id)
+            return response($classmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'class mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function classmate_ay($school_id, $admission_year)
+    {
+        if (Alumni::where('admission_year', $admission_year)->exists()) {
+            $classmates = Alumni::where('school_id', $school_id)
+                ->where('admission_year', $admission_year)
+                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner', true)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            // DB::table('alumni')->where('school_id', $school_id)
+            return response($classmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'class mates not found'
+            ], 404);
+        }
     }
 
     /**
