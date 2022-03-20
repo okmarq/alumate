@@ -196,8 +196,8 @@ class StateSeeder extends Seeder
             'country_id' => 129
         ]);
         DB::table('states')->insert([
-            'name' => "Abuja",
-            'capital' => 'FCT',
+            'name' => "Federal Capital Territory",
+            'capital' => 'Abuja',
             'country_id' => 129
         ]);
     }
