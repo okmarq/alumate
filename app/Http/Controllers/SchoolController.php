@@ -87,6 +87,33 @@ class SchoolController extends Controller
      * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
+    public function showByStateShcoolType($state_id, $school_type_id)
+    {
+        // use state id to get all cities in state, then use city id to get all schools in city, then filter school by school type id
+
+        if (School::where('school_type_id', $school_type_id)->exists()) {
+            $schools = School::where('school_type_id', $school_type_id)
+                ->join('cities', 'school.city_id', '=', 'city.id', 'inner', true)
+                ->join('states', 'city.state_id', '=', 'state.id', 'inner', true)
+                ->where('state_id', $state_id)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            // DB::table('school')->where('school_id', $school_id)
+            // SELECT * FROM `schools` INNER JOIN `cities` ON `schools`.`city_id`=`cities`.`id` INNER JOIN `states` ON `cities`.`state_id`=`states`.`id` WHERE `school_type_id`=6 AND `city_id`=628;
+            return response($schools, 200);
+        } else {
+            return response()->json([
+                'message' => 'class mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
     public function showByCityId($city_id)
     {
         if (School::where('city_id', $city_id)->exists()) {
