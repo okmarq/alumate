@@ -93,17 +93,17 @@ class SchoolController extends Controller
 
         if (School::where('school_type_id', $school_type_id)->exists()) {
             $schools = School::where('school_type_id', $school_type_id)
-                ->join('cities', 'schools.city_id', '=', 'cities.id', 'inner', true)
-                ->join('states', 'cities.state_id', '=', 'states.id', 'inner', true)
+                ->join('cities', 'schools.city_id', '=', 'cities.id', 'inner')
+                ->join('states', 'cities.state_id', '=', 'states.id', 'inner')
                 ->where('state_id', $state_id)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
-            // DB::table('school')->where('school_id', $school_id)
+            // DB::table('schools')->where('school_id', $school_id)
             // SELECT * FROM `schools` INNER JOIN `cities` ON `schools`.`city_id`=`cities`.`id` INNER JOIN `states` ON `cities`.`state_id`=`states`.`id` WHERE `school_type_id`=6 AND `city_id`=628;
             return response($schools, 200);
         } else {
             return response()->json([
-                'message' => 'class mates not found'
+                'message' => 'school not found'
             ], 404);
         }
     }
