@@ -28,6 +28,9 @@ class SchoolTypeSeeder extends Seeder
             'name' => 'secondary'
         ]);
         DB::table('school_types')->insert([
+            'name' => 'polytechnic'
+        ]);
+        DB::table('school_types')->insert([
             'name' => 'university'
         ]);
         DB::table('school_types')->insert([
