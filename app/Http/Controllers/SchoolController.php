@@ -93,8 +93,8 @@ class SchoolController extends Controller
 
         if (School::where('school_type_id', $school_type_id)->exists()) {
             $schools = School::where('school_type_id', $school_type_id)
-                ->join('cities', 'school.city_id', '=', 'city.id', 'inner', true)
-                ->join('states', 'city.state_id', '=', 'state.id', 'inner', true)
+                ->join('cities', 'schools.city_id', '=', 'cities.id', 'inner', true)
+                ->join('states', 'cities.state_id', '=', 'states.id', 'inner', true)
                 ->where('state_id', $state_id)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
