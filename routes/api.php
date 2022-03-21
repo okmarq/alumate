@@ -74,6 +74,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('school/{name}', [SchoolController::class, 'showByName']);
     Route::get('city/{city_id}/school', [SchoolController::class, 'showByCityId']);
     Route::get('{city_id}/school/{name}', [SchoolController::class, 'showByNameAndCity']);
+    Route::get('{state_id}/cities/school/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('users', AuthController::class);
