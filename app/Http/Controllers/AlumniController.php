@@ -58,7 +58,7 @@ class AlumniController extends Controller
         if (Alumni::where('graduation_year', $graduation_year)->exists()) {
             $classmates = Alumni::where('school_id', $school_id)
                 ->where('graduation_year', $graduation_year)
-                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner', true)
+                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner')
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             // DB::table('alumni')->where('school_id', $school_id)
@@ -80,7 +80,7 @@ class AlumniController extends Controller
         if (Alumni::where('admission_year', $admission_year)->exists()) {
             $classmates = Alumni::where('school_id', $school_id)
                 ->where('admission_year', $admission_year)
-                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner', true)
+                ->join('users', 'alumni.user_id', '=', 'user.id', 'inner')
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             // DB::table('alumni')->where('school_id', $school_id)
