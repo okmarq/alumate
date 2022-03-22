@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\School;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
+use Illuminate\Support\Facades\DB;
 
 class SchoolController extends Controller
 {
@@ -92,9 +93,10 @@ class SchoolController extends Controller
         // use state id to get all cities in state, then use city id to get all schools in city, then filter school by school type id
 
         if (School::where('school_type_id', $school_type_id)->exists()) {
-            $schools = School::where('school_type_id', $school_type_id)
+            $schools = School::select('schools.*')
                 ->join('cities', 'schools.city_id', '=', 'cities.id', 'inner')
                 ->join('states', 'cities.state_id', '=', 'states.id', 'inner')
+                ->where('school_type_id', $school_type_id)
                 ->where('state_id', $state_id)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
