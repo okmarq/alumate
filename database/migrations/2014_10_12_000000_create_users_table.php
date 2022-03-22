@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('phone_number')->unique();
+            // $table->string('phone_number')->unique();
             $table->string('password');
             $table->tinyInteger('is_active')->default(0);
             $table->tinyInteger('is_verified')->default(0);
