@@ -15,17 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $images = Image::get()->toJson(JSON_PRETTY_PRINT);
+        return response($images, 200);
     }
 
     /**
@@ -36,7 +27,20 @@ class ImageController extends Controller
      */
     public function store(StoreImageRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:128',
+            'image_type_id' => 'required|integer'
+        ]);
+
+        $image_type = Image::create([
+            'name' => $validatedData['name'],
+            'image_type_id' => $validatedData['image_type_id']
+        ]);
+
+        return response()->json([
+            "message" => "image record created",
+            'image' => $image_type
+        ], 201);
     }
 
     /**
@@ -45,20 +49,16 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
+        if (Image::where('id', $id)->exists()) {
+            $image = Image::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($image, 200);
+        } else {
+            return response()->json([
+                'message' => 'Image not found'
+            ], 404);
+        }
     }
 
     /**
@@ -68,9 +68,23 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateImageRequest $request, Image $image)
+    public function update(UpdateImageRequest $request, $id)
     {
-        //
+        if (Image::where('id', $id)->exists()) {
+            $image = Image::find($id);
+            $image->name = is_null($request->name) ? $image->name : $request->name;
+            $image->city_id = is_null($request->city_id) ? $image->city_id : $request->city_id;
+            $image->image_type_id = is_null($request->image_type_id) ? $image->image_type_id : $request->image_type_id;
+            $image->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Image not found"
+            ], 404);
+        }
     }
 
     /**
@@ -79,8 +93,19 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        if (Image::where('id', $id)->exists()) {
+            $image = Image::find($id);
+            $image->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Image not found"
+            ], 404);
+        }
     }
 }
