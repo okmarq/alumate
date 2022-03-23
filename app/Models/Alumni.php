@@ -22,15 +22,12 @@ class Alumni extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'graduation_year'
+        'graduation_year',
+        'admission_year',
+        'graduation_year',
+        'school_id',
+        'user_id'
     ];
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 
     public function school()
     {

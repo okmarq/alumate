@@ -28,6 +28,52 @@ class AlumniController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \App\Http\Requests\StoreAlumniRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreAlumniRequest $request)
+    {
+        $validatedData = $request->validate([
+            'graduation_year' => 'required|integer',
+            'school_id' => 'required|integer',
+            'user_id' => 'required|integer'
+        ]);
+
+        $alumni = Alumni::create([
+            'graduation_year' => $validatedData['graduation_year'],
+            'school_id' => $validatedData['school_id'],
+            'user_id' => $validatedData['user_id']
+        ]);
+
+        return response()->json([
+            "message" => "alumni record created",
+            'alumni' => $alumni
+        ], 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\Alumni $alumni
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        if (Alumni::where('id', $id)->exists()) {
+            $alumni = Alumni::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($alumni, 200);
+        } else {
+            return response()->json([
+                'message' => 'Alumni not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -88,52 +134,6 @@ class AlumniController extends Controller
         } else {
             return response()->json([
                 'message' => 'class mates not found'
-            ], 404);
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\StoreAlumniRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreAlumniRequest $request)
-    {
-        $validatedData = $request->validate([
-            'graduation_year' => 'required|integer',
-            'school_id' => 'required|integer',
-            'user_id' => 'required|integer'
-        ]);
-
-        $alumni = Alumni::create([
-            'graduation_year' => $validatedData['graduation_year'],
-            'school_id' => $validatedData['school_id'],
-            'user_id' => $validatedData['user_id']
-        ]);
-
-        return response()->json([
-            "message" => "alumni record created",
-            'alumni' => $alumni
-        ], 201);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Alumni $alumni
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        if (Alumni::where('id', $id)->exists()) {
-            $alumni = Alumni::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($alumni, 200);
-        } else {
-            return response()->json([
-                'message' => 'Alumni not found'
             ], 404);
         }
     }
