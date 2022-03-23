@@ -81,7 +81,7 @@ class AlumniController extends Controller
     public function schoolmate($school_id)
     {
         if (Alumni::where('school_id', $school_id)->exists()) {
-            $users = Alumni::find()
+            $users = Alumni::get()
                 ->users()
                 ->where('school_id', $school_id)
                 ->toJson(JSON_PRETTY_PRINT);
