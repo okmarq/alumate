@@ -81,18 +81,12 @@ class AlumniController extends Controller
     public function schoolmate($school_id)
     {
         if (Alumni::where('school_id', $school_id)->exists()) {
-            $users = Alumni::get()
-                ->users()
-                ->where('school_id', $school_id)
+            $schoolmates = Alumni::where('school_id', $school_id)
+                ->join('users', 'alumnis.user_id', '=', 'user.id')
+                ->get()
                 ->toJson(JSON_PRETTY_PRINT);
-            return response($users, 200);
-            // $schoolmates = Alumni::where('school_id', $school_id)
-            //     ->users()
-            //     // ->join('users', 'alumnis.user_id', '=', 'user.id')
-            //     ->get()
-            //     ->toJson(JSON_PRETTY_PRINT);
-            // // DB::table('alumnis')->where('school_id', $school_id)
-            // return response($schoolmates, 200);
+            // DB::table('alumnis')->where('school_id', $school_id)
+            return response($schoolmates, 200);
         } else {
             return response()->json([
                 'message' => 'School mates not found'

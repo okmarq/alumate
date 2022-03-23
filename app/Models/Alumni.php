@@ -32,31 +32,31 @@ class Alumni extends Model
     /**
      * Get the school that owns the alumni.
      */
-    public function school()
+    public function schools()
     {
-        return $this->belongsTo(School::class);
+        return $this->belongsToMany(School::class);
     }
 
     /**
      * Get the user that owns the alumni.
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function schools()
-    {
-        return $this->hasMany(School::class);
-        // , 'school_id'
-    }
-
     public function users()
     {
-        return $this->hasMany(User::class);
-        // , 'user_id'
+        return $this->belongsToMany(User::class);
     }
+
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function schools()
+    // {
+    //     return $this->hasMany(School::class);
+    //     // , 'school_id'
+    // }
+
+    // public function users()
+    // {
+    //     return $this->hasMany(User::class);
+    //     // , 'user_id'
+    // }
 }
