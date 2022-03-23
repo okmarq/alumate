@@ -29,9 +29,20 @@ class Alumni extends Model
         'user_id'
     ];
 
+    /**
+     * Get the school that owns the alumni.
+     */
     public function school()
     {
         return $this->belongsTo(School::class);
+    }
+
+    /**
+     * Get the user that owns the alumni.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -39,11 +50,13 @@ class Alumni extends Model
      */
     public function schools()
     {
-        return $this->hasMany(School::class, 'school_id');
+        return $this->hasMany(School::class);
+        // , 'school_id'
     }
 
     public function users()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->hasMany(User::class);
+        // , 'user_id'
     }
 }
