@@ -102,14 +102,12 @@ class AlumniController extends Controller
     public function store(StoreAlumniRequest $request)
     {
         $validatedData = $request->validate([
-            'admission_year' => '|integer|max:4',
-            'graduation_year' => '|integer|max:4',
+            'graduation_year' => 'required|integer',
             'school_id' => 'required|integer',
             'user_id' => 'required|integer'
         ]);
 
         $alumni = Alumni::create([
-            'admission_year' => $validatedData['admission_year'],
             'graduation_year' => $validatedData['graduation_year'],
             'school_id' => $validatedData['school_id'],
             'user_id' => $validatedData['user_id']
