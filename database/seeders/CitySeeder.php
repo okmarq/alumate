@@ -20,15 +20,39 @@ class CitySeeder extends Seeder
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
+            'name' => 'Abiriba',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Amaokayi',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Akwete',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ariam',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Arochukwu',
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
-            'name' => 'Umuahia',
+            'name' => 'Ihie Isiala Ngwa',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ihechiowa',
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
             'name' => 'Mgboko',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Nsulu',
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
@@ -56,6 +80,10 @@ class CitySeeder extends Seeder
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
+            'name' => 'Akanu Ohafia',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Mbalano',
             'state_id' => 1
         ]);
@@ -64,8 +92,32 @@ class CitySeeder extends Seeder
             'state_id' => 1
         ]);
         DB::table('cities')->insert([
-            'name' => 'Akwete',
+            'name' => 'Ugwueke',
             'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umuahia',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umunneochi',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umunkpeyi',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uturu',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uzuakoli',
+            'state_id' => 1
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Demsa',
+            'state_id' => 2
         ]);
         DB::table('cities')->insert([
             'name' => 'Jimeta',
@@ -81,10 +133,6 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Fufore',
-            'state_id' => 2
-        ]);
-        DB::table('cities')->insert([
-            'name' => 'Demsa',
             'state_id' => 2
         ]);
         DB::table('cities')->insert([
@@ -156,6 +204,10 @@ class CitySeeder extends Seeder
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ikot Akpaden',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ikot Ekpene',
             'state_id' => 3
         ]);
@@ -165,6 +217,14 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Uyo',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Etebi-Eket',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Esit-Eket',
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
@@ -196,11 +256,30 @@ class CitySeeder extends Seeder
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
+            'name' => 'Afaha Obong',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Afaha Offiong',
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
+            'name' => 'Afaha Oku',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Afaha Nsit',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ifuho',
+            'state_id' => 3
+        ]);DB::table('cities')->insert([
             'name' => 'Eyofin',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Nsit Atai',
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
@@ -252,6 +331,10 @@ class CitySeeder extends Seeder
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ikono',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Idu',
             'state_id' => 3
         ]);
@@ -273,6 +356,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Ibiaku Ntok Okpo',
+            'state_id' => 3
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Obong Ntak',
             'state_id' => 3
         ]);
         DB::table('cities')->insert([
@@ -360,11 +447,35 @@ class CitySeeder extends Seeder
             'state_id' => 4
         ]);
         DB::table('cities')->insert([
+            'name' => 'Nsugbe',
+            'state_id' => 4
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okija',
+            'state_id' => 4
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oko',
+            'state_id' => 4
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uli',
+            'state_id' => 4
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umunya',
+            'state_id' => 4
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Azare',
             'state_id' => 5
         ]);
         DB::table('cities')->insert([
             'name' => 'Bauchi',
+            'state_id' => 5
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Gadau',
             'state_id' => 5
         ]);
         DB::table('cities')->insert([
@@ -440,6 +551,10 @@ class CitySeeder extends Seeder
             'state_id' => 5
         ]);
         DB::table('cities')->insert([
+            'name' => 'Amassama',
+            'state_id' => 6
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Brass',
             'state_id' => 6
         ]);
@@ -476,7 +591,15 @@ class CitySeeder extends Seeder
             'state_id' => 6
         ]);
         DB::table('cities')->insert([
-            'name' => 'Igumale',
+            'name' => 'Otuoke',
+            'state_id' => 6
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Toru Orua',
+            'state_id' => 6
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Makurdi',
             'state_id' => 7
         ]);
         DB::table('cities')->insert([
@@ -549,6 +672,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Obarike-Ito',
+            'state_id' => 7
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Mkar',
             'state_id' => 7
         ]);
         DB::table('cities')->insert([
@@ -682,6 +809,9 @@ class CitySeeder extends Seeder
         DB::table('cities')->insert([
             'name' => 'Itigidi',
             'state_id' => 9
+        ]);DB::table('cities')->insert([
+            'name' => 'Igbeagu',
+            'state_id' => 9
         ]);
         DB::table('cities')->insert([
             'name' => 'Ikot Nakanda',
@@ -728,6 +858,18 @@ class CitySeeder extends Seeder
             'state_id' => 9
         ]);
         DB::table('cities')->insert([
+            'name' => 'Agbarha-Otor',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Agbarho',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Abraka',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Asaba',
             'state_id' => 10
         ]);
@@ -736,7 +878,19 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
+            'name' => 'Boji Boji Owa',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Burutu',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ebedei',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ekakpamre',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -744,7 +898,19 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
+            'name' => 'Kokori',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ozoro',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Evwreni',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ewulu',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -752,7 +918,31 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
+            'name' => 'jesse',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Irhodo-jesse',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Aniocha North',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Aniocha South',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ase',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Effurun',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Egini',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -764,11 +954,27 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
-            'name' => 'Oghara',
+            'name' => 'Ibusa',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Illah',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
             'name' => 'Obiaruku',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Obinomba',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oghara',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ogume',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -780,7 +986,23 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
-            'name' => 'Owa-Oyibu',
+            'name' => 'Oghior',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oginibo',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okerenghigho',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okerenkoko',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okwagbe',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -788,11 +1010,15 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
-            'name' => 'Patani',
+            'name' => 'Ophregbala',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
-            'name' => 'Otu-Jeremi',
+            'name' => 'Owa-Oyibu',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Orogun',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -800,7 +1026,23 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ashaka',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Patani',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Sapele',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Emevor',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Emu-uno',
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
@@ -824,6 +1066,82 @@ class CitySeeder extends Seeder
             'state_id' => 10
         ]);
         DB::table('cities')->insert([
+            'name' => 'Igbodo',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kiagbodo',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ndemili',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ofagbe',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Onicha Olona',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Otu-Jeremi',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Owhrode',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ovu Inland',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ovwian',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oyede',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Syama',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ubulu-Okiti',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ubulu-Uku',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umunede',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ugboroke',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ugbomro',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uro',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Usiefrun',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uwhurun',
+            'state_id' => 10
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Warri',
             'state_id' => 10
         ]);
@@ -833,6 +1151,18 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Afikpo',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Akaeze',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Amuzu',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ishiagu',
             'state_id' => 11
         ]);
         DB::table('cities')->insert([
@@ -876,6 +1206,26 @@ class CitySeeder extends Seeder
             'state_id' => 11
         ]);
         DB::table('cities')->insert([
+            'name' => 'Onicha',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Presco',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ugwulangwu',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Unwana',
+            'state_id' => 11
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Agbede',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ekpoma',
             'state_id' => 12
         ]);
@@ -889,6 +1239,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Agenebode',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Eguare',
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
@@ -908,6 +1262,10 @@ class CitySeeder extends Seeder
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
+            'name' => 'Irua',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ehor',
             'state_id' => 12
         ]);
@@ -924,11 +1282,39 @@ class CitySeeder extends Seeder
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
+            'name' => 'Igbuobazuwa',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Fugar',
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
-            'name' => 'Benin City',
+            'name' => 'Benin',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ekiadolor',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ibillo',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ikpeshi',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Iyamho',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ogwa',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Otuo',
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
@@ -952,11 +1338,35 @@ class CitySeeder extends Seeder
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ososo',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uzarue',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Aaye-Oja-Ekiti',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ado-Ekiti',
             'state_id' => 13
         ]);
         DB::table('cities')->insert([
-            'name' => 'Effon-Alaiye',
+            'name' => 'Ayebode',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Erinjiyan',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Aisegba',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Erio',
             'state_id' => 13
         ]);
         DB::table('cities')->insert([
@@ -1020,11 +1430,39 @@ class CitySeeder extends Seeder
             'state_id' => 13
         ]);
         DB::table('cities')->insert([
-            'name' => 'Ijero',
+            'name' => 'Ikoro-Ekiti',
             'state_id' => 13
         ]);
         DB::table('cities')->insert([
-            'name' => 'Enugu',
+            'name' => 'igbara-odo',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okemesi',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Usi',
+            'state_id' => 13
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Abor',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Achi',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Amagu Akegbe',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Amorji-Nike',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Aguobu-Owa',
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
@@ -1032,11 +1470,19 @@ class CitySeeder extends Seeder
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
-            'name' => 'Nsukka',
+            'name' => 'Iva valley',
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
-            'name' => 'Aguobu-Owa',
+            'name' => 'Mgbowo',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Enugu',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Nsukka',
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
@@ -1068,6 +1514,10 @@ class CitySeeder extends Seeder
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
+            'name' => 'Nara',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Obollo-Afor',
             'state_id' => 14
         ]);
@@ -1080,11 +1530,55 @@ class CitySeeder extends Seeder
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ibagwa-Aka',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Akegbe-Ugwu',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ezeagu',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Egede',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Nenwe',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ngwo',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oghe',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ohodo',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okpanku',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ozalla',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Udi',
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
-            'name' => 'Ibagwa-Aka',
+            'name' => 'Ugwuomu-Nike',
+            'state_id' => 14
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umegbo',
             'state_id' => 14
         ]);
         DB::table('cities')->insert([
@@ -1133,6 +1627,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Kaltungo',
+            'state_id' => 15
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kashere',
             'state_id' => 15
         ]);
         DB::table('cities')->insert([
@@ -1229,6 +1727,22 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Amaigbo',
+            'state_id' => 16
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Nekede',
+            'state_id' => 16
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ogboko',
+            'state_id' => 16
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Uburu',
+            'state_id' => 16
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Umudi',
             'state_id' => 16
         ]);
         DB::table('cities')->insert([
@@ -1340,6 +1854,14 @@ class CitySeeder extends Seeder
             'state_id' => 17
         ]);
         DB::table('cities')->insert([
+            'name' => 'Anchau',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Barnawa',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Jemaa',
             'state_id' => 18
         ]);
@@ -1360,10 +1882,6 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
-            'name' => 'Sabon Gari',
-            'state_id' => 18
-        ]);
-        DB::table('cities')->insert([
             'name' => 'Hunkuyi',
             'state_id' => 18
         ]);
@@ -1372,19 +1890,7 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
-            'name' => 'Saminaka',
-            'state_id' => 18
-        ]);
-        DB::table('cities')->insert([
-            'name' => 'Anchau',
-            'state_id' => 18
-        ]);
-        DB::table('cities')->insert([
             'name' => 'Kagarko',
-            'state_id' => 18
-        ]);
-        DB::table('cities')->insert([
-            'name' => 'Makera',
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
@@ -1392,7 +1898,7 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
-            'name' => 'Zonkwa',
+            'name' => 'Makera',
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
@@ -1412,6 +1918,10 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
+            'name' => 'Damishi',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Kajuru',
             'state_id' => 18
         ]);
@@ -1424,6 +1934,14 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
+            'name' => 'Kudenda',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kagoro',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Turunku',
             'state_id' => 18
         ]);
@@ -1432,8 +1950,56 @@ class CitySeeder extends Seeder
             'state_id' => 18
         ]);
         DB::table('cities')->insert([
+            'name' => 'Mabushi',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Madakiya',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Malali',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Numana',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Unguan Sarki',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ungwan Romi',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Saminaka',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Sabon Gari',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Sabon Tasha',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Zonkwa',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Zangon Kataf',
+            'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Zaria',
             'state_id' => 18
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Adakawa',
+            'state_id' => 19
         ]);
         DB::table('cities')->insert([
             'name' => 'Kano',
@@ -1452,11 +2018,19 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Barkum',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Dambatta',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
             'name' => 'Kura',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ayagi',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1468,7 +2042,7 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
-            'name' => 'Tudun Wada',
+            'name' => 'Makoda',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1493,6 +2067,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Gezawa',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Dala',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1528,6 +2106,22 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Katanga',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Rurum-Katanga',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Dandinshe',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Rurum',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Sumaila',
             'state_id' => 19
         ]);
@@ -1536,11 +2130,23 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Gwauron Dutse',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Kibiya',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
             'name' => 'Gwarzo',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Bichi',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Bulukiya',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1572,7 +2178,19 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Gwammaja',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Bebeji',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Hotoro',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Goron Dutse',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1580,7 +2198,19 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Kofar Dan Agudi',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Shanono',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kurna Asabe',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kwachiri',
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
@@ -1588,7 +2218,23 @@ class CitySeeder extends Seeder
             'state_id' => 19
         ]);
         DB::table('cities')->insert([
+            'name' => 'Naibawa',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Tumbin Giwa',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Tudun Wada',
+            'state_id' => 19
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Dutsin-Ma',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ajiwa',
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
@@ -1597,6 +2243,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Dutsi',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Katsina Ala',
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
@@ -1609,6 +2259,14 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Batagarawa',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Jikamshi',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kofar Kaura',
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
@@ -1680,7 +2338,15 @@ class CitySeeder extends Seeder
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
+            'name' => 'Batsari',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Dan Musa',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Dabai',
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
@@ -1697,10 +2363,6 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Kaita',
-            'state_id' => 20
-        ]);
-        DB::table('cities')->insert([
-            'name' => 'Batsari',
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
@@ -1724,11 +2386,19 @@ class CitySeeder extends Seeder
             'state_id' => 20
         ]);
         DB::table('cities')->insert([
+            'name' => 'Shargelle',
+            'state_id' => 20
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Argungu',
             'state_id' => 21
         ]);
         DB::table('cities')->insert([
             'name' => 'Birnin Kebbi',
+            'state_id' => 21
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Dirin Daji',
             'state_id' => 21
         ]);
         DB::table('cities')->insert([
@@ -1804,11 +2474,23 @@ class CitySeeder extends Seeder
             'state_id' => 21
         ]);
         DB::table('cities')->insert([
+            'name' => 'Yauri',
+            'state_id' => 21
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Yelwa',
             'state_id' => 21
         ]);
         DB::table('cities')->insert([
             'name' => 'Idah',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Iyah-Gbede',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Iyale',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
@@ -1820,11 +2502,31 @@ class CitySeeder extends Seeder
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
+            'name' => 'Egbe',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Anyigba',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ayeteju',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ayegunle Gbede',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Lokoja',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
             'name' => 'Odo-Ere',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ikuehi',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
@@ -1848,7 +2550,23 @@ class CitySeeder extends Seeder
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ejuku',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Itakpe',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Imane',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Onyedega',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ife-Olukotun',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
@@ -1857,6 +2575,14 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Mopa',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Mopa-Muro',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ihima',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
@@ -1889,6 +2615,30 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Ankpa',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oboroke',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ogodu',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okaba',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ologba',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Iyamoye',
+            'state_id' => 22
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ponyan',
             'state_id' => 22
         ]);
         DB::table('cities')->insert([
@@ -1936,6 +2686,14 @@ class CitySeeder extends Seeder
             'state_id' => 23
         ]);
         DB::table('cities')->insert([
+            'name' => 'Orhuwhorun',
+            'state_id' => 23
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Oro',
+            'state_id' => 23
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Patigi',
             'state_id' => 23
         ]);
@@ -1968,11 +2726,31 @@ class CitySeeder extends Seeder
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
+            'name' => 'Akodo',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Badagry',
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
             'name' => 'Epe',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ilasa',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ilupeju',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Imota',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ipaja',
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
@@ -2028,6 +2806,10 @@ class CitySeeder extends Seeder
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ijaniki',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Mushin',
             'state_id' => 24
         ]);
@@ -2040,12 +2822,24 @@ class CitySeeder extends Seeder
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
-            'name' => 'Akodo',
+            'name' => 'Victoria Island',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Lekki',
             'state_id' => 24
         ]);
         DB::table('cities')->insert([
             'name' => 'Shomolu',
             'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Yaba',
+            'state_id' => 24
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Koki',
+            'state_id' => 25
         ]);
         DB::table('cities')->insert([
             'name' => 'Keffi',
@@ -2204,7 +2998,15 @@ class CitySeeder extends Seeder
             'state_id' => 26
         ]);
         DB::table('cities')->insert([
+            'name' => 'Obinumba',
+            'state_id' => 26
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Suleja',
+            'state_id' => 26
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Zungeru',
             'state_id' => 26
         ]);
         DB::table('cities')->insert([
@@ -2216,7 +3018,15 @@ class CitySeeder extends Seeder
             'state_id' => 27
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ago Iwoye',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Owode',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ijebu-Itele',
             'state_id' => 27
         ]);
         DB::table('cities')->insert([
@@ -2225,6 +3035,14 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Ijebu-Ode',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ilishan-Remo',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ilara',
             'state_id' => 27
         ]);
         DB::table('cities')->insert([
@@ -2260,6 +3078,10 @@ class CitySeeder extends Seeder
             'state_id' => 27
         ]);
         DB::table('cities')->insert([
+            'name' => 'Igbesa',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Isara',
             'state_id' => 27
         ]);
@@ -2276,6 +3098,10 @@ class CitySeeder extends Seeder
             'state_id' => 27
         ]);
         DB::table('cities')->insert([
+            'name' => 'Makogi Oba',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Sagamu',
             'state_id' => 27
         ]);
@@ -2286,6 +3112,18 @@ class CitySeeder extends Seeder
         DB::table('cities')->insert([
             'name' => 'Ogbere',
             'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Okun-Owa',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Seriki Sotayo',
+            'state_id' => 27
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Akungba',
+            'state_id' => 28
         ]);
         DB::table('cities')->insert([
             'name' => 'Akure',
@@ -2312,6 +3150,10 @@ class CitySeeder extends Seeder
             'state_id' => 28
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ilara-Mokin',
+            'state_id' => 28
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Igbokoda',
             'state_id' => 28
         ]);
@@ -2332,6 +3174,10 @@ class CitySeeder extends Seeder
             'state_id' => 28
         ]);
         DB::table('cities')->insert([
+            'name' => 'Ikun',
+            'state_id' => 28
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Oke-Agbe',
             'state_id' => 28
         ]);
@@ -2349,6 +3195,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Ode-Irele',
+            'state_id' => 28
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Omuo-oke',
             'state_id' => 28
         ]);
         DB::table('cities')->insert([
@@ -2396,6 +3246,10 @@ class CitySeeder extends Seeder
             'state_id' => 29
         ]);
         DB::table('cities')->insert([
+            'name' => 'Iree',
+            'state_id' => 29
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Ile-Ife',
             'state_id' => 29
         ]);
@@ -2421,6 +3275,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Awo',
+            'state_id' => 29
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Esa-Oke',
             'state_id' => 29
         ]);
         DB::table('cities')->insert([
@@ -2469,6 +3327,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Apomu',
+            'state_id' => 29
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ode-Omu',
             'state_id' => 29
         ]);
         DB::table('cities')->insert([
@@ -2617,6 +3479,10 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Dengi',
+            'state_id' => 31
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Gindiri',
             'state_id' => 31
         ]);
         DB::table('cities')->insert([
@@ -2824,10 +3690,6 @@ class CitySeeder extends Seeder
             'state_id' => 33
         ]);
         DB::table('cities')->insert([
-            'name' => 'Machina',
-            'state_id' => 33
-        ]);
-        DB::table('cities')->insert([
             'name' => 'Gidan Madi',
             'state_id' => 33
         ]);
@@ -3004,10 +3866,6 @@ class CitySeeder extends Seeder
             'state_id' => 36
         ]);
         DB::table('cities')->insert([
-            'name' => 'Talata Mafara',
-            'state_id' => 36
-        ]);
-        DB::table('cities')->insert([
             'name' => 'Bakura',
             'state_id' => 36
         ]);
@@ -3028,11 +3886,31 @@ class CitySeeder extends Seeder
             'state_id' => 36
         ]);
         DB::table('cities')->insert([
+            'name' => 'Talata Mafara',
+            'state_id' => 36
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Abaji',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Abuja',
             'state_id' => 37
         ]);
         DB::table('cities')->insert([
-            'name' => 'Kuje',
+            'name' => 'Apo',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Area 1',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Jabi',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Jikwoyi',
             'state_id' => 37
         ]);
         DB::table('cities')->insert([
@@ -3040,7 +3918,47 @@ class CitySeeder extends Seeder
             'state_id' => 37
         ]);
         DB::table('cities')->insert([
+            'name' => 'Dutse-Alhaji',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Durumi',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Efugo',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Asokoro',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kurudu',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Gwagwalada',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Gwarinpa',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kado estate',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kubwa',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kuje',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Kuji',
             'state_id' => 37
         ]);
         DB::table('cities')->insert([
@@ -3048,7 +3966,35 @@ class CitySeeder extends Seeder
             'state_id' => 37
         ]);
         DB::table('cities')->insert([
-            'name' => 'Abaji',
+            'name' => 'Lugbe',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Maitama',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Tungan maje',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Utako district',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Wuse',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Wuse 2',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Wuye',
+            'state_id' => 37
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Zuba',
             'state_id' => 37
         ]);
     }
