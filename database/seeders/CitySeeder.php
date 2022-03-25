@@ -1322,6 +1322,14 @@ class CitySeeder extends Seeder
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
+            'name' => 'Uneme-Nekhua',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
+            'name' => 'Ekpedo',
+            'state_id' => 12
+        ]);
+        DB::table('cities')->insert([
             'name' => 'Sabongida-Ora',
             'state_id' => 12
         ]);
@@ -1331,10 +1339,6 @@ class CitySeeder extends Seeder
         ]);
         DB::table('cities')->insert([
             'name' => 'Idogbo',
-            'state_id' => 12
-        ]);
-        DB::table('cities')->insert([
-            'name' => 'Irrua',
             'state_id' => 12
         ]);
         DB::table('cities')->insert([
