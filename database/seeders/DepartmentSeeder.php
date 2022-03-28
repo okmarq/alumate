@@ -22,18 +22,18 @@ class DepartmentSeeder extends Seeder
         ]);
     }
 }
-Agriculture
-Arts
-Biological Sciences
-Administration
-Dentistry
-Education
-Engineering
-Environmental Sciences
-Health Sciences & Technology
-Law
-Medical Sciences
-Pharmaceutical Sciences
-Physical Sciences
-Social Sciences
-Veterinary Medicine
+// Agriculture
+// Arts
+// Biological Sciences
+// Administration
+// Dentistry
+// Education
+// Engineering
+// Environmental Sciences
+// Health Sciences & Technology
+// Law
+// Medical Sciences
+// Pharmaceutical Sciences
+// Physical Sciences
+// Social Sciences
+// Veterinary Medicine
