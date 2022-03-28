@@ -73,12 +73,11 @@ class AlumniController extends Controller
      */
     public function searchSchoolmates($name)
     {
-        if (Alumni::where('school_id', $school_id)->exists()) {
-            $schoolmates = Alumni::where('school_id', $name)
-                ->join('users', 'alumnis.user_id', '=', 'users.id')
+        if (Alumni::exists()) {
+            $schoolmates = Alumni::join('users', 'alumnis.user_id', '=', 'users.id')->where('first_name', 'like', '%' . $name . '%')
+            ->orWhere('last_name', 'like', '%' . $name . '%')
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
-            // DB::table('alumnis')->where('school_id', $school_id)
             return response($schoolmates, 200);
         } else {
             return response()->json([
