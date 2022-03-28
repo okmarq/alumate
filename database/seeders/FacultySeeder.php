@@ -17,8 +17,6 @@ class FacultySeeder extends Seeder
     {
         // DB::table('faculties')->insert([
         //     'name' => 'Basic Medicals',
-        //     'school_id' => 1,
-        //     'department_id' => 1
         // ]);
     }
 }

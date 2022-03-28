@@ -18,13 +18,6 @@ class AlumniController extends Controller
     {
         $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
         return response($alumni, 200);
-        // if ($alumni->is_array->is_null()) {
-        //     return response($alumni, 200);
-        // } else {
-        //     return response()->json([
-        //         'message' => 'Alumni not found'
-        //     ], 404);
-        // }
     }
 
     /**
@@ -69,6 +62,27 @@ class AlumniController extends Controller
         } else {
             return response()->json([
                 'message' => 'Alumni not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchSchoolmates($name)
+    {
+        if (Alumni::where('school_id', $school_id)->exists()) {
+            $schoolmates = Alumni::where('school_id', $name)
+                ->join('users', 'alumnis.user_id', '=', 'users.id')
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            // DB::table('alumnis')->where('school_id', $school_id)
+            return response($schoolmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'School mates not found'
             ], 404);
         }
     }

@@ -76,10 +76,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('{city_id}/school/{name}', [SchoolController::class, 'showByNameAndCity']);
     Route::get('{state_id}/cities/schools/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
 
+    Route::get('user/{name}', [AuthController::class, 'showByName']);
+    Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
+    Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('users', AuthController::class);
 
-    Route::get('user/{name}', [AuthController::class, 'showByName']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

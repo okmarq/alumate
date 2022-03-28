@@ -20,12 +20,24 @@ class AuthController extends Controller
         return $username;
     }
 
+    public function setInviteCode()
+    {
+        $i = 0;
+        $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+        while (User::where($code)->exists()) {
+            $i++;
+            $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
+        }
+        return $code;
+    }
+
     public function register(Request $request)
     {
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:32',
             'last_name' => 'required|string|max:32',
             'email' => 'required|string|email|max:64|unique:users',
+            'referred_by' => 'string|max:8',
             // 'phone_number' => 'string|max:15|unique:users',
             // 'password' => 'required|string|min:8'
         ]);
@@ -36,7 +48,9 @@ class AuthController extends Controller
             'email' => $validatedData['email'],
             // 'phone_number' => $validatedData['phone_number'],
             // 'password' => Hash::make($validatedData['password']),
-            'username' => $this->setUsername()
+            'username' => $this->setUsername(),
+            'invite_code' => $this->setInviteCode(),
+            'referred_by'=> $validatedData['referred_by'] ?? null
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -95,19 +109,7 @@ class AuthController extends Controller
      */
     // public function store(StoreUserRequest $request)
     // {
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:128|unique:user',
-    //         'capital' => 'required|string|max:128'
-    //     ]);
-
-    //     $user = User::create([
-    //         'name' => $validatedData['name'],
-    //         'capital' => $validatedData['capital']
-    //     ]);
-
-    //     return response()->json([
-    //         'user' => $user
-    //     ], 201);
+    //
     // }
 
     /**
@@ -120,6 +122,50 @@ class AuthController extends Controller
     {
         if (User::where('id', $id)->exists()) {
             $user = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($user, 200);
+        } else {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function showByInviteCode($code)
+    {
+        if (User::where('code', $code)->exists()) {
+            $user = User::where('code', $code)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($user, 200);
+        } else {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function showByAlumni($name)
+    {
+        $schoolmates = Alumni::where('school_id', $name)
+                ->join('users', 'alumnis.user_id', '=', 'users.id')
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+        if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
+            $user = User::where('first_name', 'like', '%' . $name . '%')
+            ->orWhere('last_name', 'like', '%' . $name . '%')
+            ->join('alumnis', 'user.id', '=', 'alumnis.user_id')
+            ->get()
+            ->toJson(JSON_PRETTY_PRINT);
             return response($user, 200);
         } else {
             return response()->json([
@@ -155,23 +201,7 @@ class AuthController extends Controller
      */
     // public function update(UpdateUserRequest $request, $id)
     // {
-    //     if (User::where('id', $id)->exists()) {
-    //         $user = User::find($id);
-    //         $user->name = is_null($request->name) ? $user->name : $request->name;
-    //         // $user->abbr = is_null($request->abbr) ? $user->abbr : $request->abbr;
-    //         $user->city_id = is_null($request->city_id) ? $user->city_id : $request->city_id;
-    //         $user->user_type_id = is_null($request->user_type_id) ? $user->user_type_id : $request->user_type_id;
-    //         // $user->year_founded = is_null($request->year_founded) ? $user->year_founded : $request->year_founded;
-    //         $user->save();
-
-    //         return response()->json([
-    //             "message" => "records updated successfully"
-    //         ], 200);
-    //     } else {
-    //         return response()->json([
-    //             "message" => "User not found"
-    //         ], 404);
-    //     }
+    //
     // }
 
     /**
@@ -182,17 +212,6 @@ class AuthController extends Controller
      */
     // public function destroy($id)
     // {
-    //     if (User::where('id', $id)->exists()) {
-    //         $user = User::find($id);
-    //         $user->delete();
-
-    //         return response()->json([
-    //             "message" => "records deleted"
-    //         ], 202);
-    //     } else {
-    //         return response()->json([
-    //             "message" => "User not found"
-    //         ], 404);
-    //     }
+    //
     // }
 }

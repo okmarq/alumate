@@ -16,7 +16,24 @@ class DepartmentSeeder extends Seeder
     public function run()
     {
         DB::table('departments')->insert([
-            'name' => 'Accounting'
+            'name' => 'Accounting',
+        //     'school_id' => 1,
+        //     'department_id' => 1
         ]);
     }
 }
+Agriculture
+Arts
+Biological Sciences
+Administration
+Dentistry
+Education
+Engineering
+Environmental Sciences
+Health Sciences & Technology
+Law
+Medical Sciences
+Pharmaceutical Sciences
+Physical Sciences
+Social Sciences
+Veterinary Medicine
