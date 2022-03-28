@@ -43,6 +43,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::apiResource('school_types', SchoolTypeController::class);
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('states', StateController::class);
+    Route::apiResource('users', AuthController::class);
 
     /**
      * @get all resource
@@ -79,8 +80,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('user/{name}', [AuthController::class, 'showByName']);
     Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
     Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
-    Route::apiResource('users', AuthController::class);
 
+    Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
