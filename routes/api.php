@@ -69,7 +69,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('{country_id}/states', [StateController::class, 'showByCountryId']);
 
     Route::get('city/{name}', [CityController::class, 'showByName']);
-    Route::get('{state_id}/city', [CityController::class, 'showByStateId']);
+    Route::get('{state_id}/cities', [CityController::class, 'showByStateId']);
     Route::get('{state_id}/city/{name}', [CityController::class, 'showByNameAndState']);
 
     Route::get('school/{name}', [SchoolController::class, 'showByName']);
