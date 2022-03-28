@@ -37,7 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
      * @delete a resource
      */
     Route::apiResource('academics', UserProgramDepartmentController::class);
-    Route::apiResource('alumnis', AlumniController::class);
+    Route::apiResource('alumni', AlumniController::class);
     Route::apiResource('cities', CityController::class);
     Route::apiResource('countries', CountryController::class);
     Route::apiResource('school_types', SchoolTypeController::class);
