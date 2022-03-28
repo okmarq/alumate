@@ -156,10 +156,6 @@ class AuthController extends Controller
      */
     public function showByAlumni($name)
     {
-        $schoolmates = Alumni::where('school_id', $name)
-                ->join('users', 'alumnis.user_id', '=', 'users.id')
-                ->get()
-                ->toJson(JSON_PRETTY_PRINT);
         if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
             $user = User::where('first_name', 'like', '%' . $name . '%')
             ->orWhere('last_name', 'like', '%' . $name . '%')
