@@ -159,7 +159,7 @@ class AuthController extends Controller
         if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
             $user = User::where('first_name', 'like', '%' . $name . '%')
             ->orWhere('last_name', 'like', '%' . $name . '%')
-            ->join('alumnis', 'user.id', '=', 'alumnis.user_id')
+            ->join('alumnis', 'users.id', '=', 'alumnis.user_id')
             ->get()
             ->toJson(JSON_PRETTY_PRINT);
             return response($user, 200);
