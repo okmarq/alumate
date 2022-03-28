@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -55,6 +56,7 @@ class DatabaseSeeder extends Seeder
             UserGroupSeeder::class,
             UserImageSeeder::class,
             UserSubscriptionSeeder::class,
+            User::factory(20)->create()
         ]);
     }
 }
