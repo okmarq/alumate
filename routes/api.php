@@ -79,9 +79,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('user/{name}', [AuthController::class, 'showByName']);
     Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
     Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
+    Route::apiResource('users', AuthController::class);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::apiResource('users', AuthController::class);
 
 
     Route::post('logout', [AuthController::class, 'logout']);
