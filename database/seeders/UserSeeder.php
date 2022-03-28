@@ -49,18 +49,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 20; $i++) {
-
-        DB::table('states')->insert([
-            'first_name' => 'f_' . $this->generateRandomString(7),
-            'last_name' => 'l_' . $this->generateRandomString(7),
-            'username' => 'u_' . $this->setUsername(),
-            'invite_code' => 'code_' . $this->setInviteCode(),
-            'email' => $this->generateRandomString(6) . '@' . $this->generateRandomString(4) . 'com',
-            'email_verified_at' => now(),
-            // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-        ]);
+        for ($i = 0; $i < 20; $i++) {
+            DB::table('users')->insert([
+                'first_name' => 'f_' . $this->generateRandomString(7),
+                'last_name' => 'l_' . $this->generateRandomString(7),
+                'username' => 'u_' . $this->setUsername(),
+                'invite_code' => 'code_' . $this->setInviteCode(),
+                'email' => $this->generateRandomString(6) . '@' . $this->generateRandomString(4) . 'com',
+                'email_verified_at' => now(),
+                // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'remember_token' => Str::random(10),
+            ]);
         }
     }
 }
