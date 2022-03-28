@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             UserGroupSeeder::class,
             UserImageSeeder::class,
             UserSubscriptionSeeder::class,
-            User::factory(20)->create()
+            UserSeeder::class
         ]);
     }
 }
