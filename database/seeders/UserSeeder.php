@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
     {
         $i = 0;
         $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-        while (User::where($code)->exists()) {
+        while (User::where('invite_code', $code)->exists()) {
             $i++;
             $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
         }
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 20) as $key) {
+        for ($i = 0; $i < 20; $i++) {
             DB::table('users')->insert([
                 'first_name' => 'f_' . $this->generateRandomString(7),
                 'last_name' => 'l_' . $this->generateRandomString(7),
