@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++) {
+        foreach (range(1, 20) as $key) {
             DB::table('users')->insert([
                 'first_name' => 'f_' . $this->generateRandomString(7),
                 'last_name' => 'l_' . $this->generateRandomString(7),
