@@ -138,8 +138,8 @@ class AuthController extends Controller
      */
     public function showByInviteCode($code)
     {
-        if (User::where('code', $code)->exists()) {
-            $user = User::where('code', $code)->get()->toJson(JSON_PRETTY_PRINT);
+        if (User::where('invite_code', $code)->exists()) {
+            $user = User::where('invite_code', $code)->get()->toJson(JSON_PRETTY_PRINT);
             return response($user, 200);
         } else {
             return response()->json([
