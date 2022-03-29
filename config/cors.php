@@ -19,9 +19,9 @@ return [
 
     'allowed_methods' => ['POST', 'GET', 'DELETE', 'PUT', '*'],
 
-    'allowed_origins' => ['https://alumates111.herokuapp.com', '*'],
+    'allowed_origins' => ['https://alumates111.herokuapp.com/', 'https://alumates111.herokuapp.com/*', '*'],
 
-    'allowed_origins_patterns' => ['Google', '*'],
+    'allowed_origins_patterns' => ['Google/', '*'],
 
     'allowed_headers' => ['X-Custom-Header', 'Upgrade-Insecure-Requests', '*'],
 
