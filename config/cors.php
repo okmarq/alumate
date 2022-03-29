@@ -15,15 +15,15 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'api/admin/*', 'api/users/*', '*'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['POST', 'GET', 'DELETE', 'PUT', '*'],
+    'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://alumates111.herokuapp.com/', 'https://alumates111.herokuapp.com/*', '*'],
+    'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => ['Google/', '*'],
+    'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['X-Custom-Header', 'Upgrade-Insecure-Requests', '*'],
+    'allowed_headers' => ['*'],
 
     'exposed_headers' => [],
 
