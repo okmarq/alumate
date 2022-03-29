@@ -39,7 +39,7 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:64|unique:users',
             'referred_by' => 'string|max:8',
             // 'phone_number' => 'string|max:15|unique:users',
-            // 'password' => 'required|string|min:8'
+            'password' => 'required|string|min:8'
         ]);
 
         $user = User::create([
@@ -47,7 +47,7 @@ class AuthController extends Controller
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
             // 'phone_number' => $validatedData['phone_number'],
-            // 'password' => Hash::make($validatedData['password']),
+            'password' => Hash::make($validatedData['password']),
             'username' => $this->setUsername(),
             'invite_code' => $this->setInviteCode(),
             'referred_by'=> $validatedData['referred_by'] ?? null
@@ -64,8 +64,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // , 'password'
-        if (!Auth::attempt($request->only('email'))) {
+        //
+        if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'message' => 'Invalid login details'
             ], 401);
