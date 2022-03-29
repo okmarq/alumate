@@ -78,6 +78,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('{state_id}/cities/schools/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
 
     Route::get('user/{name}', [AuthController::class, 'showByName']);
+    Route::get('users/{email}', [AuthController::class, 'showByEmail']);
     Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
     Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
 
