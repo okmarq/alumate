@@ -190,24 +190,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function showByEmail($email)
-    {
-        if (User::where('email', $email)->exists()) {
-            $user = User::where('email', $email)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($user, 200);
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
-        }
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateUserRequest  $request
