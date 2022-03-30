@@ -146,7 +146,7 @@ class AlumniController extends Controller
                 ->where('admission_year', $admission_year)
                 ->join('users', 'alumnis.user_id', '=', 'users.id')
                 ->join('schools', 'alumnis.school_id', '=', 'schools.id')
-                ->where('school_type', $school_type)
+                ->where('schools.school_type', $school_type)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             return response($classmates, 200);
