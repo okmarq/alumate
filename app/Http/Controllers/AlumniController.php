@@ -139,12 +139,11 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function otherClassmate($school_type, $school_id, $admission_year, ?int $graduation_year)
+    public function otherClassmate($school_type, $school_id, $admission_year)
     {
         if (Alumni::where('school_id', $school_id)->where('admission_year', $admission_year)->exists()) {
             $classmates = Alumni::where('school_id', $school_id)
                 ->where('admission_year', $admission_year)
-                ->orWhere('graduation_year', $graduation_year)
                 ->join('users', 'alumnis.user_id', '=', 'users.id')
                 ->join('schools', 'alumnis.school_id', '=', 'schools.id')
                 ->where('school_type', $school_type)
