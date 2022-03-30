@@ -17,14 +17,12 @@ class AlumniSeeder extends Seeder
     {
         for ($i = 1; $i <= 20; $i++) {
             for ($j = 1; $j <= 20; $j++) {
-                for ($k = 1; $k <= 20; $k++) {
-                    DB::table('alumnis')->insert([
-                        'graduation_year' => 2000 + $k,
-                        'admission_year' => 1995 + $k,
-                        'school_id' => $j,
-                        'user_id' => $j
-                    ]);
-                }
+                DB::table('alumnis')->insert([
+                    'graduation_year' => 2000 + $i,
+                    'admission_year' => 1995 + $i,
+                    'school_id' => $i,
+                    'user_id' => $j
+                ]);
             }
         }
     }
