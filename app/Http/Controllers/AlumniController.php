@@ -139,6 +139,30 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function otherClassmate($school_type, $school_id, $admission_year, ?int $graduation_year)
+    {
+        if (Alumni::where('school_id', $school_id)->where('admission_year', $admission_year)->exists()) {
+            $classmates = Alumni::where('school_id', $school_id)
+                ->where('admission_year', $admission_year)
+                ->orWhere('graduation_year', $graduation_year)
+                ->join('users', 'alumnis.user_id', '=', 'users.id')
+                ->join('schools', 'alumnis.school_id', '=', 'schools.id')
+                ->where('school_type', $school_type)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            return response($classmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'class mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function classmate_ay($school_id, $admission_year)
     {
         if (Alumni::where('admission_year', $admission_year)->exists()) {
