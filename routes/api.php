@@ -55,7 +55,7 @@ Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmat
  * return users that part of a school and are classmates by graduation year
  */
 Route::get('{school_id}/album/classmates/{graduation_year}', [AlumniController::class, 'classmate']);
-Route::get('{school_type_id}/{school_id}/other/album/classmates/{admission_year}/{graduation_year}', [AlumniController::class, 'otherClassmate']);
+Route::get('{school_type_id}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
 /**
  * @get all resource
  * return users that part of a school and are classmates by admission year
