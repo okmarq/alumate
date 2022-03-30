@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             AddressSeeder::class,
-            AlumniSeeder::class,
             BusinessAddressSeeder::class,
             BusinessSeeder::class,
             CategorySeeder::class,
@@ -56,7 +55,8 @@ class DatabaseSeeder extends Seeder
             UserGroupSeeder::class,
             UserImageSeeder::class,
             UserSubscriptionSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            AlumniSeeder::class
         ]);
     }
 }

@@ -19,7 +19,6 @@ return new class extends Migration
             // $table->text('description');
             $table->year('admission_year')->nullable();
             $table->year('graduation_year')->nullable();
-            $table->timestamps();
             $table->foreignId('school_id')
                 ->constrained()
                 ->onUpdate('restrict')
@@ -30,6 +29,7 @@ return new class extends Migration
                 ->onDelete('restrict');
             $table->unique(['user_id', 'school_id', 'admission_year']);
             $table->unique(['user_id', 'school_id', 'graduation_year']);
+            $table->timestamps();
         });
     }
 

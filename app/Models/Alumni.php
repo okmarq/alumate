@@ -22,7 +22,6 @@ class Alumni extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'graduation_year',
         'admission_year',
         'graduation_year',
         'school_id',
