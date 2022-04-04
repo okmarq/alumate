@@ -19,7 +19,10 @@ class ImageTypeSeeder extends Seeder
             'name'=>'profile'
         ]);
         DB::table('image_types')->insert([
-            'name'=>'group'
+            'name'=>'alumni_group'
+        ]);
+        DB::table('image_types')->insert([
+            'name'=>'professionals_group'
         ]);
         DB::table('image_types')->insert([
             'name'=>'post'
