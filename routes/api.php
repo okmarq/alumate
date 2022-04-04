@@ -4,6 +4,8 @@ use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\ProfessionalBodiesController;
+use App\Http\Controllers\ProfessionalGroupsController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolTypeController;
 use App\Http\Controllers\StateController;
@@ -84,9 +86,11 @@ Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
 
 Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
 
-Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
+Route::apiResource('professional_bodies', ProfessionalBodiesController::class);
+
+Route::apiResource('professional_groups', ProfessionalGroupsController::class);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
-
     Route::post('logout', [AuthController::class, 'logout']);
 });
+
