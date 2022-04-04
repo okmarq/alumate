@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Professional;
-use App\Http\Requests\StoreProfessionalRequest;
-use App\Http\Requests\UpdateProfessionalRequest;
+use App\Models\ProfessionalBody;
+use App\Http\Requests\StoreProfessionalBodyRequest;
+use App\Http\Requests\UpdateProfessionalBodyRequest;
+use App\Http\Resources\ProfessionalBodiesResource;
 
 class ProfessionalBodiesController extends Controller
 {
@@ -15,72 +16,54 @@ class ProfessionalBodiesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ProfessionalBodiesResource::collection(ProfessionalBody::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProfessionalRequest  $request
+     * @param  \App\Http\Requests\StoreProfessionalBodyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProfessionalRequest $request)
+    public function store(StoreProfessionalBodyRequest $request)
     {
-        //
+        $professional_body = ProfessionalBody::create($request->all());
+        return new ProfessionalBodiesResource($professional_body);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Professional  $professional
+     * @param  \App\Models\ProfessionalBody  $professional_body
      * @return \Illuminate\Http\Response
      */
-    public function show(Professional $professional)
+    public function show(ProfessionalBody $professional_body)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Professional  $professional
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Professional $professional)
-    {
-        //
+        return new ProfessionalBodiesResource($professional_body);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProfessionalRequest  $request
-     * @param  \App\Models\Professional  $professional
+     * @param  \App\Http\Requests\UpdateProfessionalBodyRequest  $request
+     * @param  \App\Models\ProfessionalBody  $professional_body
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfessionalRequest $request, Professional $professional)
+    public function update(UpdateProfessionalBodyRequest $request, ProfessionalBody $professional_body)
     {
-        //
+        $professional_body->update($request->all());
+        return new ProfessionalBodiesResource($professional_body);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Professional  $professional
+     * @param  \App\Models\ProfessionalBody  $professional_body
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professional $professional)
+    public function destroy(ProfessionalBody $professional_body)
     {
-        //
+        $professional_body->delete();
+        return response(null, 204);
     }
 }

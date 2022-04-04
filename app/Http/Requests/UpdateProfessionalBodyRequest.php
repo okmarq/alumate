@@ -13,7 +13,7 @@ class UpdateProfessionalBodyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateProfessionalBodyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|unique:professional_bodies',
+            'abbr' => 'string',
+            'website' => 'string',
+            'description' => 'string'
         ];
     }
 }

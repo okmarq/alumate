@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('professional_bodies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('abbr');
+            $table->string('abbr')->nullable();
             $table->string('website')->nullable();
             $table->foreignId('image_id')
+                ->nullable()
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
