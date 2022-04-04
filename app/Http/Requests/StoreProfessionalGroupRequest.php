@@ -13,7 +13,7 @@ class StoreProfessionalGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreProfessionalGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'professional_body_id' => 'required',
+            'user_id' => 'required'
         ];
     }
 }

@@ -24,7 +24,8 @@ class UpdateProfessionalGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'professional_body_id' => 'required',
+            'user_id' => 'required'
         ];
     }
 }
