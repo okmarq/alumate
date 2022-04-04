@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('invite_code')->unique();
-            $table->string('referred_by')->nullable();
+            $table->string('invite_id')->nullable();
             // $table->string('phone_number')->unique();
-            // $table->string('password');
+            $table->string('password');
             $table->tinyInteger('is_active')->default(0);
             $table->tinyInteger('is_verified')->default(0);
             $table->rememberToken();
