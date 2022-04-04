@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('professional_groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('abbr');
-            $table->string('website')->nullable();
-            $table->foreignId('image_id')
+            $table->foreignId('professional_body_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->text('description');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->unique(['user_id', 'professional_body_id']);
             $table->timestamps();
         });
     }

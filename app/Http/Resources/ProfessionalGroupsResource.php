@@ -16,13 +16,8 @@ class ProfessionalGroupsResource extends JsonResource
     {
         return [
             'id'=> $this->id,
-            'name'=> $this->name,
-            'abbr'=> $this->abbr,
-            'website'=> $this->website,
-            'image_id'=> $this->image_id,
-            'description'=> $this->description,
-            'created_at'=> $this->created_at,
-            'updated_at'=> $this->updated_at
+            'user'=> $this->user,
+            'professional_body'=> $this->professional_body
         ];
     }
 }
