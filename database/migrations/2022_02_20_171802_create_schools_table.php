@@ -22,6 +22,10 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->foreignId('image_id')->nullable()
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->foreignId('city_id')
                 ->constrained()
                 ->onUpdate('restrict')
