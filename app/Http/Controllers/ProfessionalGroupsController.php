@@ -7,7 +7,7 @@ use App\Http\Requests\StoreProfessionalGroupRequest;
 use App\Http\Requests\UpdateProfessionalGroupRequest;
 use App\Http\Resources\ProfessionalGroupsResource;
 
-class ProfessionalGroupController extends Controller
+class ProfessionalGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
