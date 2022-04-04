@@ -42,7 +42,10 @@ Route::apiResource('academics', UserProgramDepartmentController::class);
 Route::apiResource('alumni', AlumniController::class);
 Route::apiResource('cities', CityController::class);
 Route::apiResource('countries', CountryController::class);
+
 Route::apiResource('school_types', SchoolTypeController::class);
+Route::get('school_types/name/{name}', [SchoolTypeController::class, 'showByName']);
+
 Route::apiResource('schools', SchoolController::class);
 Route::apiResource('states', StateController::class);
 Route::apiResource('users', AuthController::class);

@@ -65,10 +65,12 @@ class SchoolTypeController extends Controller
      * @param  \App\Models\SchoolType  $schoolType
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showByName($name)
     {
-        if (SchoolType::where('id', $id)->exists()) {
-            $school_type = SchoolType::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+        if (SchoolType::where('name', $name)->exists()) {
+            $school_type = SchoolType::where('name', $name)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
             return response($school_type, 200);
         } else {
             return response()->json([
