@@ -93,4 +93,3 @@ Route::apiResource('professional_groups', ProfessionalGroupsController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
-
