@@ -60,6 +60,24 @@ class SchoolTypeController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\SchoolType  $schoolType
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        if (SchoolType::where('id', $id)->exists()) {
+            $school_type = SchoolType::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($school_type, 200);
+        } else {
+            return response()->json([
+                'message' => 'School type not found'
+            ], 404);
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateSchoolTypeRequest  $request

@@ -55,7 +55,7 @@ Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmat
  * return users that part of a school and are classmates by graduation year
  */
 Route::get('{school_id}/album/classmates/{graduation_year}', [AlumniController::class, 'classmate']);
-Route::get('{school_type_id}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
+Route::get('{school_type}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
 /**
  * @get all resource
  * return users that part of a school and are classmates by admission year
@@ -81,6 +81,8 @@ Route::get('{state_id}/cities/schools/{school_type}', [SchoolController::class, 
 Route::get('user/{name}', [AuthController::class, 'showByName']);
 Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
 Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
+
+Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
 
 Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
