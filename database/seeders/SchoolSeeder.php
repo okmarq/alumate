@@ -551,11 +551,6 @@ class SchoolSeeder extends Seeder
             "city_id" => 46
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Abti-american University Of Nigeria",
-            "school_type_id" => 6,
-            "city_id" => 46
-        ]);
-        DB::TABLE('schools')->INSERT([
             "name" => "Federal University Of Technology Yola",
             "school_type_id" => 6,
             "city_id" => 46
@@ -766,7 +761,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 147
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Federal Government Girls College ",
+            "name" => "Federal Government Girls College Gboko",
             "school_type_id" => 4,
             "city_id" => 148
         ]);
@@ -801,7 +796,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 176
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Airforce Primary School ",
+            "name" => "Airforce Primary School",
             "school_type_id" => 3,
             "city_id" => 176
         ]);
@@ -846,7 +841,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 213
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Erho Secondary School ",
+            "name" => "Erho Secondary School",
             "school_type_id" => 4,
             "city_id" => 214
         ]);
@@ -1161,12 +1156,12 @@ class SchoolSeeder extends Seeder
             "city_id" => 256
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Bright Future Nursery And Primary School ",
+            "name" => "Bright Future Nursery And Primary School",
             "school_type_id" => 3,
             "city_id" => 256
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Bright Future Academy ",
+            "name" => "Bright Future Academy",
             "school_type_id" => 4,
             "city_id" => 256
         ]);
@@ -1256,7 +1251,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 262
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Ekuku-agbor Grammar School ",
+            "name" => "Ekuku-agbor Grammar School",
             "school_type_id" => 4,
             "city_id" => 262
         ]);
@@ -1301,7 +1296,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 262
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Community Secondary School ",
+            "name" => "Community Secondary School",
             "school_type_id" => 4,
             "city_id" => 263
         ]);
@@ -1441,17 +1436,17 @@ class SchoolSeeder extends Seeder
             "city_id" => 283
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Classical International School ",
+            "name" => "Classical International School",
             "school_type_id" => 4,
             "city_id" => 283
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "College Of Education Demonstration Secondary School ",
+            "name" => "College Of Education Demonstration Secondary School",
             "school_type_id" => 4,
             "city_id" => 283
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Delta Careers College ",
+            "name" => "Delta Careers College",
             "school_type_id" => 4,
             "city_id" => 283
         ]);
@@ -1466,7 +1461,7 @@ class SchoolSeeder extends Seeder
             "city_id" => 283
         ]);
         DB::TABLE('schools')->INSERT([
-            "name" => "Esi College ",
+            "name" => "Esi College",
             "school_type_id" => 4,
             "city_id" => 283
         ]);
