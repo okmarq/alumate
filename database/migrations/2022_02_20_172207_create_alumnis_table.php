@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->string('session');
             // $table->text('description');
+            $table->boolean('is_admin')->default(0);
             $table->year('admission_year')->nullable();
             $table->year('graduation_year')->nullable();
             $table->foreignId('school_id')
