@@ -55,10 +55,10 @@ class UserSeeder extends Seeder
             'email' => 'usertwo@gmail.com',
             'first_name' => null,
             'password' => '$2y$10$36D.KmjF3\/vXzS0R5Vr8ee5aEKuC\/N2WTtcfDO8OxPKxqbuuJObim',
-            'username' => setUsername(),
+            'username' => $this->setUsername(),
             'created_at' => '2021-05-07 16:51:29',
             'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => setInviteCode(),
+            'invite_code' => $this->setInviteCode(),
             'invite_id' => null
         ]);
         DB::table('users')->insert([
