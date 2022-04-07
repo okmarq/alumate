@@ -375,18 +375,6 @@ class UserSeeder extends Seeder
             'invite_id' => null
         ]);
         DB::table('users')->insert([
-            'last_name' => '310',
-            'name' => 'user',
-            'email' => 'usertwo@gmail.comm',
-            'first_name' => "f_name",
-            'password' => '$2y$10$JZwQuZQKEn\/aKuHgcLqfGuRZMiTIcGGBbmZFc7\/VAP8dDF4u0AKqC',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-19 09:42:37',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
             'last_name' => '311',
             'name' => 'Inya Ode',
             'email' => 'inyaode@gmail.com',
