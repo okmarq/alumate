@@ -50,330 +50,330 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('users')->insert([
-            'last_name' => '9',
-            'name' => 'user twoo',
-            'email' => 'usertwo@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$36D.KmjF3\/vXzS0R5Vr8ee5aEKuC\/N2WTtcfDO8OxPKxqbuuJObim',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-05-07 16:51:29',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setInviteCode(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '116',
-            'name' => 'Admin',
-            'email' => 'user@email.com',
-            'first_name' => "f_name",
-            'password' => 'Dangle045+',
-            'username' => $this->setUsername(),
-            'created_at' => null,
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '146',
-            'name' => 'Nasir Abdulraheem',
-            'email' => 'dubarchitect@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$eRVsn\/dCxw8QNiyi4Wrd8.lcHdewtifB1W2WSX\/K8xoVXi85PUPoa',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-15 15:37:43',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '148',
-            'name' => 'Adaeze Edeh Abdulraheem',
-            'email' => 'adaeze137@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$eE2v5OSiOskXWySSLzwcn.4b0.xQe4s3dzWKWht3l4KdMPqwNyIbG',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-15 19:39:42',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '149',
-            'name' => 'Olufunke Temiye Olushola',
-            'email' => 'funke.olushola@yahoo.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$f8Th0nxff4rqU01yviBM7ODdBw8odBfB35cSQoan7.rXwnlVUB3NS',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-15 20:17:11',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '150',
-            'name' => 'idara moses',
-            'email' => 'idaramoses@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$nXpCxZwd2sKlU4YTWIaAcOgY9oHVTwZf7MiLh9e6jIa1DdFbghnl2',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-16 04:09:30',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '161',
-            'name' => 'Abdulkabir Salau',
-            'email' => 'abdulkabirsalau651@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$vhIJcBtuUp6oc59kQSBq5OU\/YvszFhc4Auiixmdn1PvliPJvGsbB.',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-16 13:40:39',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '193',
-            'name' => 'bashirat hassan',
-            'email' => 'bashirat1604@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$9ybMrkGCrfVW64qRHOhjb.OfmrvaCltdomslUiI2C7YwSV50ALzYy',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-16 17:19:44',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '195',
-            'name' => 'fadd',
-            'email' => 'calgary@krakensecuritygroup.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$8Opx8qUJpRZf2v4uRt1RuO6IAqFGgC8Y52dlXT2tezy5F4AdPERfO',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-16 17:32:42',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '217',
-            'name' => 'Lubem Agber',
-            'email' => 'lubemag@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$8\/aiybwLsVATYAZPEdP\/8.n5uVeFwcWYG1TYpL8JnPjDrgPJWtERS',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 07:28:29',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '232',
-            'name' => 'name',
-            'email' => 'adeheronigeriang@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$swFln3h64neLMI10dN0ouOANpzrXbbk9tk0IM8RQhcig6Q1qvjFwa',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 10:10:44',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '250',
-            'name' => 'detech',
-            'email' => 'detechgeek@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$9vnwb63ptlgdo\/j6eQMl7uCajtzIFv8.CuPeV\/KzNL6roQuasNbqK',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 11:26:54',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '259',
-            'name' => 'umar olasunkanmi yushau',
-            'email' => 'umarolasunkanmi@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$WYBR0IgjaZwynsRoBmr4HOdh4lL0lUXIoPnQXJ67AEzmzUVVkWgAu',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:12:48',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '260',
-            'name' => 'Gospel Justin Maurice',
-            'email' => 'gospelmaurice3@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$leG.5M18qBeZznfuPvfoLeHe9xmTvEvXDoCCfJT\/0fjpAyRH\/UgSC',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:17:27',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '261',
-            'name' => 'BALOGUN ERIC MAYOWA',
-            'email' => 'bericmayowa@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$8VtACmf1CnW66XSeKKJGJ.LlogEoKYW34OHtisgYkj8pzTrYDOPs6',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:30:30',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '262',
-            'name' => 'Fashe Olakunle',
-            'email' => 'fasheolakunle87@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$BW9kbsSPytPiukd.wJgpx.Fd7Ux0H6gPp5HvISr7iy.1N\/jIzfjWS',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:42:48',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '263',
-            'name' => 'Ajayi Oluwagbenga Marcus',
-            'email' => 'ajayimarcus19@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$W9CKVRZd3EOSPZ34BcSLseuVj8GEEsDDm3gelCYizxPFsNufNIXTa',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:50:15',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '264',
-            'name' => 'Lanrymann',
-            'email' => 'lanrymann@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$FWSRHuxnZ\/LEo1kJ5UXyCO\/.XVnrQnrlvgcMo4s5EuVry44JGRCyi',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 13:53:54',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '265',
-            'name' => 'Yungtee Davies',
-            'email' => 'ogunmiluatemitope@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$vssIM7XKoL\/.XW816a8iFuqyhjzSEUiW\/Kh9esA2eUfj5\/fhtfV5y',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 14:05:19',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '267',
-            'name' => 'Adeyemi Shekoni-Lawal',
-            'email' => 'yslllaw@yahoo.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$Ff6u6S2eI4u\/hJmYz\/K8VeTq64LpDgFnl64GwUmLCuDxOFri28X7u',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 14:33:46',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '272',
-            'name' => 'Aresokan Raphael',
-            'email' => 'areeraphael3454@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$TOa0yYd0oQZ\/RanA\/twOPeOr0UaDq7VNbU8cLbmfkSsrquSloT1N2',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 15:03:52',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '284',
-            'name' => 'Agbara Onyedikachi',
-            'email' => 'dikaagbara22@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$fsC3yFpbNixqRMAP5CB75ua8KGu9ynrq4mz7m7RQqKm9li7nJlpxu',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-17 19:39:58',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '287',
-            'name' => 'Iliya peters',
-            'email' => 'pay@pisdubai.net',
-            'first_name' => "f_name",
-            'password' => '$2y$10$a\/ZCFQeMTrgJCBAq45vd8OGc\/PietAKGkA861.SGI6Mfv08yz2fMq',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-18 10:11:21',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '302',
-            'name' => 'Dimeji Bankole',
-            'email' => 'dimejibankole2@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$J6GnuogjBv\/KBNcXkSSaoOslBB2BCvQR8FpQN9Swl4eygOVOVzdl.',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-18 18:45:40',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '304',
-            'name' => 'Sikiru Hassanat',
-            'email' => 'Hassanasali57@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$BdZbTRXIdbq9fG4JgwmReuEpr4Sku.0dacKnA24lmLE54lEaiwW\/m',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-18 20:44:46',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '307',
-            'name' => 'Ndagiman jibril',
-            'email' => 'bahja4lyf@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$\/wFLRJys5iDdA3alKf7iEu8IwqR07BN7KJ.s4M8boDcKGrGlFnZc.',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-19 05:58:45',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
-        DB::table('users')->insert([
-            'last_name' => '309',
-            'name' => 'Muhammad shamsuddeen yahaya',
-            'email' => 'shamsuddeenyahaya1@gmail.com',
-            'first_name' => "f_name",
-            'password' => '$2y$10$s\/.h9HpLsy8Z4.yrdKE5AOgXng\/\/w6E\/0w4TidNOvD.HoTd7nxfbW',
-            'username' => $this->setUsername(),
-            'created_at' => '2021-11-19 06:26:24',
-            'updated_at' => '1985-01-01 10:05:53',
-            'invite_code' => $this->setUsername(),
-            'invite_id' => null
-        ]);
+    	// DB::table('users')->insert([
+        //     'last_name' => '9',
+        //     'name' => 'user twoo',
+        //     'email' => 'usertwo@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$36D.KmjF3\/vXzS0R5Vr8ee5aEKuC\/N2WTtcfDO8OxPKxqbuuJObim',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-05-07 16:51:29',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setInviteCode(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '116',
+        //     'name' => 'Admin',
+        //     'email' => 'user@email.com',
+        //     'first_name' => "f_name",
+        //     'password' => 'Dangle045+',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => null,
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '146',
+        //     'name' => 'Nasir Abdulraheem',
+        //     'email' => 'dubarchitect@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$eRVsn\/dCxw8QNiyi4Wrd8.lcHdewtifB1W2WSX\/K8xoVXi85PUPoa',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-15 15:37:43',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '148',
+        //     'name' => 'Adaeze Edeh Abdulraheem',
+        //     'email' => 'adaeze137@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$eE2v5OSiOskXWySSLzwcn.4b0.xQe4s3dzWKWht3l4KdMPqwNyIbG',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-15 19:39:42',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '149',
+        //     'name' => 'Olufunke Temiye Olushola',
+        //     'email' => 'funke.olushola@yahoo.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$f8Th0nxff4rqU01yviBM7ODdBw8odBfB35cSQoan7.rXwnlVUB3NS',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-15 20:17:11',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '150',
+        //     'name' => 'idara moses',
+        //     'email' => 'idaramoses@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$nXpCxZwd2sKlU4YTWIaAcOgY9oHVTwZf7MiLh9e6jIa1DdFbghnl2',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-16 04:09:30',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '161',
+        //     'name' => 'Abdulkabir Salau',
+        //     'email' => 'abdulkabirsalau651@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$vhIJcBtuUp6oc59kQSBq5OU\/YvszFhc4Auiixmdn1PvliPJvGsbB.',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-16 13:40:39',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '193',
+        //     'name' => 'bashirat hassan',
+        //     'email' => 'bashirat1604@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$9ybMrkGCrfVW64qRHOhjb.OfmrvaCltdomslUiI2C7YwSV50ALzYy',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-16 17:19:44',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '195',
+        //     'name' => 'fadd',
+        //     'email' => 'calgary@krakensecuritygroup.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$8Opx8qUJpRZf2v4uRt1RuO6IAqFGgC8Y52dlXT2tezy5F4AdPERfO',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-16 17:32:42',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '217',
+        //     'name' => 'Lubem Agber',
+        //     'email' => 'lubemag@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$8\/aiybwLsVATYAZPEdP\/8.n5uVeFwcWYG1TYpL8JnPjDrgPJWtERS',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 07:28:29',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '232',
+        //     'name' => 'name',
+        //     'email' => 'adeheronigeriang@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$swFln3h64neLMI10dN0ouOANpzrXbbk9tk0IM8RQhcig6Q1qvjFwa',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 10:10:44',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '250',
+        //     'name' => 'detech',
+        //     'email' => 'detechgeek@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$9vnwb63ptlgdo\/j6eQMl7uCajtzIFv8.CuPeV\/KzNL6roQuasNbqK',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 11:26:54',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '259',
+        //     'name' => 'umar olasunkanmi yushau',
+        //     'email' => 'umarolasunkanmi@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$WYBR0IgjaZwynsRoBmr4HOdh4lL0lUXIoPnQXJ67AEzmzUVVkWgAu',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:12:48',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '260',
+        //     'name' => 'Gospel Justin Maurice',
+        //     'email' => 'gospelmaurice3@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$leG.5M18qBeZznfuPvfoLeHe9xmTvEvXDoCCfJT\/0fjpAyRH\/UgSC',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:17:27',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '261',
+        //     'name' => 'BALOGUN ERIC MAYOWA',
+        //     'email' => 'bericmayowa@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$8VtACmf1CnW66XSeKKJGJ.LlogEoKYW34OHtisgYkj8pzTrYDOPs6',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:30:30',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '262',
+        //     'name' => 'Fashe Olakunle',
+        //     'email' => 'fasheolakunle87@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$BW9kbsSPytPiukd.wJgpx.Fd7Ux0H6gPp5HvISr7iy.1N\/jIzfjWS',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:42:48',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '263',
+        //     'name' => 'Ajayi Oluwagbenga Marcus',
+        //     'email' => 'ajayimarcus19@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$W9CKVRZd3EOSPZ34BcSLseuVj8GEEsDDm3gelCYizxPFsNufNIXTa',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:50:15',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '264',
+        //     'name' => 'Lanrymann',
+        //     'email' => 'lanrymann@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$FWSRHuxnZ\/LEo1kJ5UXyCO\/.XVnrQnrlvgcMo4s5EuVry44JGRCyi',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 13:53:54',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '265',
+        //     'name' => 'Yungtee Davies',
+        //     'email' => 'ogunmiluatemitope@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$vssIM7XKoL\/.XW816a8iFuqyhjzSEUiW\/Kh9esA2eUfj5\/fhtfV5y',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 14:05:19',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '267',
+        //     'name' => 'Adeyemi Shekoni-Lawal',
+        //     'email' => 'yslllaw@yahoo.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$Ff6u6S2eI4u\/hJmYz\/K8VeTq64LpDgFnl64GwUmLCuDxOFri28X7u',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 14:33:46',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '272',
+        //     'name' => 'Aresokan Raphael',
+        //     'email' => 'areeraphael3454@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$TOa0yYd0oQZ\/RanA\/twOPeOr0UaDq7VNbU8cLbmfkSsrquSloT1N2',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 15:03:52',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '284',
+        //     'name' => 'Agbara Onyedikachi',
+        //     'email' => 'dikaagbara22@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$fsC3yFpbNixqRMAP5CB75ua8KGu9ynrq4mz7m7RQqKm9li7nJlpxu',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-17 19:39:58',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '287',
+        //     'name' => 'Iliya peters',
+        //     'email' => 'pay@pisdubai.net',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$a\/ZCFQeMTrgJCBAq45vd8OGc\/PietAKGkA861.SGI6Mfv08yz2fMq',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-18 10:11:21',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '302',
+        //     'name' => 'Dimeji Bankole',
+        //     'email' => 'dimejibankole2@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$J6GnuogjBv\/KBNcXkSSaoOslBB2BCvQR8FpQN9Swl4eygOVOVzdl.',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-18 18:45:40',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '304',
+        //     'name' => 'Sikiru Hassanat',
+        //     'email' => 'Hassanasali57@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$BdZbTRXIdbq9fG4JgwmReuEpr4Sku.0dacKnA24lmLE54lEaiwW\/m',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-18 20:44:46',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '307',
+        //     'name' => 'Ndagiman jibril',
+        //     'email' => 'bahja4lyf@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$\/wFLRJys5iDdA3alKf7iEu8IwqR07BN7KJ.s4M8boDcKGrGlFnZc.',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-19 05:58:45',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
+        // DB::table('users')->insert([
+        //     'last_name' => '309',
+        //     'name' => 'Muhammad shamsuddeen yahaya',
+        //     'email' => 'shamsuddeenyahaya1@gmail.com',
+        //     'first_name' => "f_name",
+        //     'password' => '$2y$10$s\/.h9HpLsy8Z4.yrdKE5AOgXng\/\/w6E\/0w4TidNOvD.HoTd7nxfbW',
+        //     'username' => $this->setUsername(),
+        //     'created_at' => '2021-11-19 06:26:24',
+        //     'updated_at' => '1985-01-01 10:05:53',
+        //     'invite_code' => $this->setUsername(),
+        //     'invite_id' => null
+        // ]);
         DB::table('users')->insert([
             'last_name' => '311',
             'name' => 'Inya Ode',
