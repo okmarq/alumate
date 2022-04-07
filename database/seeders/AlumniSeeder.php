@@ -18,7 +18,7 @@ class AlumniSeeder extends Seeder
         for ($i = 1; $i <= 40; $i++) {
             for ($j = 1; $j <= 40; $j++) {
                 DB::table('alumnis')->insert([
-                    'graduation_year' => 1775 + $i,
+                    'graduation_year' => 1975 + $i,
                     'admission_year' => 1980 + $i,
                     'school_id' => $i,
                     'user_id' => $j
