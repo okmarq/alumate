@@ -21,6 +21,9 @@ return new class extends Migration
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
             $table->string('name');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('website');
             $table->string('user_title');
             $table->string('growth_level');
             $table->foreignId('job_industry_id')
@@ -36,6 +39,8 @@ return new class extends Migration
             $table->tinyInteger('is_active')->default(0);
             $table->integer('no_of_employees');
             $table->year('year_started');
+            $table->time('open_time');
+            $table->time('close_time');
             $table->timestamps();
         });
     }
