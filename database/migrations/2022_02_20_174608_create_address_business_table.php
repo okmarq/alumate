@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_groups', function (Blueprint $table) {
+        Schema::create('address_business', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('group_id')
+            $table->foreignId('business_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('user_id')
+            $table->foreignId('address_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->tinyInteger('is_active')->default(0);
-            $table->timestamps();
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_groups');
+        Schema::dropIfExists('address_business');
     }
 };

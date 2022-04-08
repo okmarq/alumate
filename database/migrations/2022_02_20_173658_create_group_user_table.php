@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program_departments', function (Blueprint $table) {
+        Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table->string('degree');
-            // $table->year('year_added')->nullable();
-            // $table->timestamps();
-            $table->foreignId('program_id')
+            $table->foreignId('group_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('department_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->tinyInteger('is_active')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_departments');
+        Schema::dropIfExists('group_user');
     }
 };

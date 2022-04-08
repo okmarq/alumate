@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('professional_groups', function (Blueprint $table) {
+        Schema::create('address_school', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('professional_body_id')
+            $table->foreignId('school_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('user_id')
+            $table->foreignId('address_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->unique(['user_id', 'professional_body_id']);
-            $table->timestamps();
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professional_groups');
+        Schema::dropIfExists('address_school');
     }
 };

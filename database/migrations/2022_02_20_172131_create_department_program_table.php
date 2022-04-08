@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_images', function (Blueprint $table) {
+        Schema::create('department_program', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
+            $table->string('degree');
+            // $table->year('year_added')->nullable();
+            $table->foreignId('program_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('image_id')
+            $table->foreignId('department_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_images');
+        Schema::dropIfExists('department_program');
     }
 };

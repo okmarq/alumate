@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('school_addresses', function (Blueprint $table) {
+        Schema::create('subscription_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('school_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('address_id')
+            $table->foreignId('subscription_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_addresses');
+        Schema::dropIfExists('subscription_user');
     }
 };

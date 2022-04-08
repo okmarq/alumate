@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('group_chats', function (Blueprint $table) {
+        Schema::create('image_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('group_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('chat_id')
+            $table->foreignId('image_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->timestamps();
         });
     }
 
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_chats');
+        Schema::dropIfExists('image_user');
     }
 };

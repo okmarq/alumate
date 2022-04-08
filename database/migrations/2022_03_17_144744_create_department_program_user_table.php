@@ -13,16 +13,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_categories', function (Blueprint $table) {
+        Schema::create('department_program_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('program_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('category_id')
+            $table->foreignId('school_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_categories');
+        Schema::dropIfExists('department_program_user');
     }
 };

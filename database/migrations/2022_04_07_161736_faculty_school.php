@@ -13,12 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('faculties', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            // $table->emum('accreditation', [true, false])->default(false);
-            // $table->year('accreditation_year')->nullable();
-        });
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculties');
+        //
     }
 };
