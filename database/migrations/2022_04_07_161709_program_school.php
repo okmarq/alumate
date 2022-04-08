@@ -13,7 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('program_school', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('program_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+                $table->foreignId('school_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('program_school');
     }
 };

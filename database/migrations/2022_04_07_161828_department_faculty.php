@@ -13,7 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('department_faculty', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('department_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+                $table->foreignId('faculty_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('department_faculty');
     }
 };
