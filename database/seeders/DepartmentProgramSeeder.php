@@ -15,7 +15,7 @@ class DepartmentProgramSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('program_departments')->insert([
+        // DB::table('department_program')->insert([
         //     'degree'=>'',
         //     'program_id'=>'',
         //     'department_id'=>''
