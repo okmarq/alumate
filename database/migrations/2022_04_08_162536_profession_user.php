@@ -23,6 +23,7 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+                $table->unique(['user_id', 'profession_id']);
         });
     }
 

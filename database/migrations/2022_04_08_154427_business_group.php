@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('business_group', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business__id')
+            $table->foreignId('business_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
