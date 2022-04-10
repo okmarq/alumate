@@ -16,10 +16,22 @@ class SchoolTypeSeeder extends Seeder
     public function run()
     {
         DB::table('school_types')->insert([
+            'name' => 'bootcamp'
+        ]);
+        DB::table('school_types')->insert([
+            'name' => 'college'
+        ]);
+        DB::table('school_types')->insert([
             'name' => 'creche'
         ]);
         DB::table('school_types')->insert([
+            'name' => 'diploma'
+        ]);
+        DB::table('school_types')->insert([
             'name' => 'nursery'
+        ]);
+        DB::table('school_types')->insert([
+            'name' => 'polytechnic'
         ]);
         DB::table('school_types')->insert([
             'name' => 'primary'
@@ -28,19 +40,7 @@ class SchoolTypeSeeder extends Seeder
             'name' => 'secondary'
         ]);
         DB::table('school_types')->insert([
-            'name' => 'polytechnic'
-        ]);
-        DB::table('school_types')->insert([
             'name' => 'university'
-        ]);
-        DB::table('school_types')->insert([
-            'name' => 'college'
-        ]);
-        DB::table('school_types')->insert([
-            'name' => 'diploma'
-        ]);
-        DB::table('school_types')->insert([
-            'name' => 'bootcamp'
         ]);
     }
 }
