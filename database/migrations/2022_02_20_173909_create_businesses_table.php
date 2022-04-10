@@ -20,11 +20,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->string('user_title');
             $table->string('name');
             $table->string('phone');
             $table->string('email');
             $table->string('website');
-            $table->string('user_title');
             $table->string('growth_level');
             $table->foreignId('job_industry_id')
                 ->constrained()
@@ -37,10 +37,10 @@ return new class extends Migration
             $table->text('description');
             $table->tinyInteger('is_registered')->default(0);
             $table->tinyInteger('is_active')->default(0);
-            $table->integer('no_of_employees');
+            $table->integer('no_of_employees')->default(1);
             $table->year('year_started');
-            $table->time('open_time');
-            $table->time('close_time');
+            $table->time('open_time')->default('00:00:00');
+            $table->time('close_time')->default('23:59:59');
             $table->timestamps();
         });
     }

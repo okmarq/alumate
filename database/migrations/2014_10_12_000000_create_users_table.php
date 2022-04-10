@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('invite_code')->unique();
-            $table->string('invite_id')->nullable();
+            $table->unsignedBigInteger('invite_id')->nullable();
             // $table->string('phone_number')->unique();
             // $table->string('gender');
             // $table->string('phone_number_id')->nullable()->constrained()->onUpdate('restrict')->onDelete('restrict');
@@ -29,12 +29,13 @@ return new class extends Migration
             // $table->month('birth_month');
             // $table->day('birth_day');
             $table->string('password');
-            $table->tinyInteger('is_active')->default(0);
-            $table->tinyInteger('is_verified')->default(0);
-            $table->tinyInteger('is_online')->default(0);
+            $table->enum('status', ['offline', 'online', 'away', 'busy'])->default('online');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
+            $table->foreign('invite_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
