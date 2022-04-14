@@ -15,22 +15,22 @@ return new class extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('school_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             // $table->string('session');
             $table->text('description')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->year('admission_year')->nullable();
             $table->year('graduation_year')->nullable();
-            $table->foreignId('school_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
+            $table->timestamps();
             $table->unique(['user_id', 'school_id', 'admission_year']);
             $table->unique(['user_id', 'school_id', 'graduation_year']);
-            $table->timestamps();
         });
     }
 

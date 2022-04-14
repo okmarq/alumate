@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('professions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('required_skill_level')->nullable();
-            $table->text('description')->nullable();
+            $table->string('name', 64)->unique();
         });
     }
 
