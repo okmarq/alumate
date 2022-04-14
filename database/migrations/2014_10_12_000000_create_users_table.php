@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('first_name', 32);
-            $table->string('last_name', 32);
-            $table->string('username', 32)->unique();
-            $table->string('email', 64)->unique();
-            $table->string('invite_code', 32)->unique();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('invite_code')->unique();
             $table->unsignedBigInteger('invite_id')->nullable();
             // $table->string('phone_number')->unique();
             // $table->string('gender');
