@@ -19,7 +19,7 @@ class ProfessionalBodiesResource extends JsonResource
             'name'=> $this->name,
             'abbr'=> $this->abbr,
             'website'=> $this->website,
-            'image_id'=> $this->image_id,
+            'image_id'=> $this->image,
             'description'=> $this->description
         ];
     }

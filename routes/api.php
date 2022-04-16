@@ -4,6 +4,7 @@ use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\ProfessionalBodiesController;
 use App\Http\Controllers\ProfessionalGroupsController;
 use App\Http\Controllers\SchoolController;
@@ -32,6 +33,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
+Route::apiResource('users', AuthController::class);
+Route::get('user/name/{name}', [AuthController::class, 'showByName']);
+Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
+Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
@@ -43,6 +48,8 @@ Route::get('{school_id}/album/classmates/{graduation_year}', [AlumniController::
 Route::get('{school_type}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
 Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmate']);
 Route::get('{school_id}/album/classmates_ay/{admission_year}', [AlumniController::class, 'classmate_ay']);
+// Route::get('alumni/{user_id}/groups', [AlumniController::class, 'groupuser']);
+Route::get('users/{user_id}/groups', [AlumniController::class, 'groupuser']);
 
 Route::apiResource('cities', CityController::class);
 Route::get('city/{name}', [CityController::class, 'showByName']);
@@ -67,15 +74,8 @@ Route::get('state/capital/{name}', [StateController::class, 'showByCapital']);
 Route::get('state/search_capital/{name}', [StateController::class, 'showByCapitalUnstrict']);
 Route::get('{country_id}/states', [StateController::class, 'showByCountryId']);
 
-Route::apiResource('users', AuthController::class);
-Route::get('user/{user_id}', [AuthController::class, 'show']);
-Route::get('user/name/{name}', [AuthController::class, 'showByName']);
-Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
-Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
-
 Route::apiResource('professional_bodies', ProfessionalBodiesController::class);
 
 Route::apiResource('professional_groups', ProfessionalGroupsController::class);
 
-Route::get('groups/user/{user_id}/', [groupsController::class, 'schoolmate']);
-Route::get('users/{school_id}/groups', [groupsController::class, 'schoolmate']);
+Route::apiResource('groups', GroupsController::class);
