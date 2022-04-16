@@ -15,4 +15,15 @@ class Group extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'image_id'
+    ];
 }
