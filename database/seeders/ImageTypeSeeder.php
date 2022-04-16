@@ -16,9 +16,6 @@ class ImageTypeSeeder extends Seeder
     public function run()
     {
         DB::table('image_types')->insert([
-            'name'=>'alumni_group'
-        ]);
-        DB::table('image_types')->insert([
             'name'=>'business'
         ]);
         DB::table('image_types')->insert([
@@ -28,10 +25,10 @@ class ImageTypeSeeder extends Seeder
             'name'=>'event'
         ]);
         DB::table('image_types')->insert([
-            'name'=>'post'
+            'name'=>'group'
         ]);
         DB::table('image_types')->insert([
-            'name'=>'professionals_group'
+            'name'=>'post'
         ]);
         DB::table('image_types')->insert([
             'name'=>'profile'
