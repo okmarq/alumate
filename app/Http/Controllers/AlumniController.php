@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alumni;
 use App\Http\Requests\StoreAlumniRequest;
 use App\Http\Requests\UpdateAlumniRequest;
+use App\Http\Resources\AlumniResource;
 use Illuminate\Support\Facades\DB;
 
 class AlumniController extends Controller
@@ -175,6 +176,29 @@ class AlumniController extends Controller
         } else {
             return response()->json([
                 'message' => 'class mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Group  $group
+     * @return \Illuminate\Http\Response
+     */
+    public function groupuser($user_id)
+    {
+        if (Alumni::where('user_id', $user_id)->exists()) {
+            $groups = Alumni::where('user_id', $user_id)
+                ->join('groups', 'alumnis.user_id', '=', 'groups.id')
+                ->get();
+
+            return $groups;
+
+            // return new AlumniResource($groups);
+        } else {
+            return response()->json([
+                'message' => 'User not found'
             ], 404);
         }
     }

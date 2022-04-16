@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('group_id')
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('restrict')

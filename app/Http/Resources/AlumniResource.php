@@ -14,6 +14,15 @@ class AlumniResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'group_id' => $this->group,
+            'user_id' => $this->user,
+            'school_id' => $this->school,
+            'description' => $this->description,
+            'is_admin' => $this->is_admin,
+            'admission_year' => $this->admission_year,
+            'graduation_year' => $this->graduation_year
+        ];
     }
 }
