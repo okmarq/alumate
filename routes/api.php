@@ -41,8 +41,7 @@ Route::apiResource('alumni', AlumniController::class);
 Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
 Route::get('{school_id}/album/classmates/{graduation_year}', [AlumniController::class, 'classmate']);
 Route::get('{school_type}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
-// Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmate']);
-Route::get('users/{school_id}/groups', [AlumniController::class, 'schoolmate']);
+Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmate']);
 Route::get('{school_id}/album/classmates_ay/{admission_year}', [AlumniController::class, 'classmate_ay']);
 
 Route::apiResource('cities', CityController::class);
@@ -69,10 +68,14 @@ Route::get('state/search_capital/{name}', [StateController::class, 'showByCapita
 Route::get('{country_id}/states', [StateController::class, 'showByCountryId']);
 
 Route::apiResource('users', AuthController::class);
-Route::get('user/{name}', [AuthController::class, 'showByName']);
+Route::get('user/{user_id}', [AuthController::class, 'show']);
+Route::get('user/name/{name}', [AuthController::class, 'showByName']);
 Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
 Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
 
 Route::apiResource('professional_bodies', ProfessionalBodiesController::class);
 
 Route::apiResource('professional_groups', ProfessionalGroupsController::class);
+
+Route::get('groups/user/{user_id}/', [groupsController::class, 'schoolmate']);
+Route::get('users/{school_id}/groups', [groupsController::class, 'schoolmate']);
