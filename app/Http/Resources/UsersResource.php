@@ -22,8 +22,9 @@ class UsersResource extends JsonResource
             'username' => $this->username,
             'email' => $this->email,
             'invite_code' => $this->invite_code,
-            'invite_id' => $this->invite_id,
+            'invites' => $this->invites,
             'status' => $this->status,
+            'alumni' => $this->alumni,
         ];
     }
 }
