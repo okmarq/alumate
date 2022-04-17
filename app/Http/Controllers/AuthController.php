@@ -124,16 +124,29 @@ class AuthController extends Controller
      */
     public function show(User $user)
     {
-        // if (User::where('id', $id)->exists()) {
-        //     $user = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-        //     return response($user, 200);
-        // } else {
-        //     return response()->json([
-        //         'message' => 'User not found'
-        //     ], 404);
-        // }
-
         return new UsersResource($user);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function showAlumni(User $user)
+    {
+        return [
+            // 'id' => $user->id,
+            // 'name' => $user->name,
+            // 'first_name' => $user->first_name,
+            // 'last_name' => $user->last_name,
+            // 'username' => $user->username,
+            // 'email' => $user->email,
+            // 'invite_code' => $user->invite_code,
+            // 'invites' => $user->invites,
+            // 'status' => $user->status,
+            'alumni' => $user->alumni,
+        ];
     }
 
     /**

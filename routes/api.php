@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::apiResource('users', AuthController::class);
 Route::get('user/name/{name}', [AuthController::class, 'showByName']);
+// Route::get('users/alumni/{user_id}', [AuthController::class, 'showAlumni']);
+Route::get('users/{user_id}/groups', [AuthController::class, 'showAlumni']);
 Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
 Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
 Route::post('register', [AuthController::class, 'register']);
