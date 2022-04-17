@@ -133,18 +133,10 @@ class AuthController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function showAlumni(User $user)
+    public function showAlumni($user_id)
     {
+        $user = User::findOrFail($user_id);
         return [
-            // 'id' => $user->id,
-            // 'name' => $user->name,
-            // 'first_name' => $user->first_name,
-            // 'last_name' => $user->last_name,
-            // 'username' => $user->username,
-            // 'email' => $user->email,
-            // 'invite_code' => $user->invite_code,
-            // 'invites' => $user->invites,
-            // 'status' => $user->status,
             'alumni' => $user->alumni,
         ];
     }
