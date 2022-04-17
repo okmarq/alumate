@@ -29,21 +29,21 @@ class Alumni extends Model
         'group_id'
     ];
 
-    // /**
-    //  * The schools that belongs the alumni.
-    //  */
-    // public function schools()
-    // {
-    //     return $this->belongsToMany(School::class);
-    // }
+    /**
+     * The schools that belongs the alumni.
+     */
+    public function schools()
+    {
+        return $this->belongsToMany(School::class, 'alumnis', 'id');
+    }
 
-    // /**
-    //  * The users that belongs to the alumni.
-    //  */
-    // public function users()
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
+    /**
+     * The users that belongs to the alumni.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'alumnis', 'id');
+    }
 
     /**
      * Get the group that owns the alumni.

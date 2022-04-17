@@ -21,8 +21,8 @@ class AlumniResource extends JsonResource
             'admission_year' => $this->admission_year,
             'graduation_year' => $this->graduation_year,
             'group' => $this->groups,
-            // 'user' => $this->users,
-            // 'school' => $this->schools,
+            'user' => $this->users,
+            'school' => $this->schools,
         ];
     }
 }
