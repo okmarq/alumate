@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\School;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
+use App\Http\Resources\SchoolsResource;
 use Illuminate\Support\Facades\DB;
 
 class SchoolController extends Controller
@@ -16,8 +17,10 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::get()->toJson(JSON_PRETTY_PRINT);
-        return response($schools, 200);
+        // $schools = School::get()->toJson(JSON_PRETTY_PRINT);
+        // return response($schools, 200);
+
+        return SchoolsResource::collection(School::all());
     }
 
     /**

@@ -17,8 +17,9 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
-        return response($alumni, 200);
+        return AlumniResource::collection(Alumni::all());
+        // $alumni = Alumni::get()->toJson(JSON_PRETTY_PRINT);
+        // return response($alumni, 200);
     }
 
     /**

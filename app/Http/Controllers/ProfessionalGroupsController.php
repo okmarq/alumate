@@ -16,7 +16,7 @@ class ProfessionalGroupsController extends Controller
      */
     public function index()
     {
-        return ProfessionalGroupsResource::collection(professionalGroup::all());
+        return ProfessionalGroupsResource::collection(ProfessionalGroup::all());
     }
 
     /**
