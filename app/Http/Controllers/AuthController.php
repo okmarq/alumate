@@ -122,16 +122,18 @@ class AuthController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        if (User::where('id', $id)->exists()) {
-            $user = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($user, 200);
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
-        }
+        // if (User::where('id', $id)->exists()) {
+        //     $user = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+        //     return response($user, 200);
+        // } else {
+        //     return response()->json([
+        //         'message' => 'User not found'
+        //     ], 404);
+        // }
+
+        return new UsersResource($user);
     }
 
     /**
