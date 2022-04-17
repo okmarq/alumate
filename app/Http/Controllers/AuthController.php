@@ -51,7 +51,7 @@ class AuthController extends Controller
             'password' => Hash::make($validatedData['password']),
             'username' => $this->setUsername(),
             'invite_code' => $this->setInviteCode(),
-            'referred_by'=> $validatedData['referred_by'] ?? null
+            'referred_by' => $validatedData['referred_by'] ?? null
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -135,10 +135,16 @@ class AuthController extends Controller
      */
     public function showAlumni($user_id)
     {
-        $user = User::findOrFail($user_id);
-        return [
-            'alumni' => $user->alumni,
-        ];
+        if (User::where('id', $user_id)->exists()) {
+            $user = User::findOrFail($user_id);
+            return [
+                'alumni' => $user->alumni,
+            ];
+        } else {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);
+        }
     }
 
     /**
@@ -169,10 +175,10 @@ class AuthController extends Controller
     {
         if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
             $user = User::where('first_name', 'like', '%' . $name . '%')
-            ->orWhere('last_name', 'like', '%' . $name . '%')
-            ->join('alumnis', 'users.id', '=', 'alumnis.user_id')
-            ->get()
-            ->toJson(JSON_PRETTY_PRINT);
+                ->orWhere('last_name', 'like', '%' . $name . '%')
+                ->join('alumnis', 'users.id', '=', 'alumnis.user_id')
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
             return response($user, 200);
         } else {
             return response()->json([
