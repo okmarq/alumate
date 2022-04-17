@@ -48,4 +48,28 @@ class School extends Model
     {
         return $this->hasMany(Faculty::class, 'school_id');
     }
+
+    /**
+     * The alumni that belong to the school.
+     */
+    public function alumni()
+    {
+        return $this->hasMany(Alumni::class);
+    }
+
+    /**
+     * Get the image associated with the school.
+     */
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+
+    /**
+     * Get the school type associated with the school.
+     */
+    public function schoolType()
+    {
+        return $this->belongsTo(schoolType::class);
+    }
 }

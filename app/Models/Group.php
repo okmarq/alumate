@@ -26,4 +26,15 @@ class Group extends Model
         'description',
         'image_id'
     ];
+
+    /**
+     * Get the alumni for the group.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function alumni()
+    {
+        return $this->hasMany(Alumni::class);
+    }
 }

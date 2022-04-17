@@ -14,6 +14,22 @@ class Image extends Model
      */
     public function groups()
     {
-        return $this->hasMany(Group::class, 'image_id');
+        return $this->hasMany(Group::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->belongsTo(School::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }

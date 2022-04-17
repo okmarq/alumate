@@ -45,4 +45,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The alumni that belong to the user.
+     */
+    public function alumni()
+    {
+        return $this->hasMany(Alumni::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function invites()
+    {
+        return $this->hasMany(User::class, 'invite_id');
+    }
 }

@@ -25,37 +25,31 @@ class Alumni extends Model
         'admission_year',
         'graduation_year',
         'school_id',
-        'user_id'
+        'user_id',
+        'group_id'
     ];
 
-    /**
-     * Get the school that owns the alumni.
-     */
-    public function schools()
-    {
-        return $this->belongsToMany(School::class);
-    }
-
-    /**
-     * Get the user that owns the alumni.
-     */
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
     // /**
-    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  * The schools that belongs the alumni.
     //  */
     // public function schools()
     // {
-    //     return $this->hasMany(School::class);
-    //     // , 'school_id'
+    //     return $this->belongsToMany(School::class);
     // }
 
+    // /**
+    //  * The users that belongs to the alumni.
+    //  */
     // public function users()
     // {
-    //     return $this->hasMany(User::class);
-    //     // , 'user_id'
+    //     return $this->belongsToMany(User::class);
     // }
+
+    /**
+     * Get the group that owns the alumni.
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
