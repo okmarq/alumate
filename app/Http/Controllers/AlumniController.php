@@ -136,14 +136,42 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function otherClassmate($school_type, $school_id, $admission_year)
+    public function otherClassmate($school_type_id, $school_id, $admission_year)
     {
-        if (Alumni::where('school_id', $school_id)->where('admission_year', $admission_year)->exists()) {
+        // query made with graduaton year because all admission year is null in db.
+        // when admission year has been rectified, swap out graduation year for admission year
+        if (Alumni::where('school_id', $school_id)->where('graduation_year', $admission_year)->exists()) {
             $classmates = Alumni::where('school_id', $school_id)
-                ->where('admission_year', $admission_year)
+                ->where('graduation_year', $admission_year)
                 ->join('users', 'alumnis.user_id', '=', 'users.id')
                 ->join('schools', 'alumnis.school_id', '=', 'schools.id')
-                ->where('school_type', $school_type)
+                ->where('school_type_id', $school_type_id)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            return response($classmates, 200);
+        } else {
+            return response()->json([
+                'message' => 'class mates not found'
+            ], 404);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function otherNameClassmate($school_type_name, $school_name, $admission_year)
+    {
+        // query made with graduaton year because all admission year is null in db.
+        // when admission year has been rectified, swap out graduation year for admission year
+        if (Alumni::where('graduation_year', $admission_year)->exists()) {
+            $classmates = Alumni::where('graduation_year', $admission_year)
+                ->join('users', 'alumnis.user_id', '=', 'users.id')
+                ->join('schools', 'alumnis.school_id', '=', 'schools.id')
+                ->where('schools.name', 'like', '%' . $school_name . '%')
+                ->join('school_types', 'schools.school_type_id', '=', 'school_types.id')
+                ->where('school_types.name', 'like', '%' . $school_type_name . '%')
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             return response($classmates, 200);
