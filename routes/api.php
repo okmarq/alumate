@@ -34,11 +34,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::apiResource('users', AuthController::class);
-Route::get('user/name/{name}', [AuthController::class, 'showByName']);
+Route::get('users/name/{name}', [AuthController::class, 'showByName']);
 Route::get('users/alumni/{user_id}', [AuthController::class, 'showAlumni']);
 // Route::get('users/groups/{user_id}', [AuthController::class, 'showAlumni']);
-Route::get('user/search/{name}', [AuthController::class, 'showByAlumni']);
-Route::get('user/invite/{code}', [AuthController::class, 'showByInviteCode']);
+Route::get('users/search/{name}', [AuthController::class, 'showByAlumni']);
+Route::get('users/invite/{code}', [AuthController::class, 'showByInviteCode']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
@@ -46,35 +46,36 @@ Route::apiResource('academics', UserProgramDepartmentController::class);
 
 Route::apiResource('alumni', AlumniController::class);
 Route::get('alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
-Route::get('{school_id}/album/classmates/{graduation_year}', [AlumniController::class, 'classmate']);
-Route::get('{school_type}/{school_id}/other/album/classmates/{admission_year}', [AlumniController::class, 'otherClassmate']);
-Route::get('{school_id}/album/schoolmates', [AlumniController::class, 'schoolmate']);
-Route::get('{school_id}/album/classmates_ay/{admission_year}', [AlumniController::class, 'classmate_ay']);
-// Route::get('alumni/{user_id}/groups', [AlumniController::class, 'groupuser']);
+Route::get('alumni/schoolmates/{school_id}', [AlumniController::class, 'schoolmate']);
+Route::get('alumni/classmates/{school_id}/{graduation_year}', [AlumniController::class, 'classmate']);
+Route::get('alumni/classmates_ay/{school_id}/{admission_year}', [AlumniController::class, 'classmate_ay']);
+Route::get('alumni/classmates/{school_type_id}/{school_id}/{admission_year}', [AlumniController::class, 'otherClassmate']);
+Route::get('alumni/{school_type_name}/{school_name}/{admission_year}', [AlumniController::class, 'otherNameClassmate']);
+// Route::get('alumni/groups/{user_id}', [AlumniController::class, 'groupuser']);
 Route::get('users/{user_id}/groups', [AlumniController::class, 'groupuser']);
 
 Route::apiResource('cities', CityController::class);
-Route::get('city/{name}', [CityController::class, 'showByName']);
-Route::get('{state_id}/cities', [CityController::class, 'showByStateId']);
-Route::get('{state_id}/city/{name}', [CityController::class, 'showByNameAndState']);
+Route::get('cities/name/{name}', [CityController::class, 'showByName']);
+Route::get('cities/state/{state_id}', [CityController::class, 'showByStateId']);
+Route::get('cities/{state_id}/{name}', [CityController::class, 'showByNameAndState']);
 
 Route::apiResource('countries', CountryController::class);
-Route::get('country/{name}', [CountryController::class, 'showByName']);
+Route::get('countries/name/{name}', [CountryController::class, 'showByName']);
 
 Route::apiResource('school_types', SchoolTypeController::class);
 Route::get('school_types/name/{name}', [SchoolTypeController::class, 'showByName']);
 
 Route::apiResource('schools', SchoolController::class);
-Route::get('school/{name}', [SchoolController::class, 'showByName']);
-Route::get('city/{city_id}/school', [SchoolController::class, 'showByCityId']);
-Route::get('{city_id}/school/{name}', [SchoolController::class, 'showByNameAndCity']);
-Route::get('{state_id}/cities/schools/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
+Route::get('schools/name/{name}', [SchoolController::class, 'showByName']);
+Route::get('schools/city/{city_id}', [SchoolController::class, 'showByCityId']);
+Route::get('schools/{city_id}/{name}', [SchoolController::class, 'showByNameAndCity']);
+Route::get('schools/state/{state_id}/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
 
 Route::apiResource('states', StateController::class);
-Route::get('state/{name}', [StateController::class, 'showByName']);
-Route::get('state/capital/{name}', [StateController::class, 'showByCapital']);
-Route::get('state/search_capital/{name}', [StateController::class, 'showByCapitalUnstrict']);
-Route::get('{country_id}/states', [StateController::class, 'showByCountryId']);
+Route::get('states/name/{name}', [StateController::class, 'showByName']);
+Route::get('states/capital/{name}', [StateController::class, 'showByCapital']);
+Route::get('states/search_capital/{name}', [StateController::class, 'showByCapitalUnstrict']);
+Route::get('states/country/{country_id}', [StateController::class, 'showByCountryId']);
 
 Route::apiResource('professional_bodies', ProfessionalBodiesController::class);
 
