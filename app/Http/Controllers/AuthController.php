@@ -38,18 +38,21 @@ class AuthController extends Controller
             'first_name' => 'required|string|max:32',
             'last_name' => 'required|string|max:32',
             'email' => 'required|string|email|max:64|unique:users',
+            'username' => 'required|string|max:64|unique:users',
             'referred_by' => 'string|max:8',
-            // 'phone_number' => 'string|max:15|unique:users',
+            // 'phone_number' => 'string|max:15|unique:phones',
             'password' => 'required|string|min:8|confirmed'
         ]);
 
         $user = User::create([
+
+            'name' => $validatedData['first_name'] . ' ' . $validatedData['last_name'],
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
             // 'phone_number' => $validatedData['phone_number'],
             'password' => Hash::make($validatedData['password']),
-            'username' => $this->setUsername(),
+            'username' => $validatedData['username'] ?? $this->setUsername(),
             'invite_code' => $this->setInviteCode(),
             'referred_by' => $validatedData['referred_by'] ?? null
         ]);
