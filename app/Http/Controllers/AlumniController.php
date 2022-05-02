@@ -59,8 +59,8 @@ class AlumniController extends Controller
     public function show($id)
     {
         if (Alumni::where('id', $id)->exists()) {
-            $alumni = Alumni::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($alumni, 200);
+            $alumni = Alumni::findOrFail($id);
+            return new AlumniResource($alumni);
         } else {
             return response()->json([
                 'message' => 'Alumni not found'
@@ -214,12 +214,12 @@ class AlumniController extends Controller
     {
         if (Alumni::where('user_id', $user_id)->exists()) {
             $groups = Alumni::where('user_id', $user_id)
-                ->join('groups', 'alumnis.user_id', '=', 'groups.id')
+                // ->join('groups', 'alumnis.user_id', '=', 'groups.id')
                 ->get();
 
-            return $groups;
+            // return $groups;
 
-            // return new AlumniResource($groups);
+            return AlumniResource::collection($groups);
         } else {
             return response()->json([
                 'message' => 'User not found'

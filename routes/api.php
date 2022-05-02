@@ -51,8 +51,8 @@ Route::get('/alumni/classmates/{school_id}/{graduation_year}', [AlumniController
 Route::get('/alumni/classmates_ay/{school_id}/{admission_year}', [AlumniController::class, 'classmate_ay']);
 Route::get('/alumni/classmates/{school_type_id}/{school_id}/{admission_year}', [AlumniController::class, 'otherClassmate']);
 Route::get('/alumni/{school_type_name}/{school_name}/{admission_year}', [AlumniController::class, 'otherNameClassmate']);
-// Route::get('/alumni/groups/{user_id}', [AlumniController::class, 'groupuser']);
-Route::get('/users/{user_id}/groups', [AlumniController::class, 'groupuser']);
+Route::get('/alumni/groups/{user_id}', [AlumniController::class, 'groupuser']);
+// Route::get('/users/{user_id}/groups', [AlumniController::class, 'groupuser']);
 
 Route::apiResource('/cities', CityController::class);
 Route::get('/cities/name/{name}', [CityController::class, 'showByName']);

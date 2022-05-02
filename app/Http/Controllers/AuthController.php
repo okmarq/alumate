@@ -140,9 +140,12 @@ class AuthController extends Controller
     {
         if (User::where('id', $user_id)->exists()) {
             $user = User::findOrFail($user_id);
-            return [
-                'alumni' => $user->alumni,
-            ];
+
+            return new UsersResource($user);
+
+            // return [
+            //     'alumni' => $user->alumni,
+            // ];
         } else {
             return response()->json([
                 'message' => 'User not found'
