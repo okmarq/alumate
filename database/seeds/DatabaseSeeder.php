@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ImageTypeSeeder::class);
         $this->call(ProgramSeeder::class);
         $this->call(SchoolTypeSeeder::class);
-        $this->call(SubscriptionSeeder::class);
+        // $this->call(SubscriptionSeeder::class);
         $this->call(ProfessionSeeder::class);
     }
 }
