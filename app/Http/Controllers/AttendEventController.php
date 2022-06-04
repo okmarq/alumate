@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
 
-use App\Category;
+use App\attendEvent;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AttendEventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $categories
-        ]);
+        //
     }
 
     /**
@@ -47,24 +41,21 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\attendEvent  $attendEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(attendEvent $attendEvent)
     {
-        return response()->json([
-            'status' => 'success',
-            'data' => $category
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\attendEvent  $attendEvent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(attendEvent $attendEvent)
     {
         //
     }
@@ -73,10 +64,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\attendEvent  $attendEvent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, attendEvent $attendEvent)
     {
         //
     }
@@ -84,10 +75,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\attendEvent  $attendEvent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(attendEvent $attendEvent)
     {
         //
     }

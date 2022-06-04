@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subscription;
-use App\Http\Requests\StoreSubscriptionRequest;
-use App\Http\Requests\UpdateSubscriptionRequest;
+use App\Subscription;
+use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
@@ -31,10 +30,10 @@ class SubscriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSubscriptionRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubscriptionRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,7 +41,7 @@ class SubscriptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subscription  $subscription
+     * @param  \App\Subscription  $subscription
      * @return \Illuminate\Http\Response
      */
     public function show(Subscription $subscription)
@@ -53,7 +52,7 @@ class SubscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subscription  $subscription
+     * @param  \App\Subscription  $subscription
      * @return \Illuminate\Http\Response
      */
     public function edit(Subscription $subscription)
@@ -64,11 +63,11 @@ class SubscriptionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSubscriptionRequest  $request
-     * @param  \App\Models\Subscription  $subscription
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Subscription  $subscription
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
+    public function update(Request $request, Subscription $subscription)
     {
         //
     }
@@ -76,7 +75,7 @@ class SubscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subscription  $subscription
+     * @param  \App\Subscription  $subscription
      * @return \Illuminate\Http\Response
      */
     public function destroy(Subscription $subscription)

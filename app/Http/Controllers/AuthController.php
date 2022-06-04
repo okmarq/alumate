@@ -2,235 +2,208 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UsersResource;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\ResetPasswordRequest;
+use App\Mail\ForgotPassword;
+use App\PasswordReset;
+use App\Referral;
+use App\User;
+use Carbon\Carbon;
+//use Illuminate\Routing\UrlGenerator;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
+use App\ApiCode;
 
 class AuthController extends Controller
 {
-    public function setUsername()
-    {
-        $i = 0;
-        $username = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-        while (User::whereUsername($username)->exists()) {
-            $i++;
-            $username = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-        }
-        return $username;
-    }
+    public function generateReferralCode(){
+        $chars = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+        $totalChars = count($chars);
 
-    public function setInviteCode()
-    {
-        $i = 0;
-        $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-        while (User::where('invite_code', $code)->exists()) {
-            $i++;
-            $code = $i . str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-        }
+        do {
+            $code = '';
+            for($i = 0; $i< 5; $i++){
+                $index =  rand(0,$totalChars-1);
+                $code.=$chars[$index];
+            }
+        }while(User::where('referral_code', $code)->first());
+
         return $code;
     }
 
-    public function register(Request $request)
-    {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:32',
-            'last_name' => 'required|string|max:32',
-            'email' => 'required|string|email|max:64|unique:users',
-            'username' => 'required|string|max:64|unique:users',
-            'referred_by' => 'string|max:8',
-            // 'phone_number' => 'string|max:15|unique:phones',
-            'password' => 'required|string|min:8|confirmed'
+    public function register(Request $request){
+
+        $this->validate($request, [
+            'name' => 'bail|required',
+            'email' => 'bail|required|email:filter,rfc|unique:users',
+            'password' => 'bail|required|min:6',
         ]);
+
+        DB::beginTransaction();
+
+        $referrerId = null;
+
+        $referrer = User::where('referral_code', $request['referral_code'])->first();
+
+        if ($referrer)
+            $referrerId = $referrer->id;
 
         $user = User::create([
-
-            'name' => $validatedData['first_name'] . ' ' . $validatedData['last_name'],
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'email' => $validatedData['email'],
-            // 'phone_number' => $validatedData['phone_number'],
-            'password' => Hash::make($validatedData['password']),
-            'username' => $validatedData['username'] ?? $this->setUsername(),
-            'invite_code' => $this->setInviteCode(),
-            'referred_by' => $validatedData['referred_by'] ?? null
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'player_id' => $request->filled('player_id') ? $request->player_id : null,
+            'referral_code' => $this->generateReferralCode(),
+            'referrer_id' => $referrerId
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referrer_id' => $referrerId
+        ]);
+
+        if (!$user && $referral){
+            DB::rollBack();
+        }
+        DB::commit();
 
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
-        ], 201);
+            'status' => 'success',
+            'data' => [
+                'user' => $user,
+                'referral' => $referral
+            ]
+        ]);
     }
 
+    public function getRefereeCount(){
+        $referral = Referral::where("referrer_id", auth()->user()->id)
+            ->whereNotNull("user_id")->count();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => 'Number of referred users:' .''. $referral
+        ]);
+    }
+
+
+    public function registers(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'bail|required',
+            'email' => 'bail|required|email:filter,rfc|unique:users',
+            'password' => 'bail|required|min:6',
+        ]);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);
+        $input['player_id'] = $request->filled('player_id') ? $request->player_id : null;
+//        $input['referral_code'] = $this->generateReferralCode();
+        $user = User::create($input);
+
+        return response()->json($user);
+    }
+
+    /**
+     * @throws AuthenticationException
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
-        //
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json([
-                'message' => 'Invalid login details'
-            ], 401);
+        $this->validate($request, [
+            'email' => 'bail|required|email:filter,rfc',
+            'password' => 'bail|required|min:6'
+        ]);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = User::find(\auth()->id());
+
+            if ($request->filled('player_id') && $user->player_id != $request->player_id) {
+                $user->player_id = $request->player_id;
+                $user->save();
+            }
+
+            return response()->json($user);
         }
 
-        $user = User::where('email', $request['email'])->firstOrFail();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
-        ], 200);
+        throw new AuthenticationException('Your credentials does not match our record.');
     }
 
-    public function logout(Request $request)
-    {
-        auth()->user()->tokens()->delete();
+    public function changePassword(Request $request){
+        $this->validate($request, [
+            'old_password' => 'required',
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6',
+        ]);
 
-        return response()->json([
-            'message' => 'Logged out'
-        ], 200);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // $users = User::get()->toJson(JSON_PRETTY_PRINT);
-        // return response($users, 200);
-
-        return UsersResource::collection(User::all());
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function store(StoreUserRequest $request)
-    // {
-    //
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return new UsersResource($user);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function showAlumni($user_id)
-    {
-        if (User::where('id', $user_id)->exists()) {
-            $user = User::findOrFail($user_id);
-
-            return new UsersResource($user);
-
-            // return [
-            //     'alumni' => $user->alumni,
-            // ];
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
+        if (!(Hash::check($request['old_password'], Auth::user()->password))) {
+            return response()->json(['message' => 'Current password is Wrong !!'], 422);
         }
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function showByInviteCode($code)
-    {
-        if (User::where('invite_code', $code)->exists()) {
-            $user = User::where('invite_code', $code)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($user, 200);
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
+        if(strcmp($request['old_password'], $request['password']) == 0){
+            return response()->json(['message' => 'New Password cannot be same as your current password. Please choose a different password.'], 422);
         }
+
+        $user = Auth::user();
+
+        $user->password = bcrypt($request['password']);
+        $user->save();
+
+        return response()->json(['message' => 'Password updated successfully !!'], 200);
     }
 
     /**
-     * Display the specified resource.
+     * Get User's email to send password reset link
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @bodyParam email string required Email is required.
+     *
+     * @response
+     *  {
+     *      "status": "success",
+     *      "message": "Reset password link sent on your email id."
+     *  }
      */
-    public function showByAlumni($name)
-    {
-        if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
-            $user = User::where('first_name', 'like', '%' . $name . '%')
-                ->orWhere('last_name', 'like', '%' . $name . '%')
-                ->join('alumnis', 'users.id', '=', 'alumnis.user_id')
-                ->get()
-                ->toJson(JSON_PRETTY_PRINT);
-            return response($user, 200);
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
+    public function forgotPassword() {
+        $credentials = request()->validate(['email' => 'required|email']);
+
+        Password::sendResetLink($credentials);
+
+        return response()->json(['status'=>'success','message'=>'Reset password link sent on your email id.']);
+    }
+
+    /**
+     * Reset password using the reset link from email
+     *
+     * @bodyParam email string required Email is required.
+     * @bodyParam password string required Password is required.
+     * @bodyParam password_confirmation string required Password Confirmation is required.
+     * @bodyParam token string required Token is required.
+     *
+     * @response
+     *  {
+     *      "status": "success",
+     *      "message": "Password has been successfully changed"
+     *  }
+     */
+    public function resetPassword(ResetPasswordRequest $request) {
+        $reset_password_status = Password::reset($request->validated(), function ($user, $password) {
+            $user->password = bcrypt($password);
+            $user->save();
+        });
+
+        if ($reset_password_status == Password::INVALID_TOKEN) {
+            return response()->json($reset_password_status['message'],$reset_password_status['status_code']);
         }
+
+        return response()->json(['status'=>'success','message'=>'Password has been successfully changed']);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function showByName($name)
-    {
-        if (User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->exists()) {
-            $user = User::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
-            return response($user, 200);
-        } else {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(UpdateUserRequest $request, $id)
-    // {
-    //
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy($id)
-    // {
-    //
-    // }
 }

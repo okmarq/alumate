@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
-use App\Http\Requests\StoreSchoolRequest;
-use App\Http\Requests\UpdateSchoolRequest;
-use App\Http\Resources\SchoolsResource;
-use Illuminate\Support\Facades\DB;
+use App\Group;
+use App\Http\Controllers\Controller;
+use App\School;
+use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
@@ -17,183 +16,109 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        // $schools = School::get()->toJson(JSON_PRETTY_PRINT);
-        // return response($schools, 200);
+        return response()->json(School::with('state')->get());
+    }
 
-        return SchoolsResource::collection(School::all());
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSchoolRequest  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreSchoolRequest $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:128',
-            'city_id' => 'required|integer',
-            'school_type_id' => 'required|integer'
+        $this->validate($request, [
+            "name" => "bail|required|unique:schools",
+            "city" => "bail|required",
+            "state_id" => "bail|required|exists:states,id",
+            "status" => "bail|required|in:Primary,Secondary,Tertiary",
+            "user_id" => "nullable|exists:users,id"
         ]);
 
-        $school = School::create([
-            'name' => $validatedData['name'],
-            'city_id' => $validatedData['city_id'],
-            'school_type_id' => $validatedData['school_type_id']
-        ]);
+        $school = School::create($request->all());
 
-        return response()->json([
-            "message" => "school record created",
-            'school' => $school
-        ], 201);
+        return response()->json($school);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\School $school
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(School $school)
     {
-        if (School::where('id', $id)->exists()) {
-            $school = School::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($school, 200);
-        } else {
-            return response()->json([
-                'message' => 'School not found'
-            ], 404);
-        }
+        return response()->json($school->load('state')->load('groups.users'));
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\School $school
      * @return \Illuminate\Http\Response
      */
-    public function showByName($name)
+    public function edit(School $school)
     {
-        if (School::where('name', 'like', '%' . $name . '%')->exists()) {
-            $schools = School::where('name', 'like', '%' . $name . '%')->get()->toJson(JSON_PRETTY_PRINT);
-            return response($schools, 200);
-        } else {
-            return response()->json([
-                'message' => 'School not found'
-            ], 404);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function showByStateShcoolType($state_id, $school_type_id)
-    {
-        // use state id to get all cities in state, then use city id to get all schools in city, then filter school by school type id
-
-        if (School::where('school_type_id', $school_type_id)->exists()) {
-            $schools = School::select('schools.*')
-                ->join('cities', 'schools.city_id', '=', 'cities.id', 'inner')
-                ->join('states', 'cities.state_id', '=', 'states.id', 'inner')
-                ->where('school_type_id', $school_type_id)
-                ->where('state_id', $state_id)
-                ->get()
-                ->toJson(JSON_PRETTY_PRINT);
-            // DB::table('schools')->where('school_id', $school_id)
-            // SELECT * FROM `schools` INNER JOIN `cities` ON `schools`.`city_id`=`cities`.`id` INNER JOIN `states` ON `cities`.`state_id`=`states`.`id` WHERE `school_type_id`=6 AND `city_id`=628;
-            return response($schools, 200);
-        } else {
-            return response()->json([
-                'message' => 'school not found'
-            ], 404);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function showByCityId($city_id)
-    {
-        if (School::where('city_id', $city_id)->exists()) {
-            $schools = School::where('city_id', $city_id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($schools, 200);
-        } else {
-            return response()->json([
-                'message' => 'School not found'
-            ], 404);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function showByNameAndCity($city_id, $name)
-    {
-        if (School::where('city_id', $city_id)->where('name', $name)->exists()) {
-            $school = School::where('city_id', $city_id)->where('name', $name)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($school, 200);
-        } else {
-            return response()->json([
-                'message' => 'School not found'
-            ], 404);
-        }
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSchoolRequest  $request
-     * @param  \App\Models\School  $school
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\School $school
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSchoolRequest $request, $id)
+    public function update(Request $request, School $school)
     {
-        if (School::where('id', $id)->exists()) {
-            $school = School::find($id);
-            $school->name = is_null($request->name) ? $school->name : $request->name;
-            $school->city_id = is_null($request->city_id) ? $school->city_id : $request->city_id;
-            $school->school_type_id = is_null($request->school_type_id) ? $school->school_type_id : $request->school_type_id;
-            $school->save();
-
-            return response()->json([
-                "message" => "records updated successfully"
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "School not found"
-            ], 404);
-        }
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\School  $school
+     * @param  \App\School $school
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(School $school)
     {
-        if (School::where('id', $id)->exists()) {
-            $school = School::find($id);
-            $school->delete();
+        //
+    }
 
-            return response()->json([
-                "message" => "records deleted"
-            ], 202);
-        } else {
-            return response()->json([
-                "message" => "School not found"
-            ], 404);
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\School $school
+     * @return \Illuminate\Http\Response
+     */
+    public function members(School $school)
+    {
+        return response()->json($school->load('groups.users'));
+    }
+
+    public function schoolAlbumCount(School $school)
+    {
+
+        $groups =  Group::where('school_id', $school->id)->get();
+        $group_members = [];
+        foreach ($groups as $group) {
+            $group_members[] = $group->totalMembers;
         }
+        // return $groups->totalMembers;
+        return [
+            'status' => 'success',
+            'data' => array_sum($group_members)
+        ];
     }
 }

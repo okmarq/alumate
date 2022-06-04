@@ -1,17 +1,6 @@
 <?php
 
-use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\GroupsController;
-use App\Http\Controllers\ProfessionalBodiesController;
-use App\Http\Controllers\ProfessionalGroupsController;
-use App\Http\Controllers\SchoolController;
-use App\Http\Controllers\SchoolTypeController;
-use App\Http\Controllers\StateController;
-use App\Http\Controllers\UserProgramDepartmentController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,60 +14,156 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+//Route::prefix('v1')->namespace('api')->group(function () {
+//Route::prefix('v1')->namespace('Api')->group(function () {
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+
+//  forgot password
+Route::post('password/email', 'AuthController@forgotPassword');
+Route::post('password/reset', 'AuthController@resetPassword');
+
+// testing route
+Route::get('test', 'HomeController@test');
+
+//  forgot password
+Route::post('password/email', 'AuthController@forgotPassword');
+Route::post('password/reset', 'AuthController@resetPassword');
+
+// testing route
+Route::get('test', 'HomeController@test');
+
+Route::middleware('auth:api')->group(function () {
+    // put the routes below in here after using them in unauthenticated mode
+});
+// modified post
+Route::get('show/post', 'PostController@showAllPost');
+Route::get('all/post', 'PostController@allPost');
+
+// getRefereeCount
+Route::get('link-count', [AuthController::class, 'getRefereeCount']);
+
+// change password
+Route::post('change-password', 'AuthController@changePassword');
+
+Route::get(
+    'get_school_album_count/{school}',
+    'SchoolController@schoolAlbumCount'
+);
+// total number of users and schools
+Route::get(
+    'get_total_no/users/schools',
+    'UserController@totalNoOfUsersAndSchools'
+);
+
+//School Resource
+Route::resource('schools', 'SchoolController');
+Route::get('school/{school}/members', 'SchoolController@members');
+
+//Groups
+
+Route::get(
+    'groups/schools/{school}',
+    'GroupController@getAllGroupsUnderSchool'
+);
+Route::resource('groups', 'GroupController');
+Route::post('groups/join', 'GroupController@join');
+Route::post('groups/leave', 'GroupController@leave');
+
+//PGroups
+Route::resource('pgroups', 'PgroupController');
+Route::get('memberships/pgroups/{pgroup}', 'MembershipController@pgroups');
+Route::resource('memberships', 'MembershipController');
+
+Route::post('pgroups/search', 'MembershipController@searchPgroups');
+Route::post('pgroups/join', 'MembershipController@join');
+
+//   Route::post('pgroups/leave', 'PgroupController@leave');
+
+// Events
+Route::resource('events', 'EventController');
+Route::post('events/attend', 'EventController@attendEvent');
+
+// topic
+Route::resource('topics', 'TopicController');
+
+// Report
+Route::resource('reports', 'ReportController');
+
+//categories
+Route::resource('categories', 'CategoryController');
+
+//Business
+Route::get(
+    'businesses/services/{bussiness}',
+    'BusinessController@getAllServicesUnderABussiness'
+);
+Route::resource('businesses', 'BusinessController');
+
+//Business Bay
+Route::resource('bays', 'BayController');
+Route::post('bay/{business}', 'BayController@replicate');
+
+Route::get('bay/{key1}/{key2}/{key3}/{key4}', 'BayController@generalSearch');
+Route::get(
+    'baygroup/{key1}/{key2}/{key3}/{key4}/{key5}',
+    'BayController@searchByGroup'
+);
+Route::post('bay/business/search', 'BayController@searchBay');
+
+//Services
+Route::resource('services', 'ServiceController');
+Route::resource('uploadImage', 'ServiceImageController');
+
+// post::posts/user/2
+Route::get('posts/user/{user}', 'PostController@getUserPost');
+//posts
+Route::get(
+    '/posts/get_all_post_by_classmate',
+    'PostController@getAllPostByClassMate'
+);
+Route::resource('posts', 'PostController');
+
+// post::posts/user/2
+Route::get('posts/user/{user}', 'PostController@getUserPost');
+//posts
+Route::get(
+    '/posts/get_all_post_by_classmate',
+    'PostController@getAllPostByClassMate'
+);
+Route::resource('posts', 'PostController');
+
+//Thread
+Route::resource('threads', 'ThreadController');
+
+Route::prefix('posts')->group(function () {
+    Route::get('{post}/comments', 'PostController@getComments');
+    Route::post('like/{post}/{user}', 'PostController@liker');
+    //Route::patch('dislike/{post}', 'PostController@dislike');
 });
 
-Route::apiResource('/users', AuthController::class);
-Route::get('/users/name/{name}', [AuthController::class, 'showByName']);
-Route::get('/users/alumni/{user_id}', [AuthController::class, 'showAlumni']);
-// Route::get('/users/groups/{user_id}', [AuthController::class, 'showAlumni']);
-Route::get('/users/search/{name}', [AuthController::class, 'showByAlumni']);
-Route::get('/users/invite/{code}', [AuthController::class, 'showByInviteCode']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+//comments
+Route::resource('comments', 'CommentController');
 
-Route::apiResource('/academics', UserProgramDepartmentController::class);
+// Users
+Route::prefix('users')->group(function () {
+    //  Route::put('{user}', 'UserController@update');
+    //get user followers
+    // Route::get('users/myFollowers', 'UserController@myFollowers');
+    Route::get('myfollowers', 'UserController@myFollowers');
+    Route::get('{user}/groups', 'UserController@getGroups');
+    Route::post('pally', 'UserController@followRequest');
+    Route::get('pally/{id}/followers', 'UserController@getFollowers');
+    Route::post('block', 'UserController@blockRequest');
+    //::::get my pgroups
+    Route::get('{user}/pgroups', 'UserController@getMyPGroups');
+});
+Route::resource('users', 'UserController');
 
-Route::apiResource('/alumni', AlumniController::class);
-Route::get('/alumni/search/{name}', [AlumniController::class, 'searchSchoolmates']);
-Route::get('/alumni/schoolmates/{school_id}', [AlumniController::class, 'schoolmate']);
-Route::get('/alumni/classmates/{school_id}/{graduation_year}', [AlumniController::class, 'classmate']);
-Route::get('/alumni/classmates_ay/{school_id}/{admission_year}', [AlumniController::class, 'classmate_ay']);
-Route::get('/alumni/classmates/{school_type_id}/{school_id}/{admission_year}', [AlumniController::class, 'otherClassmate']);
-Route::get('/alumni/{school_type_name}/{school_name}/{admission_year}', [AlumniController::class, 'otherNameClassmate']);
-Route::get('/alumni/groups/{user_id}', [AlumniController::class, 'groupuser']);
-// Route::get('/users/{user_id}/groups', [AlumniController::class, 'groupuser']);
+// States
+Route::get('states', 'StateController@index');
+Route::get('states/{state}', 'StateController@show');
 
-Route::apiResource('/cities', CityController::class);
-Route::get('/cities/name/{name}', [CityController::class, 'showByName']);
-Route::get('/cities/state/{state_id}', [CityController::class, 'showByStateId']);
-Route::get('/cities/{state_id}/{name}', [CityController::class, 'showByNameAndState']);
-
-Route::apiResource('/countries', CountryController::class);
-Route::get('/countries/name/{name}', [CountryController::class, 'showByName']);
-
-Route::apiResource('/school_types', SchoolTypeController::class);
-Route::get('/school_types/name/{name}', [SchoolTypeController::class, 'showByName']);
-
-Route::apiResource('/schools', SchoolController::class);
-Route::get('/schools/name/{name}', [SchoolController::class, 'showByName']);
-Route::get('/schools/city/{city_id}', [SchoolController::class, 'showByCityId']);
-Route::get('/schools/{city_id}/{name}', [SchoolController::class, 'showByNameAndCity']);
-Route::get('/schools/state/{state_id}/{school_type}', [SchoolController::class, 'showByStateShcoolType']);
-
-Route::apiResource('/states', StateController::class);
-Route::get('/states/name/{name}', [StateController::class, 'showByName']);
-Route::get('/states/capital/{name}', [StateController::class, 'showByCapital']);
-Route::get('/states/search_capital/{name}', [StateController::class, 'showByCapitalUnstrict']);
-Route::get('/states/country/{country_id}', [StateController::class, 'showByCountryId']);
-
-Route::apiResource('/professional_bodies', ProfessionalBodiesController::class);
-
-Route::apiResource('/professional_groups', ProfessionalGroupsController::class);
-
-Route::apiResource('/groups', GroupsController::class);
+//Countries
+Route::get('countries', 'CountryController@index');
