@@ -38,4 +38,24 @@ class StateController extends Controller
         // return response()->json($state);
         return new StatesResource($state);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\State $state
+     * @return \Illuminate\Http\Response
+     */
+    public function showByCountryId($country_id)
+    {
+        if (State::where('country_id', $country_id)->exists()) {
+            $states = State::where('country_id', $country_id)->get();
+            // return response($states, 200);
+
+            return new StatesResource($states);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
 }
