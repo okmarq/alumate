@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Country;
+use App\Http\Resources\CountriesResource;
 
 class CountryController extends Controller
 {
@@ -15,6 +16,7 @@ class CountryController extends Controller
     public function index()
     {
         return response()->json(Country::all());
+        // return CountriesResource::collection(Country::all());
     }
 
     /**
@@ -26,5 +28,6 @@ class CountryController extends Controller
     public function show(Country $country)
     {
         return response()->json($country);
+        // return new CountriesResource($country);
     }
 }

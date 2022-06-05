@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\StatesResource;
 use App\State;
 
 class StateController extends Controller
@@ -14,15 +15,16 @@ class StateController extends Controller
      */
     public function index()
     {
-        $states = State::with('country')
-            ->get();
+        // $states = State::with('country')
+        //     ->get();
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $states
-        ]);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $states
+        // ]);
 
         // return response()->json(State::all());
+        return StatesResource::collection(State::all());
     }
 
     /**
@@ -33,6 +35,7 @@ class StateController extends Controller
      */
     public function show(State $state)
     {
-        return response()->json($state);
+        // return response()->json($state);
+        return new StatesResource($state);
     }
 }
