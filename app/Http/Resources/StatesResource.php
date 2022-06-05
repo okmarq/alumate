@@ -15,7 +15,7 @@ class StatesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id' => (string) $this->id,
             'name' => $this->name,
             'capital' => $this->capital,
             'country_id' => $this->country_id
