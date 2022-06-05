@@ -48,10 +48,10 @@ class StateController extends Controller
     public function showByCountryId($country_id)
     {
         if (State::where('country_id', $country_id)->exists()) {
-            $states = State::where('country_id', $country_id)->get();
+            // $states = State::where('country_id', $country_id)->get();
             // return response($states, 200);
 
-            return new StatesResource($states);
+            return StatesResource::collection(State::where('country_id', $country_id)->get());
         } else {
             return response()->json([
                 'message' => 'State not found'
