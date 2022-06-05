@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -164,6 +165,8 @@ Route::resource('users', 'UserController');
 // States
 Route::get('states', 'StateController@index');
 Route::get('states/{state}', 'StateController@show');
+Route::get('states/country/{country_id}/', 'StateController@showByCountryId');
+// Route::get('/states/country/{country_id}', [StateController::class, 'showByCountryId']);
 
 //Countries
 Route::get('countries', 'CountryController@index');
