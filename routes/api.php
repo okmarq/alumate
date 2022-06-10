@@ -63,7 +63,6 @@ Route::resource('schools', 'SchoolController');
 Route::get('school/{school}/members', 'SchoolController@members');
 
 //Groups
-
 Route::get(
     'groups/schools/{school}',
     'GroupController@getAllGroupsUnderSchool'
@@ -168,5 +167,11 @@ Route::get('states/{state}', 'StateController@show');
 Route::get('states/country/{country_id}/', 'StateController@showByCountryId');
 // Route::get('/states/country/{country_id}', [StateController::class, 'showByCountryId']);
 
-//Countries
+// Countries
 Route::get('countries', 'CountryController@index');
+
+// Cities
+Route::apiResource('/cities', 'CityController');
+Route::get('/cities/name/{name}', 'CityController@showByName');
+Route::get('/cities/state/{state_id}', 'CityController@showByStateId');
+Route::get('/cities/{state_id}/{name}', 'CityController@showByNameAndState');
