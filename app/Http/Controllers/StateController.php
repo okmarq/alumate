@@ -50,7 +50,6 @@ class StateController extends Controller
         if (State::where('country_id', $country_id)->exists()) {
             // $states = State::where('country_id', $country_id)->get();
             // return response($states, 200);
-
             return StatesResource::collection(State::where('country_id', $country_id)->get());
         } else {
             return response()->json([
