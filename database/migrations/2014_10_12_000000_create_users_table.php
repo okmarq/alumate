@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('username')->unique();
+            $table->string('username');
             $table->string('email')->unique();
-            $table->string('invite_code')->unique();
+            $table->string('invite_code');
             // $table->string('phone_number')->unique();
             // $table->string('gender');
             // $table->string('phone_number_id')->nullable()->constrained()->onUpdate('restrict')->onDelete('restrict');
@@ -50,13 +50,33 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('gender')->nullable();
+            $table->string('type')->nullable();
+            $table->string('verify')->nullable();
+            $table->string('level')->nullable();
+            $table->string('graduate')->nullable();
+            $table->string('global')->nullable();
+            $table->string('groupid')->nullable();
+            $table->string('groupschoolid')->nullable();
+            $table->string('groupphoto')->nullable();
+            $table->string('groupname')->nullable();
+            $table->string('groupcertificate')->nullable();
+            $table->string('grouptype')->nullable();
+            $table->string('groupyear')->nullable();
+            $table->string('grouptotalmember')->nullable();
+            $table->string('groupdescription')->nullable();
+            $table->string('groupschoolstatus')->nullable();
+            $table->string('groupschoolname')->nullable();
             $table->string('marital')->nullable();
+            $table->string('invited')->nullable();
+            $table->string('invite')->nullable();
+            $table->string('referrer_id')->nullable();
+            $table->string('isAdmin')->nullable();
             $table->text('hobbies')->nullable();
             $table->string('referral_code')->nullable();
-            $table
-                ->unsignedBigInteger('referrer_id')
-                ->index()
-                ->nullable();
+            // $table
+            //     ->unsignedBigInteger('referrer_id')
+            //     ->index()
+            //     ->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

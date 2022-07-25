@@ -23,33 +23,41 @@ class CreatePostsTable extends Migration
             $table->enum('isPromoted', ['false', 'true']);
             $table->enum('reposted', ['false', 'true']);
             $table->string('reposterName')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('group_id')->nullable();
+            $table->string('school_id')->nullable();
             $table->string('repostId')->nullable();
             $table->enum('repostHasPhoto', ['false', 'true']);
-            $table
-                ->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
+            // $table
+            //     ->foreignId('user_id')
+            //     ->constrained()
+            //     ->onUpdate('restrict')
+            //     ->onDelete('restrict');
             $table
                 ->foreignId('category_id')
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table
-                ->foreignId('group_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
-            $table
-                ->foreignId('school_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
-
+            // $table
+            //     ->foreignId('group_id')
+            //     ->constrained()
+            //     ->onUpdate('restrict')
+            //     ->onDelete('restrict');
+            // $table
+            //     ->foreignId('school_id')
+            //     ->constrained()
+            //     ->onUpdate('restrict')
+            //     ->onDelete('restrict');
             $table->boolean('is_active')->default(0);
             $table->bigInteger('reactions')->default(0);
             $table->bigInteger('shares')->default(0);
             $table->timestamps();
+            $table->string('school')->nullable();
+            $table->string('graduate')->nullable();
+            $table->string('checktime')->nullable();
+            $table->string('Poster_email')->nullable();
+            $table->string('plan')->nullable();
+            $table->string('contents')->nullable();
         });
     }
 

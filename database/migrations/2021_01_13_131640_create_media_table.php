@@ -19,15 +19,15 @@ class CreateMediaTable extends Migration
         });
 
         Schema::create('mediables', function (Blueprint $table) {
-            $table->unsignedBigInteger('mediable_id')->index();
-            $table->string('mediable_type');
-            $table->string('group');
-
+            // $table->unsignedBigInteger('mediable_id')->index();
+            // $table->string('mediable_type');
             $table
                 ->foreignId('media_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->morphs('mediable');
+            $table->string('group');
         });
     }
 

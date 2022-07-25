@@ -18,11 +18,12 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('price')->nullable();
-            $table
-                ->foreignId('business_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('business_id')->nullable();
+            // $table
+            //     ->foreignId('business_id')
+            //     ->constrained()
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->string('photo', 1000)->nullable();
             $table->timestamps();
         });

@@ -43,6 +43,12 @@ class CreateBaysTable extends Migration
                 ->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table
+                ->foreignId('business_id')
+                ->nullable()
+                ->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->string('street_address')->nullable();
             $table->string('open_time')->nullable();
             $table->string('close_time')->nullable();

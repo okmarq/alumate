@@ -19,30 +19,36 @@ class CreateGroupsTable extends Migration
             $table->string('certificate');
             $table->string('photo')->nullable();
             $table->char('year', 4);
+            // $table
+            //     ->foreignId('school_id')
+            //     ->constrained()
+            //     ->onUpdate('restrict')
+            //     ->onDelete('restrict');
+            $table->string('school_id')->nullable();
+            $table->string('image_id')->nullable();
+            $table->string('type');
+            $table->string('university')->nullable();
+            $table->string('year1')->nullable();
+            $table->string('level')->nullable();
             $table->year('admission_year')->nullable();
             $table->year('graduation_year')->nullable();
-            $table
-                ->foreignId('school_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
-
-            $table
-                ->foreignId('image_id')
-                ->constrained()
-                ->onUpdate('restrict')
-                ->onDelete('restrict');
+            // $table
+            //     ->foreignId('image_id')
+            //     ->constrained()
+            //     ->onUpdate('restrict')
+            //     ->onDelete('restrict');
             $table->text('description');
             $table->timestamps();
         });
 
         Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table
-                ->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('user_id')->nullable();
+            // $table
+            //     ->foreignId('user_id')
+            //     ->constrained()
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table
                 ->foreignId('group_id')
                 ->constrained()
