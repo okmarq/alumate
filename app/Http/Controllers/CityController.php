@@ -98,7 +98,7 @@ class CityController extends Controller
     public function showByNameAndState($state_id, $name)
     {
         if (City::where('state_id', $state_id)->where('name', $name)->exists()) {
-            $city = City::where('state_id', $state_id)->where('name', $name)->get();
+            $city = City::where('state_id', $state_id)->where('name', $name)->first();
             // return response($city, 200);
             return new CitiesResource($city);
         } else {
