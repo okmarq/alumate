@@ -39,6 +39,19 @@ class StateController extends Controller
         return new StatesResource($state);
     }
 
+    public function showByName($name)
+    {
+        if (State::where('name', $name)->exists()) {
+            $state = State::where('name', $name)->first();
+            // return response($city, 200);
+            return new StatesResource($state);
+        } else {
+            return response()->json([
+                'message' => 'State not found'
+            ], 404);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
