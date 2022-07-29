@@ -16,17 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::prefix('v1')->namespace('api')->group(function () {
-//Route::prefix('v1')->namespace('Api')->group(function () {
 
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
-
-//  forgot password
-Route::post('password/email', 'AuthController@forgotPassword');
-Route::post('password/reset', 'AuthController@resetPassword');
-
-// testing route
-Route::get('test', 'HomeController@test');
 
 //  forgot password
 Route::post('password/email', 'AuthController@forgotPassword');
@@ -57,10 +49,6 @@ Route::get(
     'get_total_no/users/schools',
     'UserController@totalNoOfUsersAndSchools'
 );
-
-//School Resource
-Route::resource('schools', 'SchoolController');
-Route::get('school/{school}/members', 'SchoolController@members');
 
 //Groups
 Route::get(
@@ -159,11 +147,13 @@ Route::prefix('users')->group(function () {
     //::::get my pgroups
     Route::get('{user}/pgroups', 'UserController@getMyPGroups');
 });
+
 Route::resource('users', 'UserController');
 
 // States
 Route::get('states', 'StateController@index');
 Route::get('states/{state}', 'StateController@show');
+Route::get('states/state/{name}', 'StateController@showByName');
 Route::get('states/country/{country_id}/', 'StateController@showByCountryId');
 // Route::get('/states/country/{country_id}', [StateController::class, 'showByCountryId']);
 
@@ -172,6 +162,12 @@ Route::get('countries', 'CountryController@index');
 
 // Cities
 Route::apiResource('/cities', 'CityController');
-Route::get('/cities/name/{name}', 'CityController@showByName');
+Route::get('/cities/city/{name}', 'CityController@showByName');
 Route::get('/cities/state/{state_id}', 'CityController@showByStateId');
 Route::get('/cities/{state_id}/{name}', 'CityController@showByNameAndState');
+
+//School Resource
+Route::apiResource('schools', 'SchoolController');
+Route::get('/schools/school/{name}', 'SchoolController@showByName');
+Route::get('/schools/city/{city}', 'SchoolController@showByCityName');
+Route::get('school/{school}/members', 'SchoolController@members');
