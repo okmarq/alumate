@@ -47,7 +47,7 @@ class User extends Authenticatable
     // ];
 
      protected $fillable = [
-        'name', 'email', 'password', 'player_id', 'photo', 'status', 'country_of_residence', 'country_of_origin', 'state_of_residence', 'state_of_origin', 'profession', 'phone', 'date_of_birth', 'gender', 'marital', 'hobbies',
+        'first_name', 'last_name', 'name', 'username', 'email', 'password', 'player_id', 'photo', 'status', 'country_of_residence', 'country_of_origin', 'state_of_residence', 'state_of_origin', 'profession', 'phone', 'date_of_birth', 'gender', 'marital', 'hobbies',
         'type', 'verify', 'graduate','level', 'global','groupid','groupschoolid','groupphoto','groupname','referral_code','referrer_id',
         'groupcertificate','grouptype','groupyear','grouptotalmember','groupdescription','groupschoolstatus','groupschoolname'
     ];
