@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Optix\Media\MediaUploader;
 use App\School;
@@ -170,12 +171,14 @@ class GroupController extends Controller
         ]);
 
         $group = Group::find($request->group_id);
-        $userGroups = auth('api')->user()->groups()->whereIn('groups.id', [$request->group_id])->get();
+        $user = User::find($request->user_id);
+        $userGroups = $user->groups()->whereIn('groups.id', [$request->group_id])->get();
 
         if ($userGroups->isEmpty())
         {
             $totalMembers = \DB::table('group_user')->whereGroupId($request->group_id)->count();
-            $group->users()->attach(auth('api')->id(), ['admin' => $totalMembers <= 3 ? '1' : '0']);
+            // auth('api')->id()
+            $group->users()->attach($user, ['admin' => $totalMembers <= 3 ? '1' : '0']);
         }
 
         return response()->json($group);
