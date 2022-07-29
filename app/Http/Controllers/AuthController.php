@@ -25,25 +25,27 @@ use App\ApiCode;
 
 class AuthController extends Controller
 {
-    public function generateReferralCode(){
+    public function generateReferralCode()
+    {
         $chars = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
         $totalChars = count($chars);
 
         do {
             $code = '';
-            for($i = 0; $i< 5; $i++){
-                $index =  rand(0,$totalChars-1);
-                $code.=$chars[$index];
+            for ($i = 0; $i < 5; $i++) {
+                $index = rand(0, $totalChars - 1);
+                $code .= $chars[$index];
             }
-        }while(User::where('referral_code', $code)->first());
+        } while (User::where('referral_code', $code)->first());
 
         return $code;
     }
 
-    public function register(Request $request){
-
+    public function register(Request $request)
+    {
         $this->validate($request, [
-            'name' => 'bail|required',
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'email' => 'bail|required|email:filter,rfc|unique:users',
             'password' => 'bail|required|min:6',
         ]);
@@ -52,26 +54,35 @@ class AuthController extends Controller
 
         $referrerId = null;
 
-        $referrer = User::where('referral_code', $request['referral_code'])->first();
+        $referrer = User::where(
+            'referral_code',
+            $request['referral_code']
+        )->first();
 
-        if ($referrer)
+        if ($referrer) {
             $referrerId = $referrer->id;
+        }
 
         $user = User::create([
-            'name' => $request['name'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'name' => $request['first_name'] . ' ' . $request['last_name'],
+            'username' => $request['email'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
-            'player_id' => $request->filled('player_id') ? $request->player_id : null,
+            'player_id' => $request->filled('player_id')
+                ? $request->player_id
+                : null,
             'referral_code' => $this->generateReferralCode(),
-            'referrer_id' => $referrerId
+            'referrer_id' => $referrerId,
         ]);
 
         $referral = Referral::create([
             'user_id' => $user->id,
-            'referrer_id' => $referrerId
+            'referrer_id' => $referrerId,
         ]);
 
-        if (!$user && $referral){
+        if (!$user && $referral) {
             DB::rollBack();
         }
         DB::commit();
@@ -80,34 +91,38 @@ class AuthController extends Controller
             'status' => 'success',
             'data' => [
                 'user' => $user,
-                'referral' => $referral
-            ]
+                'referral' => $referral,
+            ],
         ]);
     }
 
-    public function getRefereeCount(){
-        $referral = Referral::where("referrer_id", auth()->user()->id)
-            ->whereNotNull("user_id")->count();
+    public function getRefereeCount()
+    {
+        $referral = Referral::where('referrer_id', auth()->user()->id)
+            ->whereNotNull('user_id')
+            ->count();
 
         return response()->json([
             'status' => 'success',
-            'data' => 'Number of referred users:' .''. $referral
+            'data' => 'Number of referred users:' . '' . $referral,
         ]);
     }
-
 
     public function registers(Request $request)
     {
         $this->validate($request, [
-            'name' => 'bail|required',
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'email' => 'bail|required|email:filter,rfc|unique:users',
             'password' => 'bail|required|min:6',
         ]);
 
         $input = $request->all();
         $input['password'] = bcrypt($request->password);
-        $input['player_id'] = $request->filled('player_id') ? $request->player_id : null;
-//        $input['referral_code'] = $this->generateReferralCode();
+        $input['player_id'] = $request->filled('player_id')
+            ? $request->player_id
+            : null;
+        //        $input['referral_code'] = $this->generateReferralCode();
         $user = User::create($input);
 
         return response()->json($user);
@@ -121,13 +136,21 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'email' => 'bail|required|email:filter,rfc',
-            'password' => 'bail|required|min:6'
+            'password' => 'bail|required|min:6',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (
+            Auth::attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])
+        ) {
             $user = User::find(\auth()->id());
 
-            if ($request->filled('player_id') && $user->player_id != $request->player_id) {
+            if (
+                $request->filled('player_id') &&
+                $user->player_id != $request->player_id
+            ) {
                 $user->player_id = $request->player_id;
                 $user->save();
             }
@@ -135,22 +158,35 @@ class AuthController extends Controller
             return response()->json($user);
         }
 
-        throw new AuthenticationException('Your credentials does not match our record.');
+        throw new AuthenticationException(
+            'Your credentials does not match our record.'
+        );
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
         $this->validate($request, [
             'old_password' => 'required',
-            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password' =>
+                'min:6|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:6',
         ]);
 
-        if (!(Hash::check($request['old_password'], Auth::user()->password))) {
-            return response()->json(['message' => 'Current password is Wrong !!'], 422);
+        if (!Hash::check($request['old_password'], Auth::user()->password)) {
+            return response()->json(
+                ['message' => 'Current password is Wrong !!'],
+                422
+            );
         }
 
-        if(strcmp($request['old_password'], $request['password']) == 0){
-            return response()->json(['message' => 'New Password cannot be same as your current password. Please choose a different password.'], 422);
+        if (strcmp($request['old_password'], $request['password']) == 0) {
+            return response()->json(
+                [
+                    'message' =>
+                        'New Password cannot be same as your current password. Please choose a different password.',
+                ],
+                422
+            );
         }
 
         $user = Auth::user();
@@ -158,7 +194,10 @@ class AuthController extends Controller
         $user->password = bcrypt($request['password']);
         $user->save();
 
-        return response()->json(['message' => 'Password updated successfully !!'], 200);
+        return response()->json(
+            ['message' => 'Password updated successfully !!'],
+            200
+        );
     }
 
     /**
@@ -172,12 +211,16 @@ class AuthController extends Controller
      *      "message": "Reset password link sent on your email id."
      *  }
      */
-    public function forgotPassword() {
+    public function forgotPassword()
+    {
         $credentials = request()->validate(['email' => 'required|email']);
 
         Password::sendResetLink($credentials);
 
-        return response()->json(['status'=>'success','message'=>'Reset password link sent on your email id.']);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Reset password link sent on your email id.',
+        ]);
     }
 
     /**
@@ -194,16 +237,26 @@ class AuthController extends Controller
      *      "message": "Password has been successfully changed"
      *  }
      */
-    public function resetPassword(ResetPasswordRequest $request) {
-        $reset_password_status = Password::reset($request->validated(), function ($user, $password) {
-            $user->password = bcrypt($password);
-            $user->save();
-        });
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        $reset_password_status = Password::reset(
+            $request->validated(),
+            function ($user, $password) {
+                $user->password = bcrypt($password);
+                $user->save();
+            }
+        );
 
         if ($reset_password_status == Password::INVALID_TOKEN) {
-            return response()->json($reset_password_status['message'],$reset_password_status['status_code']);
+            return response()->json(
+                $reset_password_status['message'],
+                $reset_password_status['status_code']
+            );
         }
 
-        return response()->json(['status'=>'success','message'=>'Password has been successfully changed']);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Password has been successfully changed',
+        ]);
     }
 }
