@@ -60,7 +60,7 @@ class CityController extends Controller
     public function showByName($name)
     {
         if (City::where('name', $name)->exists()) {
-            $city = City::where('name', $name)->get();
+            $city = City::where('name', $name)->first();
             // return response($city, 200);
             return new CitiesResource($city);
         } else {
@@ -79,9 +79,10 @@ class CityController extends Controller
     public function showByStateId($state_id)
     {
         if (City::where('state_id', $state_id)->exists()) {
-            $city = City::where('state_id', $state_id)->get();
+            return CitiesResource::collection(City::where('state_id', $state_id)->get());
+            // $city = City::where('state_id', $state_id)->get();
             // return response($city, 200);
-            return new CitiesResource($city);
+            // return new CitiesResource($city);
         } else {
             return response()->json([
                 'message' => 'City not found'
