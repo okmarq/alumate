@@ -44,8 +44,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'bail|required',
-            'last_name' => 'bail|required',
+            'first_name' => 'bail',
+            'last_name' => 'bail',
             'email' => 'bail|required|email:filter,rfc|unique:users',
             'password' => 'bail|required|min:6',
         ]);
@@ -111,8 +111,8 @@ class AuthController extends Controller
     public function registers(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'bail|required',
-            'last_name' => 'bail|required',
+            'first_name' => 'bail',
+            'last_name' => 'bail',
             'email' => 'bail|required|email:filter,rfc|unique:users',
             'password' => 'bail|required|min:6',
         ]);
