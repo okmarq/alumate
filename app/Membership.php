@@ -37,18 +37,4 @@ class Membership extends Model
     {
         return $this->belongsTo(Pgroup::class);
     }
-
-
-
-
-    // public function getTotalMembersAttribute()
-    // {
-    //     return $this->users()->count('users.id');
-    // }
-
-    // public function pgroups(){
-    //     return $this->hasMany(Pgroup::class, 'id');
-    // }
-
-
 }

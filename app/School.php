@@ -12,7 +12,7 @@ class School extends Model
      * @var array
      */
     protected $guarded = ['id'];
-    
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -20,7 +20,7 @@ class School extends Model
      * @var array
      */
     protected $hidden = ['state_id'];
-    
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -45,13 +45,4 @@ class School extends Model
     {
         return $this->hasMany(Topic::class, 'school_id');
     }
-
-
-     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }
